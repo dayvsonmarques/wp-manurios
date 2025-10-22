@@ -1,0 +1,100 @@
+# WordPress Core Files (don't version these)
+wp-admin/
+wp-includes/
+wp-*.php
+xmlrpc.php
+index.php
+license.txt
+readme.html
+
+# WordPress Configuration
+wp-config.php
+wp-config-sample.php
+wp-config-dev.php
+wp-config-prod.php
+
+# WordPress Content (version only our custom theme)
+wp-content/uploads/
+wp-content/cache/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/w3tc-config/
+
+# Plugins (version only if custom)
+wp-content/plugins/
+!wp-content/plugins/index.php
+
+# Themes (version only our custom theme)
+wp-content/themes/
+!wp-content/themes/wp-manurios/
+!wp-content/themes/index.php
+
+# Languages (version only our custom translations)
+wp-content/languages/
+!wp-content/languages/wp-config-pt_BR.php
+
+# Database
+*.sql
+*.sqlite
+
+# Logs
+*.log
+error_log
+debug.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# Node modules (if using build tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build files
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Backup files
+*.bak
+*.backup
+
+# Test files (keep for development, ignore in production)
+tests/
+
+# Documentation files (will be moved to theme/doc/)
+*.md
+!README.md
+
+# Cache files
+wp-content/cache/
+wp-content/w3tc-config/
+wp-content/object-cache.php
+wp-content/advanced-cache.php
+
+# Security files
+.htaccess
