@@ -29,7 +29,6 @@ wp-content/plugins/
 
 # Themes (version only our custom theme)
 wp-content/themes/
-!wp-content/themes/wp-manurios/
 !wp-content/themes/index.php
 
 # Languages (version only our custom translations)
