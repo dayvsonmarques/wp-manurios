@@ -29,6 +29,11 @@ wp-content/plugins/
 
 # Themes (version only our custom theme)
 wp-content/themes/
+# Unignore parent paths and the theme directory so it can be tracked
+!wp-content/
+!wp-content/themes/
+!wp-content/themes/wp-manurios/
+!wp-content/themes/wp-manurios/**
 !wp-content/themes/index.php
 
 # Languages (version only our custom translations)

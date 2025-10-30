@@ -1,0 +1,139 @@
+# WP Manurios Theme - Portuguese (Brazil) Translation
+# Copyright (C) 2024 Manurios
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Manurios 1.0.0\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Skip to content"
+msgstr "Pular para o conteúdo"
+
+msgid "Toggle navigation"
+msgstr "Alternar navegação"
+
+msgid "Primary Menu"
+msgstr "Menu Principal"
+
+msgid "Footer Menu"
+msgstr "Menu do Rodapé"
+
+msgid "Add widgets here to appear in your sidebar."
+msgstr "Adicione widgets aqui para aparecer na sidebar."
+
+msgid "Main Sidebar"
+msgstr "Sidebar Principal"
+
+msgid "First footer column."
+msgstr "Primeira coluna do rodapé."
+
+msgid "Footer 1"
+msgstr "Rodapé 1"
+
+msgid "Second footer column."
+msgstr "Segunda coluna do rodapé."
+
+msgid "Footer 2"
+msgstr "Rodapé 2"
+
+msgid "Third footer column."
+msgstr "Terceira coluna do rodapé."
+
+msgid "Footer 3"
+msgstr "Rodapé 3"
+
+msgid "Home"
+msgstr "Início"
+
+msgid "Read more"
+msgstr "Leia mais"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Próximo"
+
+msgid "No content found"
+msgstr "Nenhum conteúdo encontrado"
+
+msgid "Sorry, but the requested content could not be found."
+msgstr "Desculpe, mas não foi possível encontrar o conteúdo solicitado."
+
+msgid "Pages:"
+msgstr "Páginas:"
+
+msgid "Tags:"
+msgstr "Tags:"
+
+msgid "Share:"
+msgstr "Compartilhar:"
+
+msgid "Archive"
+msgstr "Arquivo"
+
+msgid "Search results for: %s"
+msgstr "Resultados da busca por: %s"
+
+msgid "No results found"
+msgstr "Nenhum resultado encontrado"
+
+msgid "Sorry, but nothing was found for the search terms. Please try again with different keywords."
+msgstr "Desculpe, mas nada foi encontrado para os termos de busca. Tente novamente com palavras-chave diferentes."
+
+msgid "Page not found"
+msgstr "Página não encontrada"
+
+msgid "Sorry, but the page you are looking for does not exist or has been moved."
+msgstr "Desculpe, mas a página que você está procurando não existe ou foi movida."
+
+msgid "Back to home"
+msgstr "Voltar ao início"
+
+msgid "Or try a search:"
+msgstr "Ou tente uma busca:"
+
+msgid "Search..."
+msgstr "Buscar..."
+
+msgid "Search"
+msgstr "Buscar"
+
+msgid "One comment on &ldquo;%s&rdquo;"
+msgstr "Um comentário em &ldquo;%s&rdquo;"
+
+msgid "%1$s comments on &ldquo;%2$s&rdquo;"
+msgstr "%1$s comentários em &ldquo;%2$s&rdquo;"
+
+msgid "Previous comments"
+msgstr "Comentários anteriores"
+
+msgid "Next comments"
+msgstr "Próximos comentários"
+
+msgid "Comments are closed."
+msgstr "Comentários estão fechados."
+
+msgid "Leave a comment"
+msgstr "Deixe um comentário"
+
+msgid "Leave a comment for %s"
+msgstr "Deixe um comentário para %s"
+
+msgid "Cancel reply"
+msgstr "Cancelar resposta"
+
+msgid "Submit comment"
+msgstr "Enviar comentário"
+
+msgid "Comment"
+msgstr "Comentário"
+
+msgid "Name"
+msgstr "Nome"
+
+msgid "Email"
+msgstr "Email"
