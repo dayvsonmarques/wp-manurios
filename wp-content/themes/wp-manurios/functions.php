@@ -8,6 +8,15 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+// Include custom navigation walker for Jadoo integration
+require_once get_template_directory() . '/inc/class-jadoo-nav-walker.php';
+
+// Include standard navigation walker for WordPress pages
+require_once get_template_directory() . '/inc/class-wp-manurios-nav-walker.php';
+
+// Include Jadoo integration functions
+require_once get_template_directory() . '/inc/jadoo-integration.php';
+
 // Theme setup
 function wp_manurios_setup() {
     // Load theme textdomain
@@ -43,11 +52,28 @@ function wp_manurios_scripts() {
         array(),
         null
     );
+    
+    // Font Awesome for icons
+    wp_enqueue_style(
+        'font-awesome',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+        array(),
+        '6.4.0'
+    );
+    
     // Bootstrap CSS
     wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/css/bootstrap.min.css', array('wp-manurios-fonts'), '5.3.3');
     
     // Theme CSS
-    wp_enqueue_style('wp-manurios-style', get_stylesheet_uri(), array('bootstrap-css'), '1.0.0');
+    wp_enqueue_style('wp-manurios-style', get_stylesheet_uri(), array('bootstrap-css', 'font-awesome'), '1.0.0');
+    
+    // Jadoo integration CSS (for all pages)
+    wp_enqueue_style(
+        'jadoo-integration-css',
+        get_template_directory_uri() . '/css/jadoo-integration.css',
+        array('wp-manurios-style'),
+        '1.0.0'
+    );
     
     // Bootstrap JS
     wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/js/bootstrap.bundle.min.js', array('jquery'), '5.3.3', true);

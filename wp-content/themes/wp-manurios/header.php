@@ -13,8 +13,9 @@
 <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#main"><?php _e('Pular para o conteúdo', 'wp-manurios'); ?></a>
 
+    <?php if (!is_page_template('page-jadoo.php')): ?>
     <header id="masthead" class="site-header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
                 <div class="site-branding">
                     <?php if (has_custom_logo()) : ?>
@@ -22,17 +23,11 @@
                             <?php the_custom_logo(); ?>
                         </div>
                     <?php else : ?>
-                        <h1 class="site-title">
-                            <a href="<?php echo esc_url(home_url('/')); ?>" rel="home">
+                        <h1 class="site-title mb-0">
+                            <a href="<?php echo esc_url(home_url('/')); ?>" rel="home" class="navbar-brand text-decoration-none fw-bold">
                                 <?php bloginfo('name'); ?>
                             </a>
                         </h1>
-                        <?php
-                        $description = get_bloginfo('description', 'display');
-                        if ($description || is_customize_preview()) :
-                        ?>
-                            <p class="site-description"><?php echo $description; ?></p>
-                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
 
@@ -48,13 +43,15 @@
                         'menu_class'     => 'navbar-nav ms-auto',
                         'container'      => false,
                         'fallback_cb'    => 'wp_manurios_fallback_menu',
+                        'walker'         => new WP_Manurios_Nav_Walker(),
                     ));
                     ?>
                 </div>
             </div>
         </nav>
     </header>
+    <?php endif; ?>
 
     <?php do_action('wp_manurios_before_header'); ?>
     
-    <div id="content" class="site-content">
+    <div id="content" class="site-content"<?php if (!is_page_template('page-jadoo.php')) echo ' style="padding-top: 80px;"'; ?>>
