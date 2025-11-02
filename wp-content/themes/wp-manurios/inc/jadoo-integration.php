@@ -29,23 +29,23 @@ function get_jadoo_footer() {
     ?>
     <!-- ============================================-->
     <!-- <section> begin ============================-->
-    <section class="pt-5 bg-primary-gradient">
+    <section class="pb-0 pb-lg-4">
         <div class="container">
           <div class="row">
             <div class="col-lg-3 col-md-7 col-12 mb-4 mb-md-6 mb-lg-0 order-0">
               <?php if ($logo_url): ?>
                 <img class="mb-4" src="<?php echo esc_url($logo_url); ?>" width="150" alt="<?php echo esc_attr($site_name); ?>" />
               <?php else: ?>
-                <h3 class="text-light mb-4 fw-bold"><?php echo esc_html($site_name); ?></h3>
+                <h3 class="text-secondary mb-4 fw-bold font-sans-serif">Manu Rios</h3>
               <?php endif; ?>
               
               <?php 
               $description = get_bloginfo('description', 'display');
               if ($description) :
               ?>
-                <p class="text-light pe-xl-12"><?php echo esc_html($description); ?></p>
+                <p class="fs--1 text-secondary mb-0 fw-medium"><?php echo esc_html($description); ?></p>
               <?php else: ?>
-                <p class="text-light pe-xl-12"><?php _e('Explore o mundo com as melhores experiências de viagem. Sua aventura começa aqui.', 'wp-manurios'); ?></p>
+                <p class="fs--1 text-secondary mb-0 fw-medium"><?php _e('Explore o mundo com as melhores experiências de viagem. Sua aventura começa aqui.', 'wp-manurios'); ?></p>
               <?php endif; ?>
               
               <div class="icon-group mb-4">
@@ -53,65 +53,9 @@ function get_jadoo_footer() {
                 <a class="text-decoration-none icon-item shadow-social" id="instagram" href="#!"><i class="fab fa-instagram"> </i></a>
                 <a class="text-decoration-none icon-item shadow-social" id="twitter" href="#!"><i class="fab fa-twitter"> </i></a>
               </div>
-              
-              <h4 class="fw-medium font-sans-serif text-secondary mb-3"><?php _e('Baixe nosso app', 'wp-manurios'); ?></h4>
-              <div class="d-flex align-items-center">
-                <a href="#!">
-                  <img class="me-2" src="<?php echo get_template_directory_uri(); ?>/jadoo/public/assets/img/play-store.png" alt="play store" />
-                </a>
-                <a href="#!">
-                  <img src="<?php echo get_template_directory_uri(); ?>/jadoo/public/assets/img/apple-store.png" alt="apple store" />
-                </a>
-              </div>
             </div>
             
-            <div class="col-lg-2 col-md-4 mb-4 mb-lg-0 order-lg-1 order-md-2">
-              <h4 class="footer-heading-color fw-bold font-sans-serif mb-3 mb-lg-4"><?php _e('Empresa', 'wp-manurios'); ?></h4>
-              <ul class="list-unstyled mb-0">
-                <?php
-                if (has_nav_menu('footer')) {
-                    wp_nav_menu(array(
-                        'theme_location' => 'footer',
-                        'container'      => false,
-                        'fallback_cb'    => false,
-                        'depth'          => 1,
-                        'items_wrap'     => '%3$s',
-                        'walker'         => new class extends Walker_Nav_Menu {
-                            public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
-                                $output .= '<li class="mb-2"><a class="link-900 fs-1 fw-medium text-decoration-none" href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a></li>';
-                            }
-                        }
-                    ));
-                } else {
-                    ?>
-                    <li class="mb-2"><a class="link-900 fs-1 fw-medium text-decoration-none" href="<?php echo esc_url($site_url); ?>"><?php _e('Início', 'wp-manurios'); ?></a></li>
-                    <li class="mb-2"><a class="link-900 fs-1 fw-medium text-decoration-none" href="#!"><?php _e('Sobre', 'wp-manurios'); ?></a></li>
-                    <li class="mb-2"><a class="link-900 fs-1 fw-medium text-decoration-none" href="#!"><?php _e('Serviços', 'wp-manurios'); ?></a></li>
-                    <?php
-                }
-                ?>
-              </ul>
-            </div>
-            
-            <div class="col-lg-2 col-md-4 mb-4 mb-lg-0 order-lg-2 order-md-3">
-              <h4 class="footer-heading-color fw-bold font-sans-serif mb-3 mb-lg-4"><?php _e('Contato', 'wp-manurios'); ?></h4>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-2"><a class="link-900 fs-1 fw-medium text-decoration-none" href="mailto:contato@manurios.com"><?php _e('Ajuda/FAQ', 'wp-manurios'); ?></a></li>
-                <li class="mb-2"><a class="link-900 fs-1 fw-medium text-decoration-none" href="#!"><?php _e('Imprensa', 'wp-manurios'); ?></a></li>
-                <li class="mb-2"><a class="link-900 fs-1 fw-medium text-decoration-none" href="#!"><?php _e('Afiliados', 'wp-manurios'); ?></a></li>
-              </ul>
-            </div>
-            
-            <div class="col-lg-2 col-md-4 mb-4 mb-lg-0 order-lg-3 order-md-4">
-              <h4 class="footer-heading-color fw-bold font-sans-serif mb-3 mb-lg-4"><?php _e('Mais', 'wp-manurios'); ?></h4>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-2"><a class="link-900 fs-1 fw-medium text-decoration-none" href="<?php echo esc_url(get_privacy_policy_url()); ?>"><?php _e('Política de Privacidade', 'wp-manurios'); ?></a></li>
-                <li class="mb-2"><a class="link-900 fs-1 fw-medium text-decoration-none" href="#!"><?php _e('Termos de Uso', 'wp-manurios'); ?></a></li>
-                <li class="mb-2"><a class="link-900 fs-1 fw-medium text-decoration-none" href="#!"><?php _e('Dicas de Viagem', 'wp-manurios'); ?></a></li>
-              </ul>
-            </div>
-            
-            <div class="col-lg-3 col-md-5 col-12 mb-4 mb-md-6 mb-lg-0 order-lg-4 order-md-1">
+            <div class="col-lg-9 col-md-5 col-12 mb-4 mb-md-6 mb-lg-0 order-lg-4 order-md-1">
               <?php if (is_active_sidebar('footer-3')): ?>
                 <?php dynamic_sidebar('footer-3'); ?>
               <?php else: ?>
@@ -119,15 +63,6 @@ function get_jadoo_footer() {
                   <a class="text-decoration-none icon-item shadow-social" id="facebook" href="#!"><i class="fab fa-facebook-f"> </i></a>
                   <a class="text-decoration-none icon-item shadow-social" id="instagram" href="#!"><i class="fab fa-instagram"> </i></a>
                   <a class="text-decoration-none icon-item shadow-social" id="twitter" href="#!"><i class="fab fa-twitter"> </i></a>
-                </div>
-                <h4 class="fw-medium font-sans-serif text-secondary mb-3"><?php _e('Baixe nosso app', 'wp-manurios'); ?></h4>
-                <div class="d-flex align-items-center">
-                  <a href="#!">
-                    <img class="me-2" src="<?php echo get_template_directory_uri(); ?>/jadoo/public/assets/img/play-store.png" alt="play store" />
-                  </a>
-                  <a href="#!">
-                    <img src="<?php echo get_template_directory_uri(); ?>/jadoo/public/assets/img/apple-store.png" alt="apple store" />
-                  </a>
                 </div>
               <?php endif; ?>
             </div>
@@ -139,7 +74,7 @@ function get_jadoo_footer() {
 
       <div class="py-5 text-center">
         <p class="mb-0 text-secondary fs--1 fw-medium">
-          &copy; <?php echo date('Y'); ?> <?php echo esc_html($site_name); ?> - <?php _e('Todos os direitos reservados', 'wp-manurios'); ?>
+          Manu Rios @ <?php echo date('Y'); ?>
         </p>
       </div>
     <?php
@@ -239,16 +174,29 @@ function integrate_jadoo_dynamic_footer($jadoo_html) {
         return $jadoo_html;
     }
     
-    // Pattern to match the footer section in Jadoo HTML (from the footer section to the copyright div)
-    $footer_pattern = '/<!-- ============================================-->[\s\S]*?<!-- <section> begin ============================-->[\s\S]*?<section class="pt-5 bg-primary-gradient">[\s\S]*?<div class="py-5 text-center">[\s\S]*?<\/div>/s';
+    // Pattern to match the entire footer section in Jadoo HTML
+    $footer_pattern = '/<!-- ============================================-->[\s\S]*?<!-- <section> begin ============================-->[\s\S]*?<section class="pb-0 pb-lg-4">[\s\S]*?<div class="py-5 text-center">[\s\S]*?<\/div>/s';
     
     // Get the dynamic footer
     $dynamic_footer = get_jadoo_footer();
     
-    // Replace the static footer with dynamic one
-    $jadoo_html = preg_replace($footer_pattern, $dynamic_footer, $jadoo_html);
+    // Replace the entire footer section with our custom one
+    $result = preg_replace($footer_pattern, $dynamic_footer, $jadoo_html);
     
-    return $jadoo_html;
+    // If the pattern didn't match, try a more specific approach
+    if ($result === $jadoo_html) {
+        // Try to find and replace just the footer content section
+        $footer_content_pattern = '/<section class="pb-0 pb-lg-4">[\s\S]*?<\/section>[\s\S]*?<div class="py-5 text-center">[\s\S]*?<\/div>/s';
+        
+        // Extract just the footer content from our dynamic footer
+        preg_match('/<section class="pb-0 pb-lg-4">[\s\S]*?<\/section>[\s\S]*?<div class="py-5 text-center">[\s\S]*?<\/div>/s', $dynamic_footer, $footer_matches);
+        
+        if (!empty($footer_matches[0])) {
+            $result = preg_replace($footer_content_pattern, $footer_matches[0], $jadoo_html);
+        }
+    }
+    
+    return $result;
 }
 
 /**
@@ -304,7 +252,7 @@ function enqueue_jadoo_assets() {
             'jadoo-theme-css',
             get_template_directory_uri() . '/jadoo/public/assets/css/theme.css',
             array(),
-            '1.0.0'
+            '1.0.3' // Incremented version to force cache refresh
         );
         
         // Jadoo integration CSS (to fix any conflicts)
@@ -312,7 +260,7 @@ function enqueue_jadoo_assets() {
             'jadoo-integration-css',
             get_template_directory_uri() . '/css/jadoo-integration.css',
             array('jadoo-theme-css'),
-            '1.0.0'
+            '1.0.3' // Incremented version to force cache refresh
         );
         
         // Keep Google Fonts
