@@ -1,43 +1,26 @@
-<?php
-/**
- * The template for displaying 404 pages (not found)
- */
+<!DOCTYPE html>
+<html <?php language_attributes(); ?> class="no-js">
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
 
-get_header(); ?>
+	<?php wp_head(); ?>
+</head>
+<body class="antialiased">
+	<div class="md:flex min-h-screen">
+		<div class="w-full md:w-1/2 flex items-center justify-center">
+			<div class="max-w-sm m-8">
+				<div class="text-5xl md:text-15xl text-dark border-light border-b">404</div>
+				<div class="w-16 h-1 bg-purple-light my-3 md:my-6"></div>
+				<p class="text-dark/90 text-2xl md:text-3xl font-light leading-relaxed mb-8"><?php _e( 'Sorry, the page you are looking for could not be found.', 'tailpress' ); ?></p>
+				<a href="<?php echo get_bloginfo( 'url' ); ?>" class="inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition bg-dark text-white hover:bg-dark/90 !no-underline">
+					<?php _e( 'Go Home', 'tailpress' ); ?>
+				</a>
+			</div>
+		</div>
+	</div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8">
-            <main id="main" class="main-content">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h1 class="display-1 text-muted">404</h1>
-                        <h2 class="card-title"><?php _e('Página não encontrada', 'wp-manurios'); ?></h2>
-                        <p class="card-text">
-                            <?php _e('Desculpe, mas a página que você está procurando não existe ou foi movida.', 'wp-manurios'); ?>
-                        </p>
-                        
-                        <div class="mt-4">
-                            <a href="<?php echo esc_url(home_url('/')); ?>" class="btn btn-primary">
-                                <?php _e('Voltar ao início', 'wp-manurios'); ?>
-                            </a>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <h5><?php _e('Ou tente uma busca:', 'wp-manurios'); ?></h5>
-                            <?php get_search_form(); ?>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-        
-        <div class="col-lg-4">
-            <aside id="secondary" class="widget-area">
-                <?php dynamic_sidebar('sidebar-1'); ?>
-            </aside>
-        </div>
-    </div>
-</div>
-
-<?php get_footer(); ?>
+    <?php wp_footer(); ?>
+</body>
+</html>

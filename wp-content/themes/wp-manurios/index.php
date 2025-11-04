@@ -1,94 +1,80 @@
 <?php
 /**
- * The main template file
+ * Main template file for displaying posts.
+ *
+ * @package TailPress
  */
 
-get_header(); ?>
+get_header();
+?>
 
-<div class="container">
-    <?php do_action('wp_manurios_before_content'); ?>
-    
-    <div class="row">
-        <div class="col-lg-8">
-            <main id="main" class="main-content">
-                <?php if (have_posts()) : ?>
-                    <?php while (have_posts()) : the_post(); ?>
-                        <article id="post-<?php the_ID(); ?>" <?php post_class('card mb-4'); ?>>
-                            <?php if (has_post_thumbnail()) : ?>
-                                <div class="card-img-top">
-                                    <?php the_post_thumbnail('large', array('class' => 'img-fluid')); ?>
-                                </div>
-                            <?php endif; ?>
-                            
-                            <div class="card-body">
-                                <header class="entry-header">
-                                    <h2 class="entry-title card-title">
-                                        <a href="<?php the_permalink(); ?>" rel="bookmark">
-                                            <?php the_title(); ?>
-                                        </a>
-                                    </h2>
-                                    
-                                    <div class="entry-meta">
-                                        <small class="text-muted">
-                                            <i class="bi bi-calendar"></i>
-                                            <?php echo get_the_date(); ?>
-                                            <span class="mx-2">|</span>
-                                            <i class="bi bi-person"></i>
-                                            <?php the_author(); ?>
-                                            <span class="mx-2">|</span>
-                                            <i class="bi bi-folder"></i>
-                                            <?php the_category(', '); ?>
-                                        </small>
-                                    </div>
-                                </header>
-                                
-                                <div class="entry-content">
-                                    <?php
-                                    if (is_single()) {
-                                        the_content();
-                                    } else {
-                                        the_excerpt();
-                                    }
-                                    ?>
-                                </div>
-                                
-                                <?php if (!is_single()) : ?>
-                                    <footer class="entry-footer">
-                                        <a href="<?php the_permalink(); ?>" class="btn btn-outline-primary btn-sm">
-                                            <?php _e('Leia mais', 'wp-manurios'); ?>
-                                        </a>
-                                    </footer>
-                                <?php endif; ?>
-                            </div>
-                        </article>
-                    <?php endwhile; ?>
-                    
-                    <?php
-                    // Pagination
-                    the_posts_pagination(array(
-                        'mid_size' => 2,
-                        'prev_text' => __('Anterior', 'wp-manurios'),
-                        'next_text' => __('Próximo', 'wp-manurios'),
-                    ));
-                    ?>
-                    
-                <?php else : ?>
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h3><?php _e('Nenhum conteúdo encontrado', 'wp-manurios'); ?></h3>
-                            <p><?php _e('Desculpe, mas não foi possível encontrar o conteúdo solicitado.', 'wp-manurios'); ?></p>
-                        </div>
-                    </div>
-                <?php endif; ?>
-            </main>
-        </div>
-        
-        <div class="col-lg-4">
-            <aside id="secondary" class="widget-area">
-                <?php dynamic_sidebar('sidebar-1'); ?>
-            </aside>
-        </div>
-    </div>
+<div class="container mx-auto space-y-24 lg:space-y-32">
+	<?php if (!is_singular()): ?>
+		<?php if (is_archive()): ?>
+			<header class="mb-8">
+				<h1 class="text-3xl font-semibold">
+					<?php the_archive_title(); ?>
+				</h1>
+			</header>
+		<?php elseif (is_category()): ?>
+			<header class="mb-8">
+				<h1 class="text-3xl font-semibold">
+					<?php single_cat_title(); ?>
+				</h1>
+			</header>
+		<?php elseif (is_tag()): ?>
+			<header class="mb-8">
+				<h1 class="text-3xl font-semibold">
+					<?php single_tag_title(); ?>
+				</h1>
+			</header>
+		<?php elseif (is_author()): ?>
+			<header class="mb-8">
+				<h1 class="text-3xl font-semibold">
+					<?php printf(__('Posts by %s', 'tailpress'), get_the_author()); ?>
+				</h1>
+			</header>
+		<?php elseif (is_day()): ?>
+			<header class="mb-8">
+				<h1 class="text-3xl font-semibold">
+					<?php printf(__('Daily Archives: %s', 'tailpress'), get_the_date()); ?>
+				</h1>
+			</header>
+		<?php elseif (is_month()): ?>
+			<header class="mb-8">
+				<h1 class="text-3xl font-semibold">
+					<?php printf(__('Monthly Archives: %s', 'tailpress'), get_the_date('F Y')); ?>
+				</h1>
+			</header>
+		<?php elseif (is_year()): ?>
+			<header class="mb-8">
+				<h1 class="text-3xl font-semibold">
+					<?php printf(__('Yearly Archives: %s', 'tailpress'), get_the_date('Y')); ?>
+				</h1>
+			</header>
+		<?php elseif (is_search()): ?>
+			<header class="mb-8">
+				<h1 class="text-3xl font-semibold">
+					<?php printf(__('Search results for: %s', 'tailpress'), get_search_query()); ?>
+				</h1>
+			</header>
+		<?php elseif (is_404()): ?>
+			<header class="mb-8">
+				<h1 class="text-3xl font-semibold">
+					<?php _e('Page Not Found', 'tailpress'); ?>
+				</h1>
+			</header>
+		<?php endif; ?>
+	<?php endif; ?>
+
+    <?php if (have_posts()): ?>
+        <?php while (have_posts()): the_post(); ?>
+            <?php get_template_part('template-parts/content', is_singular() ? 'single' : ''); ?>
+        <?php endwhile; ?>
+
+        <?php TailPress\Pagination::render(); ?>
+    <?php endif; ?>
 </div>
 
-<?php get_footer(); ?>
+<?php
+get_footer();
