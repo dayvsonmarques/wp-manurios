@@ -9,44 +9,15 @@
 
 ?>
 
-<footer id="colophon">
-
-	<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-		<aside role="complementary" aria-label="<?php esc_attr_e( 'Footer', '_wp-manurios' ); ?>">
-			<?php dynamic_sidebar( 'sidebar-1' ); ?>
-		</aside>
-	<?php endif; ?>
-
-	<?php if ( has_nav_menu( 'menu-2' ) ) : ?>
-		<nav aria-label="<?php esc_attr_e( 'Footer Menu', '_wp-manurios' ); ?>">
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-2',
-					'menu_class'     => 'footer-menu',
-					'depth'          => 1,
-				)
-			);
-			?>
-		</nav>
-	<?php endif; ?>
-
-	<div>
-		<?php
-		$_wp_manurios_blog_info = get_bloginfo( 'name' );
-		if ( ! empty( $_wp_manurios_blog_info ) ) :
-			?>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>,
-			<?php
-		endif;
-
-		/* translators: 1: WordPress link, 2: WordPress. */
-		printf(
-			'<a href="%1$s">proudly powered by %2$s</a>.',
-			esc_url( __( 'https://wordpress.org/', '_wp-manurios' ) ),
-			'WordPress'
-		);
-		?>
+<footer id="colophon" class="bg-white py-12 border-t border-gray-200">
+	<div class="container mx-auto px-4 lg:px-8">
+		<div class="text-center">
+			<p class="text-gray-900 text-lg">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-900 hover:text-blue-600 transition-colors font-semibold">
+					<?php bloginfo( 'name' ); ?>
+				</a>
+				&copy; <?php echo esc_html( date( 'Y' ) ); ?>
+			</p>
+		</div>
 	</div>
-
 </footer><!-- #colophon -->

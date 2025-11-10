@@ -1,5 +1,5 @@
 /**
- * Custom styles to immediately follow Tailwind’s `base` layer
+ * Custom styles to immediately follow Tailwind's `base` layer
  */
 
 /**
@@ -7,5 +7,16 @@
  * file and is applied both to the front end and in the block editor.
  */
 body {
-	@apply bg-background text-foreground font-sans;
+	@apply bg-background text-foreground;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-signature {
+	font-family: 'Dancing Script', cursive;
+	font-weight: 600;
+}
+
+.font-menu {
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	font-weight: 500;
 }

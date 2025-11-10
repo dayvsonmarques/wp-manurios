@@ -1,0 +1,40 @@
+/* Navigation Styles */
+
+/* Primary Menu Desktop */
+#primary-menu {
+	@apply flex items-center space-x-8;
+}
+
+#primary-menu li {
+	@apply list-none;
+}
+
+#primary-menu a {
+	@apply text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative;
+}
+
+#primary-menu a:hover::after {
+	content: '';
+	@apply absolute bottom-0 left-0 w-full h-0.5 bg-blue-600;
+}
+
+/* Mobile Menu */
+#mobile-menu {
+	@apply flex flex-col space-y-4;
+}
+
+#mobile-menu li {
+	@apply list-none;
+}
+
+#mobile-menu a {
+	@apply block py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors;
+}
+
+/* Screen reader only */
+.sr-only {
+	@apply absolute w-px h-px p-0 -m-px overflow-hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
