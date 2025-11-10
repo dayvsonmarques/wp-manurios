@@ -146,7 +146,7 @@ add_action( 'widgets_init', '_wp_manurios_widgets_init' );
 function _wp_manurios_scripts() {
 	// Google Fonts - Dancing Script para logo e Inter para o site
 	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap', array(), null );
-	
+
 	wp_enqueue_style( '_wp-manurios-style', get_stylesheet_uri(), array(), _WP_MANURIOS_VERSION );
 	wp_enqueue_script( '_wp-manurios-script', get_template_directory_uri() . '/js/script.min.js', array(), _WP_MANURIOS_VERSION, true );
 
@@ -319,7 +319,7 @@ function _wp_manurios_newsletter_subscribe() {
 
 	// Validate email
 	$email = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : '';
-	
+
 	if ( empty( $email ) || ! is_email( $email ) ) {
 		wp_send_json_error( array( 'message' => 'Por favor, insira um e-mail válido.' ) );
 	}
@@ -374,6 +374,11 @@ function _wp_manurios_disable_service_workers() {
 	remove_action( 'wp_front_service_worker', 'wp_default_service_worker' );
 }
 add_action( 'init', '_wp_manurios_disable_service_workers', 1 );
+
+/**
+ * Hide admin bar on front-end
+ */
+add_filter( 'show_admin_bar', '__return_false' );
 
 /**
  * Custom template tags for this theme.

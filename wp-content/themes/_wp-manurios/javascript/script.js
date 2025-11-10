@@ -9,24 +9,37 @@
  * https://esbuild.github.io/
  */
 
-// Newsletter Form Handler
+// Header scroll effect for home page
 document.addEventListener('DOMContentLoaded', function() {
+	const header = document.getElementById('masthead');
+
+	if (header) {
+		window.addEventListener('scroll', function() {
+			if (window.pageYOffset > 50) {
+				header.classList.add('scrolled');
+			} else {
+				header.classList.remove('scrolled');
+			}
+		});
+	}
+
+	// Newsletter Form Handler
 	const newsletterForm = document.getElementById('newsletter-form');
-	
+
 	if (newsletterForm && typeof newsletterData !== 'undefined') {
 		newsletterForm.addEventListener('submit', function(e) {
 			e.preventDefault();
-			
+
 			const formData = new FormData(this);
 			const emailInput = this.querySelector('input[type="email"]');
-			
+
 			// Use Alpine.js data if available
 			const alpineData = Alpine.$data(this);
 			if (alpineData) {
 				alpineData.submitting = true;
 				alpineData.message = '';
 			}
-			
+
 			fetch(newsletterData.ajax_url, {
 				method: 'POST',
 				headers: {
@@ -44,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					alpineData.submitting = false;
 					alpineData.success = data.success;
 					alpineData.message = data.data.message;
-					
+
 					if (data.success) {
 						emailInput.value = '';
 					}

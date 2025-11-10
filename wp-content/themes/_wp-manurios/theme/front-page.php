@@ -8,59 +8,78 @@
 get_header();
 ?>
 
+<!-- Remove spacer for home page to allow transparent header -->
+<style>
+	.home .h-20 { display: none; }
+</style>
+
 <main id="main" class="site-main">
 
 	<!-- Hero Section -->
-	<section class="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 lg:py-32">
-		<div class="container mx-auto px-4 lg:px-8">
+	<section class="relative bg-cover bg-center bg-no-repeat h-[75vh] min-h-[600px] flex items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<?php echo esc_url( get_template_directory_uri() . '/assets/img/banner-1.jpg' ); ?>');">
+		<div class="container mx-auto px-4 lg:px-8 w-full">
 			<div class="grid lg:grid-cols-2 gap-12 items-center">
-				<div class="space-y-8">
-					<h1 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
+				<!-- Empty column for spacing -->
+				<div></div>
+
+				<!-- Content column -->
+				<div class="text-center lg:text-left">
+					<h1 class="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
 						<?php bloginfo( 'name' ); ?>
 					</h1>
-					<p class="text-xl text-gray-600 leading-relaxed">
+					<p class="text-xl lg:text-2xl text-white leading-relaxed mb-8">
 						<?php
 						$description = get_bloginfo( 'description', 'display' );
 						echo $description ? esc_html( $description ) : 'Transforme seu negócio com soluções digitais modernas e inovadoras.';
 						?>
 					</p>
-					<div class="flex flex-col sm:flex-row gap-4">
-						<a href="#contact" class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl">
-							<span>Começar Agora</span>
+					<div class="flex justify-center lg:justify-start">
+						<a href="#about" class="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl">
+							<span>Saiba Mais</span>
 							<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
 							</svg>
 						</a>
-						<a href="#about" class="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-all border-2 border-gray-200">
-							<span>Saiba Mais</span>
-						</a>
-					</div>
-
-					<!-- Stats -->
-					<div class="grid grid-cols-3 gap-6 pt-8">
-						<div>
-							<div class="text-3xl font-bold text-blue-600">10+</div>
-							<div class="text-sm text-gray-600">Anos Experiência</div>
-						</div>
-						<div>
-							<div class="text-3xl font-bold text-blue-600">500+</div>
-							<div class="text-sm text-gray-600">Projetos</div>
-						</div>
-						<div>
-							<div class="text-3xl font-bold text-blue-600">98%</div>
-							<div class="text-sm text-gray-600">Satisfação</div>
-						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</section>
 
+	<!-- About Section -->
+	<section id="about" class="py-20 lg:py-32 bg-gray-50">
+		<div class="container mx-auto px-4 lg:px-8">
+			<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+				<!-- Image/Visual Column -->
 				<div class="relative">
-					<div class="relative z-10">
-						<img src="<?php echo esc_url( get_template_directory_uri() . '/images/hero-illustration.svg' ); ?>" alt="Hero" class="w-full h-auto" onerror="this.style.display='none'">
+					<div class="aspect-square bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl overflow-hidden">
+						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/about-image.jpg' ); ?>" alt="Sobre <?php bloginfo( 'name' ); ?>" class="w-full h-full object-cover" onerror="this.style.display='none'">
 					</div>
-					<!-- Floating elements -->
-					<div class="absolute top-0 right-0 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-					<div class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-					<div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+					<!-- Decorative elements -->
+					<div class="absolute -bottom-6 -right-6 w-48 h-48 bg-blue-500 rounded-2xl -z-10 opacity-20"></div>
+					<div class="absolute -top-6 -left-6 w-32 h-32 bg-purple-500 rounded-full -z-10 opacity-20"></div>
+				</div>
+
+				<!-- Content Column -->
+				<div class="space-y-6">
+					<h2 class="text-3xl lg:text-5xl font-bold text-gray-900">
+						Sobre Nós
+					</h2>
+					<div class="h-1 w-20 bg-blue-600"></div>
+					<p class="text-lg lg:text-xl text-gray-600 leading-relaxed">
+						Somos especialistas em transformar ideias em realidade digital. Com anos de experiência no mercado, oferecemos soluções completas e personalizadas para elevar seu negócio ao próximo nível.
+					</p>
+					<p class="text-lg text-gray-600 leading-relaxed">
+						Nossa missão é proporcionar a melhor experiência digital para nossos clientes, combinando tecnologia de ponta com design excepcional e estratégias que geram resultados reais.
+					</p>
+					<div class="pt-4">
+						<a href="<?php echo esc_url( get_permalink( get_page_by_path( 'sobre' ) ) ?: '#' ); ?>" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-lg group">
+							<span>Conheça Nossa História</span>
+							<svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+							</svg>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -161,25 +180,25 @@ get_header();
 	</section>
 
 	<!-- Newsletter Section -->
-	<section id="newsletter" class="py-20 bg-gray-50">
+	<section id="newsletter" class="py-20 bg-white">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="max-w-3xl mx-auto">
-				<div class="bg-white rounded-2xl shadow-xl p-8 lg:p-12">
+				<div class="bg-white rounded-2xl shadow-xl p-8 lg:p-12 border border-gray-200">
 					<div class="text-center mb-8">
 						<h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Receba novidades</h2>
 						<p class="text-lg text-gray-600">Inscreva-se em nossa newsletter e receba conteúdos exclusivos, dicas e atualizações direto no seu e-mail.</p>
 					</div>
-					
+
 					<form id="newsletter-form" class="space-y-4" x-data="{ submitting: false, message: '', success: false }">
 						<div class="flex flex-col sm:flex-row gap-4">
-							<input 
-								type="email" 
-								name="email" 
-								required 
+							<input
+								type="email"
+								name="email"
+								required
 								placeholder="Seu melhor e-mail"
 								class="flex-1 px-6 py-4 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-lg"
 							>
-							<button 
+							<button
 								type="submit"
 								:disabled="submitting"
 								class="px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
@@ -188,7 +207,7 @@ get_header();
 								Inscrever-se
 							</button>
 						</div>
-						
+
 						<div x-show="message" x-transition class="p-4 rounded-lg text-center" :class="success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'" style="display: none;">
 							<p x-text="message"></p>
 						</div>

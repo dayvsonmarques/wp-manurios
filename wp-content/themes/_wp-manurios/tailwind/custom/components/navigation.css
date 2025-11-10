@@ -13,9 +13,29 @@
 	@apply text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative;
 }
 
+/* Home page white menu */
+.header-nav[data-is-home="true"] #primary-menu a {
+	@apply text-white hover:text-gray-200;
+}
+
+/* When scrolled, return to dark text */
+.scrolled .header-nav[data-is-home="true"] #primary-menu a {
+	@apply text-gray-700 hover:text-blue-600;
+}
+
 #primary-menu a:hover::after {
 	content: '';
 	@apply absolute bottom-0 left-0 w-full h-0.5 bg-blue-600;
+}
+
+/* Home page white underline */
+.header-nav[data-is-home="true"] #primary-menu a:hover::after {
+	@apply bg-white;
+}
+
+/* When scrolled, return to blue underline */
+.scrolled .header-nav[data-is-home="true"] #primary-menu a:hover::after {
+	@apply bg-blue-600;
 }
 
 /* Mobile Menu */
