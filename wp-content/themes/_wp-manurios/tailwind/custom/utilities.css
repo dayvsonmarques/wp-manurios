@@ -7,6 +7,34 @@
  * https://tailwindcss.com/docs/adding-custom-styles#adding-custom-utilities
  */
 
+/* Brand Color Utilities */
+
+/* Background colors */
+.bg-brand-green { background-color: var(--color-green); }
+.bg-brand-orange { background-color: var(--color-orange); }
+.bg-brand-gold { background-color: var(--color-gold); }
+
+/* Text colors */
+.text-brand-green { color: var(--color-green); }
+.text-brand-orange { color: var(--color-orange); }
+.text-brand-gold { color: var(--color-gold); }
+
+/* Border colors */
+.border-brand-green { border-color: var(--color-green); }
+.border-brand-gold { border-color: var(--color-gold); }
+
+/* Hover utilities */
+.hover\:bg-brand-green:hover { background-color: var(--color-green); }
+.hover\:bg-brand-gold:hover { background-color: var(--color-gold); }
+.hover\:text-brand-gold:hover { color: var(--color-gold); }
+.hover\:border-brand-green:hover { border-color: var(--color-green); }
+
+/* Focus utilities */
+.focus\:border-brand-green:focus { border-color: var(--color-green); }
+
+/* Group hover */
+.group:hover .group-hover\:bg-brand-green { background-color: var(--color-green); }
+
 /* Custom Animations */
 
 @keyframes blob {

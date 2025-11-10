@@ -10,37 +10,54 @@
 }
 
 #primary-menu a {
-	@apply text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative;
+	@apply text-gray-700 font-medium transition-colors duration-200 relative;
+	color: #4b5563;
+}
+
+#primary-menu a:hover {
+	color: var(--color-gold);
 }
 
 /* Home page white menu */
 .header-nav[data-is-home="true"] #primary-menu a {
-	@apply text-white hover:text-gray-200;
+	@apply text-white;
+	color: white;
+}
+
+.header-nav[data-is-home="true"] #primary-menu a:hover {
+	color: var(--color-gold);
 }
 
 /* When scrolled, return to dark text */
 .scrolled .header-nav[data-is-home="true"] #primary-menu a {
-	@apply text-gray-700 hover:text-blue-600;
+	@apply text-gray-700;
+	color: #4b5563;
+}
+
+.scrolled .header-nav[data-is-home="true"] #primary-menu a:hover {
+	color: var(--color-gold);
 }
 
 #primary-menu a:hover::after {
 	content: '';
-	@apply absolute bottom-0 left-0 w-full h-0.5 bg-blue-600;
+	@apply absolute bottom-0 left-0 w-full h-0.5;
+	background-color: var(--color-green);
 }
 
 /* Home page white underline */
 .header-nav[data-is-home="true"] #primary-menu a:hover::after {
 	@apply bg-white;
+	background-color: white;
 }
 
-/* When scrolled, return to blue underline */
+/* When scrolled, return to green underline */
 .scrolled .header-nav[data-is-home="true"] #primary-menu a:hover::after {
-	@apply bg-blue-600;
+	background-color: var(--color-green);
 }
 
 /* Mobile Menu */
 #mobile-menu {
-	@apply flex flex-col space-y-4;
+	@apply flex flex-col;
 }
 
 #mobile-menu li {
@@ -48,7 +65,16 @@
 }
 
 #mobile-menu a {
-	@apply block py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors;
+	@apply block text-center text-gray-900 font-semibold transition-colors;
+	font-size: 2.25rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	padding: 1.5rem 1rem;
+	color: #111827;
+}
+
+#mobile-menu a:hover {
+	color: var(--color-gold);
 }
 
 /* Screen reader only */
