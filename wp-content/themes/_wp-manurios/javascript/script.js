@@ -12,9 +12,33 @@
 // Header scroll effect for home page
 document.addEventListener('DOMContentLoaded', function() {
 	const header = document.getElementById('masthead');
+	const isHome = document.body.classList.contains('home');
 
 	if (header) {
 		window.addEventListener('scroll', function() {
+			const heroSection = document.querySelector('.site-main > section:first-child');
+			const heroHeight = heroSection ? heroSection.offsetHeight : 0;
+
+			// On home page: make header fixed when scrolling past hero
+			if (isHome) {
+				if (window.pageYOffset >= heroHeight - 100) {
+					if (!header.classList.contains('fixed-header')) {
+						header.classList.add('fixed-header');
+						header.classList.remove('absolute');
+						header.style.position = 'fixed';
+						document.body.classList.add('fixed-header-active');
+					}
+				} else {
+					if (header.classList.contains('fixed-header')) {
+						header.classList.remove('fixed-header');
+						header.classList.add('absolute');
+						header.style.position = 'absolute';
+						document.body.classList.remove('fixed-header-active');
+					}
+				}
+			}
+
+			// Add scrolled class for styling
 			if (window.pageYOffset > 50) {
 				header.classList.add('scrolled');
 			} else {

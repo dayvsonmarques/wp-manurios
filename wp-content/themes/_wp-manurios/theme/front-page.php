@@ -8,32 +8,38 @@
 get_header();
 ?>
 
-<!-- Remove spacer for home page to allow transparent header -->
+<!-- Remove spacer for home page and add padding for about section -->
 <style>
-	.home .h-20 { display: none; }
+	.home .h-20,
+	.home .h-24 { display: none; }
+
+	/* Add padding to about section when header becomes fixed */
+	.home.fixed-header-active #about {
+		padding-top: 96px; /* Height of header */
+	}
 </style>
 
 <main id="main" class="site-main">
 
 	<!-- Hero Section -->
-	<section class="relative bg-cover bg-center bg-no-repeat h-[75vh] min-h-[600px] flex items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<?php echo esc_url( get_template_directory_uri() . '/assets/img/banner-1.jpg' ); ?>');">
+	<section class="relative bg-cover bg-center bg-no-repeat h-[85vh] min-h-[600px] flex items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<?php echo esc_url( get_template_directory_uri() . '/assets/img/banner-1.jpg' ); ?>');">
 		<div class="container mx-auto px-4 lg:px-8 w-full">
 			<div class="grid lg:grid-cols-2 gap-12 items-center">
 				<!-- Empty column for spacing -->
 				<div></div>
 
 				<!-- Content column -->
-				<div class="text-center lg:text-left">
+				<div class="text-center lg:text-center">
 					<h1 class="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
-						<?php bloginfo( 'name' ); ?>
+						Saúde em 1° lugar
 					</h1>
-					<p class="text-xl lg:text-2xl text-white leading-relaxed mb-8">
+					<p class="text-xl lg:text-3xl text-white leading-relaxed mb-8">
 						<?php
 						$description = get_bloginfo( 'description', 'display' );
-						echo $description ? esc_html( $description ) : 'Transforme seu negócio com soluções digitais modernas e inovadoras.';
+						echo $description ? esc_html( $description ) : 'Não espere faltar saúde para cuidar da sua.';
 						?>
 					</p>
-					<div class="flex justify-center lg:justify-start">
+					<div class="flex justify-center lg:justify-start hidden">
 						<a href="#about" class="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl">
 							<span>Saiba Mais</span>
 							<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

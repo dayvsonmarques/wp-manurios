@@ -11,9 +11,10 @@ $is_home = is_front_page();
 $header_class = $is_home ? 'bg-transparent' : 'bg-white shadow-sm';
 $text_class = $is_home ? 'text-white' : 'text-gray-900';
 $hover_class = $is_home ? 'hover:text-gray-200' : 'hover:text-blue-600';
+$position_class = $is_home ? 'absolute' : 'fixed';
 ?>
 
-<header id="masthead" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 <?php echo esc_attr( $header_class ); ?>" x-data="{ mobileMenuOpen: false, scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 50)" :class="scrolled ? '<?php echo $is_home ? 'bg-white shadow-lg' : 'shadow-lg'; ?>' : '<?php echo esc_attr( $header_class ); ?>'">
+<header id="masthead" class="<?php echo esc_attr( $position_class ); ?> top-0 left-0 right-0 z-50 transition-all duration-300 <?php echo esc_attr( $header_class ); ?>" x-data="{ mobileMenuOpen: false, scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 50)" :class="scrolled ? '<?php echo $is_home ? 'bg-white shadow-lg' : 'shadow-lg'; ?>' : '<?php echo esc_attr( $header_class ); ?>'">
 	<div class="container mx-auto px-4 lg:px-8">
 		<div class="flex items-center justify-between py-5 lg:py-6">
 			<!-- Logo -->
