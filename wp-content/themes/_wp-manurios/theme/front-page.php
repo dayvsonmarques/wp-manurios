@@ -56,36 +56,45 @@ get_header();
 	<section id="about" class="py-20 lg:py-32 bg-gray-50">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-				<!-- Image/Visual Column -->
-				<div class="relative">
-					<div class="aspect-square bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl overflow-hidden">
-						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/about-image.jpg' ); ?>" alt="Sobre <?php bloginfo( 'name' ); ?>" class="w-full h-full object-cover" onerror="this.style.display='none'">
-					</div>
-					<!-- Decorative elements -->
-					<div class="absolute -bottom-6 -right-6 w-48 h-48 bg-blue-500 rounded-2xl -z-10 opacity-20"></div>
-					<div class="absolute -top-6 -left-6 w-32 h-32 bg-purple-500 rounded-full -z-10 opacity-20"></div>
-				</div>
-
 				<!-- Content Column -->
-				<div class="space-y-6">
-					<h2 class="text-3xl lg:text-5xl font-bold text-gray-900">
-						Sobre Nós
-					</h2>
-					<div class="h-1 w-20 bg-blue-600"></div>
-					<p class="text-lg lg:text-xl text-gray-600 leading-relaxed">
-						Somos especialistas em transformar ideias em realidade digital. Com anos de experiência no mercado, oferecemos soluções completas e personalizadas para elevar seu negócio ao próximo nível.
+				<div class="space-y-6" aria-label="Sobre Mim">
+					<p class="text-2xl lg:text-2xl text-gray-600 leading-relaxed">
+						Enfermeira há mais de 20 anos e 1ª enfermeira do Brasil certificada em Medicina do Estilo de Vida pelo IBLM e CBMEV.
 					</p>
-					<p class="text-lg text-gray-600 leading-relaxed">
-						Nossa missão é proporcionar a melhor experiência digital para nossos clientes, combinando tecnologia de ponta com design excepcional e estratégias que geram resultados reais.
+					<p class="text-2xl lg:text-2xl text-gray-600 leading-relaxed">
+						Venha melhorar seus hábitos de saúde! Palestrante | Especialista em Oncologia | Mentora de Saúde e Bem-Estar | Escritora | Podcast 'Saúde em 1º Lugar'
 					</p>
 					<div class="pt-4">
-						<a href="<?php echo esc_url( get_permalink( get_page_by_path( 'sobre' ) ) ?: '#' ); ?>" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-lg group">
-							<span>Conheça Nossa História</span>
-							<svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<a href="<?php echo esc_url( get_permalink( get_page_by_path( 'sobre' ) ) ?: '#' ); ?>" class="inline-flex items-center text-brand-green hover:text-brand-gold font-semibold text-2xl lg:text-2xl group">
+							<span>Continue lendo</span>
+							<svg class="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
 							</svg>
 						</a>
 					</div>
+				</div>
+
+				<!-- Image/Visual Column -->
+				<div class="relative">
+					<?php
+					// Get the "Sobre" page and its featured image
+					$sobre_page = get_page_by_path( 'sobre' );
+					$featured_image_url = '';
+
+					if ( $sobre_page && has_post_thumbnail( $sobre_page->ID ) ) {
+						$featured_image_url = get_the_post_thumbnail_url( $sobre_page->ID, 'post-thumbnail' );
+					}
+					?>
+					<div class="aspect-square bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl overflow-hidden">
+						<?php if ( $featured_image_url ) : ?>
+							<img src="<?php echo esc_url( $featured_image_url ); ?>" alt="Sobre <?php bloginfo( 'name' ); ?>" class="max-w-full max-h-full object-contain">
+						<?php else : ?>
+							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/about-image.jpg' ); ?>" alt="Sobre <?php bloginfo( 'name' ); ?>" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'">
+						<?php endif; ?>
+					</div>
+					<!-- Decorative elements -->
+					<div class="absolute -bottom-6 -right-6 w-48 h-48 bg-brand-green rounded-2xl -z-10 opacity-20"></div>
+					<div class="absolute -top-6 -left-6 w-32 h-32 bg-brand-gold rounded-full -z-10 opacity-20"></div>
 				</div>
 			</div>
 		</div>
@@ -176,12 +185,12 @@ get_header();
 	</section>
 
 	<!-- CTA Section -->
-	<section id="contact" class="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+	<section id="contact" class="py-20" style="background-image: linear-gradient(to bottom, #027c6b, #3c8e5a, #749d41, #b4a42a, #f9a234);">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="max-w-4xl mx-auto text-center">
 				<h2 class="text-3xl lg:text-5xl font-bold text-white mb-6">Pronto para começar seu projeto?</h2>
-				<p class="text-xl text-blue-100 mb-8">Entre em contato conosco e vamos transformar suas ideias em realidade</p>
-				<a href="#" class="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl">
+				<p class="text-xl text-white/90 mb-8">Entre em contato conosco e vamos transformar suas ideias em realidade</p>
+				<a href="#" class="inline-flex items-center px-8 py-4 bg-white text-brand-green font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl">
 					<span>Fale Conosco</span>
 					<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
