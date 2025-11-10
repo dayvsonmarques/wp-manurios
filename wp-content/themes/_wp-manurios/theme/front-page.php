@@ -91,79 +91,85 @@ get_header();
 		</div>
 	</section>
 
+	<!-- Palestras Section -->
+	<section id="palestras" class="py-20 lg:py-32 bg-white">
+		<div class="container mx-auto px-4 lg:px-8">
+			<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+				<!-- Content Column -->
+				<div class="space-y-6">
+					<h2 class="text-3xl lg:text-5xl font-bold text-gray-900">
+						Palestras
+					</h2>
+					<div class="h-1 w-20 bg-brand-green"></div>
+					<p class="text-lg lg:text-xl text-gray-600 leading-relaxed">
+						Confira mais conversas sobre saúde no seu aspecto mais amplo, desde saúde física e mental, até saúde financeira e profissional, a fim de promover qualidade de vida, bem-estar e longevidade saudável.
+					</p>
+					<div class="pt-4">
+						<a href="https://www.youtube.com/@saudem1lugar" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 bg-brand-green text-white font-semibold rounded-lg hover:bg-brand-gold transition-all shadow-lg hover:shadow-xl">
+							<svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+							</svg>
+							<span>Ver Canal no YouTube</span>
+						</a>
+					</div>
+				</div>
+
+				<!-- Video Embed Column -->
+				<div class="relative rounded-2xl overflow-hidden shadow-2xl" style="aspect-ratio: 16/9;">
+					<iframe
+						class="absolute inset-0 w-full h-full"
+						src="https://www.youtube.com/embed/o-4QM1vbMes"
+						title="Palestra - Saúde em Primeiro Lugar"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin"
+						allowfullscreen>
+					</iframe>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<!-- Features Section -->
-	<section id="features" class="py-20 bg-white">
+	<section id="features" class="py-20 bg-gray-50">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="text-center mb-16">
-				<h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">Nossos Serviços</h2>
-				<p class="text-xl text-gray-600 max-w-2xl mx-auto">Soluções completas para elevar seu negócio ao próximo nível</p>
+				<h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">Serviços</h2>
+				<p class="text-xl text-gray-600 max-w-2xl mx-auto">Soluções em saúde para promover seu bem-estar integral</p>
 			</div>
 
-			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-				<!-- Feature 1 -->
-				<div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-blue-200 group">
-					<div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
-						<svg class="w-8 h-8 text-blue-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+			<div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+				<!-- Mentoria -->
+				<div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group">
+					<div class="w-16 h-16 bg-green-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-green transition-colors">
+						<svg class="w-8 h-8 text-brand-green group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
 						</svg>
 					</div>
-					<h3 class="text-2xl font-bold text-gray-900 mb-4">Desenvolvimento Web</h3>
-					<p class="text-gray-600 leading-relaxed">Criamos sites e aplicações web responsivas, rápidas e otimizadas para SEO.</p>
+					<h3 class="text-2xl font-bold text-gray-900 mb-4">Mentoria</h3>
+					<p class="text-gray-600 leading-relaxed">Acompanhamento personalizado para desenvolver hábitos saudáveis e alcançar seus objetivos de bem-estar.</p>
 				</div>
 
-				<!-- Feature 2 -->
-				<div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-blue-200 group">
-					<div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors">
-						<svg class="w-8 h-8 text-purple-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-						</svg>
-					</div>
-					<h3 class="text-2xl font-bold text-gray-900 mb-4">Design UI/UX</h3>
-					<p class="text-gray-600 leading-relaxed">Interfaces modernas e intuitivas focadas na melhor experiência do usuário.</p>
-				</div>
-
-				<!-- Feature 3 -->
-				<div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-blue-200 group">
-					<div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors">
-						<svg class="w-8 h-8 text-green-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-						</svg>
-					</div>
-					<h3 class="text-2xl font-bold text-gray-900 mb-4">Performance</h3>
-					<p class="text-gray-600 leading-relaxed">Otimização de velocidade e desempenho para melhor conversão.</p>
-				</div>
-
-				<!-- Feature 4 -->
-				<div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-blue-200 group">
-					<div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 transition-colors">
-						<svg class="w-8 h-8 text-red-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-						</svg>
-					</div>
-					<h3 class="text-2xl font-bold text-gray-900 mb-4">Segurança</h3>
-					<p class="text-gray-600 leading-relaxed">Proteção avançada e conformidade com as melhores práticas de segurança.</p>
-				</div>
-
-				<!-- Feature 5 -->
-				<div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-blue-200 group">
-					<div class="w-16 h-16 bg-yellow-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-yellow-600 transition-colors">
-						<svg class="w-8 h-8 text-yellow-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+				<!-- Consultoria -->
+				<div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group">
+					<div class="w-16 h-16 bg-orange-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-orange transition-colors">
+						<svg class="w-8 h-8 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
 						</svg>
 					</div>
 					<h3 class="text-2xl font-bold text-gray-900 mb-4">Consultoria</h3>
-					<p class="text-gray-600 leading-relaxed">Orientação estratégica para maximizar o retorno do investimento digital.</p>
+					<p class="text-gray-600 leading-relaxed">Orientação especializada em saúde integral para transformar sua qualidade de vida de forma sustentável.</p>
 				</div>
 
-				<!-- Feature 6 -->
-				<div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-blue-200 group">
-					<div class="w-16 h-16 bg-indigo-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors">
-						<svg class="w-8 h-8 text-indigo-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+				<!-- Palestras -->
+				<div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group">
+					<div class="w-16 h-16 bg-yellow-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-gold transition-colors">
+						<svg class="w-8 h-8 text-brand-gold group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
 						</svg>
 					</div>
-					<h3 class="text-2xl font-bold text-gray-900 mb-4">Suporte 24/7</h3>
-					<p class="text-gray-600 leading-relaxed">Assistência técnica contínua para garantir o funcionamento perfeito.</p>
+					<h3 class="text-2xl font-bold text-gray-900 mb-4">Palestras</h3>
+					<p class="text-gray-600 leading-relaxed">Conteúdos inspiradores sobre saúde física, mental, financeira e profissional para seu evento.</p>
 				</div>
 			</div>
 		</div>
