@@ -177,3 +177,6 @@ Para dúvidas ou problemas:
 ---
 
 **Desenvolvido com ❤️ para WordPress**
+
+Links úteis
+https://linktr.ee/manurios.al
