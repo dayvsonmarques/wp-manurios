@@ -52,59 +52,26 @@ get_header();
 		</div>
 	</section>
 
-	<!-- About Section -->
-	<section id="about" class="py-20 lg:py-32 bg-gray-50">
-		<div class="container mx-auto px-4 lg:px-8">
-			<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-				<!-- Content Column -->
-				<div class="space-y-6" aria-label="Sobre Mim">
-					<p class="text-2xl lg:text-2xl text-gray-600 leading-relaxed">
-						Enfermeira há mais de 20 anos e 1ª enfermeira do Brasil certificada em Medicina do Estilo de Vida pelo IBLM e CBMEV.
-					</p>
-					<p class="text-2xl lg:text-2xl text-gray-600 leading-relaxed">
-						Venha melhorar seus hábitos de saúde! Palestrante | Especialista em Oncologia | Mentora de Saúde e Bem-Estar | Escritora | Podcast 'Saúde em 1º Lugar'
-					</p>
-					<div class="pt-4">
-						<a href="<?php echo esc_url( get_permalink( get_page_by_path( 'sobre' ) ) ?: '#' ); ?>" class="inline-flex items-center text-brand-green hover:text-brand-gold font-semibold text-2xl lg:text-2xl group">
-							<span>Continue lendo</span>
-							<svg class="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-							</svg>
-						</a>
-					</div>
-				</div>
-
-				<!-- Image/Visual Column -->
-				<div class="relative">
-					<?php
-					// Get the "Sobre" page and its featured image
-					$sobre_page = get_page_by_path( 'sobre' );
-					$featured_image_url = '';
-
-					if ( $sobre_page && has_post_thumbnail( $sobre_page->ID ) ) {
-						$featured_image_url = get_the_post_thumbnail_url( $sobre_page->ID, 'post-thumbnail' );
-					}
-					?>
-					<div class="aspect-square bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl overflow-hidden">
-						<?php if ( $featured_image_url ) : ?>
-							<img src="<?php echo esc_url( $featured_image_url ); ?>" alt="Sobre <?php bloginfo( 'name' ); ?>" class="max-w-full max-h-full object-contain">
-						<?php else : ?>
-							<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/about-image.jpg' ); ?>" alt="Sobre <?php bloginfo( 'name' ); ?>" class="max-w-full max-h-full object-contain" onerror="this.style.display='none'">
-						<?php endif; ?>
-					</div>
-					<!-- Decorative elements -->
-					<div class="absolute -bottom-6 -right-6 w-48 h-48 bg-brand-green rounded-2xl -z-10 opacity-20"></div>
-					<div class="absolute -top-6 -left-6 w-32 h-32 bg-brand-gold rounded-full -z-10 opacity-20"></div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<?php get_template_part( 'template-parts/content/content', 'about' ); ?>
 
 	<!-- Palestras Section -->
 	<section id="palestras" class="py-20 lg:py-32 bg-white">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-				<!-- Content Column -->
+				<!-- Video Embed Column (left on large screens) -->
+				<div class="relative rounded-2xl overflow-hidden shadow-2xl" style="aspect-ratio: 16/9;">
+					<iframe
+						class="absolute inset-0 w-full h-full"
+						src="https://www.youtube.com/embed/o-4QM1vbMes"
+						title="Palestra - Saúde em Primeiro Lugar"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin"
+						allowfullscreen>
+					</iframe>
+				</div>
+
+				<!-- Content Column (right on large screens) -->
 				<div class="space-y-6">
 					<h2 class="text-3xl lg:text-5xl font-bold text-gray-900">
 						Palestras
@@ -123,18 +90,7 @@ get_header();
 					</div>
 				</div>
 
-				<!-- Video Embed Column -->
-				<div class="relative rounded-2xl overflow-hidden shadow-2xl" style="aspect-ratio: 16/9;">
-					<iframe
-						class="absolute inset-0 w-full h-full"
-						src="https://www.youtube.com/embed/o-4QM1vbMes"
-						title="Palestra - Saúde em Primeiro Lugar"
-						frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerpolicy="strict-origin-when-cross-origin"
-						allowfullscreen>
-					</iframe>
-				</div>
+				<!-- (video moved above) -->
 			</div>
 		</div>
 	</section>
@@ -147,10 +103,10 @@ get_header();
 				<p class="text-xl text-gray-600 max-w-2xl mx-auto">Soluções em saúde para promover seu bem-estar integral</p>
 			</div>
 
-			<div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+			<div class="grid md:grid-cols-3 gap-8">
 				<!-- Mentoria -->
-				<div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group">
-					<div class="w-16 h-16 bg-green-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-green transition-colors">
+				<div class="p-10 md:p-12 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group text-center">
+					<div class="w-16 h-16 bg-green-50 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-green transition-colors">
 						<svg class="w-8 h-8 text-brand-green group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
 						</svg>
@@ -160,8 +116,8 @@ get_header();
 				</div>
 
 				<!-- Consultoria -->
-				<div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group">
-					<div class="w-16 h-16 bg-orange-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-orange transition-colors">
+				<div class="p-10 md:p-12 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group text-center">
+					<div class="w-16 h-16 bg-orange-50 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-orange transition-colors">
 						<svg class="w-8 h-8 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
 						</svg>
@@ -171,8 +127,8 @@ get_header();
 				</div>
 
 				<!-- Palestras -->
-				<div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group">
-					<div class="w-16 h-16 bg-yellow-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-gold transition-colors">
+				<div class="p-10 md:p-12 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group text-center">
+					<div class="w-16 h-16 bg-yellow-50 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-gold transition-colors">
 						<svg class="w-8 h-8 text-brand-gold group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
 						</svg>
@@ -185,7 +141,7 @@ get_header();
 	</section>
 
 	<!-- CTA Section -->
-	<section id="contact" class="py-20" style="background-image: linear-gradient(to bottom, #027c6b, #3c8e5a, #749d41, #b4a42a, #f9a234);">
+	<section id="contact" class="py-28 lg:py-40" style="background-image: linear-gradient(to bottom, #027c6b, #3c8e5a, #749d41, #b4a42a, #f9a234);">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="max-w-4xl mx-auto text-center">
 				<h2 class="text-3xl lg:text-5xl font-bold text-white mb-6">Pronto para começar seu projeto?</h2>
@@ -204,7 +160,7 @@ get_header();
 	<section id="newsletter" class="py-20 bg-white">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="max-w-3xl mx-auto">
-				<div class="bg-white rounded-2xl shadow-xl p-8 lg:p-12 border border-gray-200">
+				<div class="p-8 lg:p-12">
 					<div class="text-center mb-8">
 						<h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Receba novidades</h2>
 						<p class="text-lg text-gray-600">Inscreva-se em nossa newsletter e receba conteúdos exclusivos, dicas e atualizações direto no seu e-mail.</p>
