@@ -198,7 +198,7 @@ if ( ! function_exists( '_wp_manurios_post_thumbnail' ) ) :
 
 			<figure>
 				<?php the_post_thumbnail(); ?>
-			</figure><!-- .post-thumbnail -->
+			</figure>
 
 			<?php
 		else :

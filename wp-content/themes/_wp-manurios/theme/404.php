@@ -16,16 +16,16 @@ get_header();
 			<div>
 				<header class="page-header">
 					<h1 class="page-title"><?php esc_html_e( 'Page Not Found', '_wp-manurios' ); ?></h1>
-				</header><!-- .page-header -->
+				</header>
 
 				<div <?php _wp_manurios_content_class( 'page-content' ); ?>>
 					<p><?php esc_html_e( 'This page could not be found. It might have been removed or renamed, or it may never have existed.', '_wp-manurios' ); ?></p>
 					<?php get_search_form(); ?>
-				</div><!-- .page-content -->
+				</div>
 			</div>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+		</main>
+	</section>
 
 <?php
 get_footer();

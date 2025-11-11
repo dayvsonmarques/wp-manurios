@@ -19,7 +19,7 @@
 			the_title( '<h2 class="entry-title">', '</h2>' );
 		}
 		?>
-	</header><!-- .entry-header -->
+	</header>
 
 	<?php _wp_manurios_post_thumbnail(); ?>
 
@@ -34,7 +34,7 @@
 			)
 		);
 		?>
-	</div><!-- .entry-content -->
+	</div>
 
 	<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer">
@@ -54,7 +54,7 @@
 				)
 			);
 			?>
-		</footer><!-- .entry-footer -->
+		</footer>
 	<?php endif; ?>
 
-</article><!-- #post-<?php the_ID(); ?> -->
+</article>

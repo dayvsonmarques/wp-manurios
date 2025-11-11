@@ -17,7 +17,7 @@ get_header();
 
 			<header class="page-header">
 				<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
-			</header><!-- .page-header -->
+			</header>
 
 			<?php
 			// Start the Loop.
@@ -38,8 +38,8 @@ get_header();
 
 		endif;
 		?>
-		</main><!-- #main -->
-	</section><!-- #primary -->
+		</main>
+	</section>
 
 <?php
 get_footer();

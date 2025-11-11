@@ -30,7 +30,7 @@
 			<h1 class="page-title"><?php esc_html_e( 'Nothing Found', '_wp-manurios' ); ?></h1>
 
 		<?php endif; ?>
-	</header><!-- .page-header -->
+	</header>
 
 	<div <?php _wp_manurios_content_class( 'page-content' ); ?>>
 		<?php
@@ -71,6 +71,6 @@
 			get_search_form();
 		endif;
 		?>
-	</div><!-- .page-content -->
+	</div>
 
 </section>

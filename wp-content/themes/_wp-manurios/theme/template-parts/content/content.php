@@ -22,7 +22,7 @@
 			the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
 		endif;
 		?>
-	</header><!-- .entry-header -->
+	</header>
 
 	<?php _wp_manurios_post_thumbnail(); ?>
 
@@ -37,10 +37,10 @@
 			)
 		);
 		?>
-	</div><!-- .entry-content -->
+	</div>
 
 	<footer class="entry-footer">
 		<?php _wp_manurios_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+	</footer>
 
-</article><!-- #post-${ID} -->
+</article>

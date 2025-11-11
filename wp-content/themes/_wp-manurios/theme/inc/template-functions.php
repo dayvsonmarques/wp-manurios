@@ -154,7 +154,7 @@ function _wp_manurios_html5_comment( $comment, $args, $depth ) {
 						sprintf( '<b class="fn">%s</b>', wp_kses_post( $comment_author ) )
 					);
 					?>
-				</div><!-- .comment-author -->
+				</div>
 
 				<div class="comment-metadata">
 					<?php
@@ -174,16 +174,16 @@ function _wp_manurios_html5_comment( $comment, $args, $depth ) {
 
 					edit_comment_link( __( 'Edit', '_wp-manurios' ), ' <span class="edit-link">', '</span>' );
 					?>
-				</div><!-- .comment-metadata -->
+				</div>
 
 				<?php if ( '0' === $comment->comment_approved ) : ?>
 				<em class="comment-awaiting-moderation"><?php echo esc_html( $moderation_note ); ?></em>
 				<?php endif; ?>
-			</footer><!-- .comment-meta -->
+			</footer>
 
 			<div <?php _wp_manurios_content_class( 'comment-content' ); ?>>
 				<?php comment_text(); ?>
-			</div><!-- .comment-content -->
+			</div>
 
 			<?php
 			if ( '1' === $comment->comment_approved || $show_pending_links ) {
@@ -201,6 +201,6 @@ function _wp_manurios_html5_comment( $comment, $args, $depth ) {
 				);
 			}
 			?>
-		</article><!-- .comment-body -->
+		</article>
 	<?php
 }

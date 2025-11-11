@@ -17,9 +17,9 @@
 		<?php if ( ! is_page() ) : ?>
 			<div class="entry-meta">
 				<?php _wp_manurios_entry_meta(); ?>
-			</div><!-- .entry-meta -->
+			</div>
 		<?php endif; ?>
-	</header><!-- .entry-header -->
+	</header>
 
 	<?php _wp_manurios_post_thumbnail(); ?>
 
@@ -47,10 +47,10 @@
 			)
 		);
 		?>
-	</div><!-- .entry-content -->
+	</div>
 
 	<footer class="entry-footer">
 		<?php _wp_manurios_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+	</footer>
 
-</article><!-- #post-${ID} -->
+</article>

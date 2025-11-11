@@ -24,7 +24,7 @@ get_header();
 					get_search_query()
 				);
 				?>
-			</header><!-- .page-header -->
+			</header>
 
 			<?php
 			// Start the Loop.
@@ -45,8 +45,8 @@ get_header();
 
 		endif;
 		?>
-		</main><!-- #main -->
-	</section><!-- #primary -->
+		</main>
+	</section>
 
 <?php
 get_footer();

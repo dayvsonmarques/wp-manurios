@@ -11,13 +11,12 @@
 
 ?>
 
-	</div><!-- #content -->
+	</div>
 
 	<?php get_template_part( 'template-parts/layout/footer', 'content' ); ?>
 
-</div><!-- #page -->
+</div>
 
-<!-- WhatsApp Floating Button -->
 <?php
 $whatsapp_phone   = get_theme_mod( 'whatsapp_phone', '5511999999999' );
 $whatsapp_message = get_theme_mod( 'whatsapp_message', 'Olá! Gostaria de saber mais sobre seus serviços.' );

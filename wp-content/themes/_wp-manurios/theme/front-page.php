@@ -8,7 +8,6 @@
 get_header();
 ?>
 
-<!-- Remove spacer for home page and add padding for about section -->
 <style>
 	.home .h-20,
 	.home .h-24 { display: none; }
@@ -21,14 +20,11 @@ get_header();
 
 <main id="main" class="site-main">
 
-	<!-- Hero Section -->
 	<section class="relative bg-cover bg-center bg-no-repeat h-[85vh] min-h-[600px] flex items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<?php echo esc_url( get_template_directory_uri() . '/assets/img/banner-1.jpg' ); ?>');">
 		<div class="container mx-auto px-4 lg:px-8 w-full">
 			<div class="grid lg:grid-cols-2 gap-12 items-center">
-				<!-- Empty column for spacing -->
 				<div></div>
 
-				<!-- Content column -->
 				<div class="text-center lg:text-center">
 					<h1 class="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
 						Saúde em 1° lugar
@@ -39,7 +35,7 @@ get_header();
 						echo $description ? esc_html( $description ) : 'Não espere faltar saúde para cuidar da sua.';
 						?>
 					</p>
-					<div class="flex justify-center lg:justify-start hidden">
+					<div class="hidden lg:flex justify-center lg:justify-start">
 						<a href="#about" class="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl">
 							<span>Saiba Mais</span>
 							<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -54,11 +50,9 @@ get_header();
 
 	<?php get_template_part( 'template-parts/content/content', 'about' ); ?>
 
-	<!-- Palestras Section -->
 	<section id="palestras" class="py-20 lg:py-32 bg-white">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-				<!-- Video Embed Column (left on large screens) -->
 				<div class="relative rounded-2xl overflow-hidden shadow-2xl" style="aspect-ratio: 16/9;">
 					<iframe
 						class="absolute inset-0 w-full h-full"
@@ -71,7 +65,6 @@ get_header();
 					</iframe>
 				</div>
 
-				<!-- Content Column (right on large screens) -->
 				<div class="space-y-6">
 					<h2 class="text-3xl lg:text-5xl font-bold text-gray-900">
 						Palestras
@@ -90,12 +83,10 @@ get_header();
 					</div>
 				</div>
 
-				<!-- (video moved above) -->
 			</div>
 		</div>
 	</section>
 
-	<!-- Features Section -->
 	<section id="features" class="py-10 bg-gray-50">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="text-center mb-16">
@@ -105,7 +96,6 @@ get_header();
 			</div>
 
 			<div class="grid md:grid-cols-3 gap-8">
-				<!-- Mentoria -->
 				<div class="p-10 md:p-12 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group text-center">
 					<div class="w-16 h-16 bg-green-50 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-green transition-colors">
 						<svg class="w-8 h-8 text-brand-green group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -116,7 +106,6 @@ get_header();
 					<p class="text-gray-600 leading-relaxed">Acompanhamento personalizado para desenvolver hábitos saudáveis e alcançar seus objetivos de bem-estar.</p>
 				</div>
 
-				<!-- Consultoria -->
 				<div class="p-10 md:p-12 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group text-center">
 					<div class="w-16 h-16 bg-orange-50 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-orange transition-colors">
 						<svg class="w-8 h-8 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,7 +116,6 @@ get_header();
 					<p class="text-gray-600 leading-relaxed">Orientação especializada em saúde integral para transformar sua qualidade de vida de forma sustentável.</p>
 				</div>
 
-				<!-- Palestras -->
 				<div class="p-10 md:p-12 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group text-center">
 					<div class="w-16 h-16 bg-yellow-50 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-gold transition-colors">
 						<svg class="w-8 h-8 text-brand-gold group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,7 +129,6 @@ get_header();
 		</div>
 	</section>
 
-	<!-- CTA Section -->
 	<section id="contact" class="py-28 lg:py-40" style="background-image: linear-gradient(to bottom, #027c6b, #3c8e5a, #749d41, #b4a42a, #f9a234);">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="max-w-4xl mx-auto text-center">
@@ -157,7 +144,6 @@ get_header();
 		</div>
 	</section>
 
-	<!-- Newsletter Section -->
 	<section id="newsletter" class="py-20 bg-white">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="max-w-3xl mx-auto">

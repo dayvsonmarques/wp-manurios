@@ -43,8 +43,8 @@ get_header();
 			endwhile;
 			?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+		</main>
+	</section>
 
 <?php
 get_footer();

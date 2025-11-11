@@ -33,8 +33,8 @@ get_header();
 			endwhile; // End of the loop.
 			?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+		</main>
+	</section>
 
 <?php
 get_footer();
