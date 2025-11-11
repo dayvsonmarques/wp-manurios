@@ -96,10 +96,11 @@ get_header();
 	</section>
 
 	<!-- Features Section -->
-	<section id="features" class="py-20 bg-gray-50">
+	<section id="features" class="py-10 bg-gray-50">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="text-center mb-16">
-				<h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">Serviços</h2>
+				<h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-2">Serviços & Produtos</h2>
+				<div class="h-1 w-20 bg-brand-green mx-auto mb-4"></div>
 				<p class="text-xl text-gray-600 max-w-2xl mx-auto">Soluções em saúde para promover seu bem-estar integral</p>
 			</div>
 
@@ -178,7 +179,7 @@ get_header();
 							<button
 								type="submit"
 								:disabled="submitting"
-								class="px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+								class="px-8 py-4 bg-brand-green text-white font-semibold rounded-lg hover:bg-brand-gold transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
 								x-text="submitting ? 'Enviando...' : 'Inscrever-se'"
 							>
 								Inscrever-se

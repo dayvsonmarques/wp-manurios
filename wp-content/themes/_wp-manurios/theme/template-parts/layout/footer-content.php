@@ -9,7 +9,7 @@
 
 ?>
 
-<footer id="colophon" class="bg-white py-12">
+<footer id="colophon" class="bg-white pb-10">
 	<div class="container mx-auto px-4 lg:px-8">
 		<div class="text-center">
 			<!-- Social Media Icons -->
