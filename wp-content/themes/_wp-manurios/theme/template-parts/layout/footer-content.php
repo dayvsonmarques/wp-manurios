@@ -12,7 +12,7 @@
 <footer id="colophon" class="bg-white pb-10">
 	<div class="container mx-auto px-4 lg:px-8">
 		<div class="text-center">
-			<div class="flex justify-center gap-8 lg:gap-10 mb-10 lg:mb-14">
+			<div class="flex justify-center gap-8 lg:gap-10 mb-10 lg:mb-14 mt-[50px]">
 
 				<a href="https://instagram.com/manurios_al" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-brand-gold transition-colors" aria-label="Instagram">
 					<svg class="w-10 h-10 lg:w-12 lg:h-12" fill="currentColor" viewBox="0 0 24 24">

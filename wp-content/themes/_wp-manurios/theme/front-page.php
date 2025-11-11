@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The front page template file
  *
@@ -10,17 +11,20 @@ get_header();
 
 <style>
 	.home .h-20,
-	.home .h-24 { display: none; }
+	.home .h-24 {
+		display: none;
+	}
 
 	/* Add padding to about section when header becomes fixed */
 	.home.fixed-header-active #about {
-		padding-top: 96px; /* Height of header */
+		padding-top: 96px;
+		/* Height of header */
 	}
 </style>
 
 <main id="main" class="site-main">
 
-	<section class="relative bg-cover bg-center bg-no-repeat h-[85vh] min-h-[600px] flex items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<?php echo esc_url( get_template_directory_uri() . '/assets/img/banner-1.jpg' ); ?>');">
+	<section class="relative bg-cover bg-center bg-no-repeat h-[85vh] min-h-[600px] flex items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<?php echo esc_url(get_template_directory_uri() . '/assets/img/banner-1.jpg'); ?>');">
 		<div class="container mx-auto px-4 lg:px-8 w-full">
 			<div class="grid lg:grid-cols-2 gap-12 items-center">
 				<div></div>
@@ -31,11 +35,11 @@ get_header();
 					</h1>
 					<p class="text-xl lg:text-3xl text-white leading-relaxed mb-8">
 						<?php
-						$description = get_bloginfo( 'description', 'display' );
-						echo $description ? esc_html( $description ) : 'Não espere faltar saúde para cuidar da sua.';
+						$description = get_bloginfo('description', 'display');
+						echo $description ? esc_html($description) : 'Não espere faltar saúde para cuidar da sua.';
 						?>
 					</p>
-					<div class="hidden lg:flex justify-center lg:justify-start">
+					<div class="hidden">
 						<a href="#about" class="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl">
 							<span>Saiba Mais</span>
 							<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,7 +52,7 @@ get_header();
 		</div>
 	</section>
 
-	<?php get_template_part( 'template-parts/content/content', 'about' ); ?>
+	<?php get_template_part('template-parts/content/content', 'about'); ?>
 
 	<section id="palestras" class="py-20 lg:py-32 bg-white">
 		<div class="container mx-auto px-4 lg:px-8">
@@ -76,7 +80,7 @@ get_header();
 					<div class="pt-4">
 						<a href="https://www.youtube.com/@saudem1lugar" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 bg-brand-green text-white font-semibold rounded-lg hover:bg-brand-gold transition-all shadow-lg hover:shadow-xl">
 							<svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+								<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
 							</svg>
 							<span>Ver Canal no YouTube</span>
 						</a>
@@ -87,7 +91,7 @@ get_header();
 		</div>
 	</section>
 
-	<section id="features" class="py-10 bg-gray-50">
+	<section id="features" class="py-8 bg-gray-50">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="text-center mb-16">
 				<h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-2">Serviços & Produtos</h2>
@@ -129,6 +133,8 @@ get_header();
 		</div>
 	</section>
 
+	<section id="post-features-transition" class="h-[25vh] w-full" style="background-image: linear-gradient(to bottom, #ffffff 0%, #027c6b 100%);" aria-hidden="true"></section>
+
 	<section id="contact" class="py-28 lg:py-40" style="background-image: linear-gradient(to bottom, #027c6b, #3c8e5a, #749d41, #b4a42a, #f9a234);">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="max-w-4xl mx-auto text-center">
@@ -144,13 +150,13 @@ get_header();
 		</div>
 	</section>
 
-	<section id="newsletter" class="py-20 bg-white">
+	<section id="newsletter" class="py-20" style="background-image: linear-gradient(to bottom, #f9a234 0%, #f7b55a 25%, #f1ca76 50%, #f7e4b8 75%, #ffffff 100%);">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="max-w-3xl mx-auto">
 				<div class="p-8 lg:p-12">
 					<div class="text-center mb-8">
 						<h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Receba novidades</h2>
-						<p class="text-lg text-gray-600">Inscreva-se em nossa newsletter e receba conteúdos exclusivos, dicas e atualizações direto no seu e-mail.</p>
+						<p class="text-lg text-gray-700">Inscreva-se em nossa newsletter e receba conteúdos exclusivos, dicas e atualizações direto no seu e-mail.</p>
 					</div>
 
 					<form id="newsletter-form" class="space-y-4" x-data="{ submitting: false, message: '', success: false }">
@@ -160,14 +166,12 @@ get_header();
 								name="email"
 								required
 								placeholder="Seu melhor e-mail"
-								class="flex-1 px-6 py-4 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-lg"
-							>
+								class="flex-1 px-6 py-4 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-lg">
 							<button
 								type="submit"
 								:disabled="submitting"
 								class="px-8 py-4 bg-brand-green text-white font-semibold rounded-lg hover:bg-brand-gold transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-								x-text="submitting ? 'Enviando...' : 'Inscrever-se'"
-							>
+								x-text="submitting ? 'Enviando...' : 'Inscrever-se'">
 								Inscrever-se
 							</button>
 						</div>
@@ -177,7 +181,7 @@ get_header();
 						</div>
 					</form>
 
-					<p class="text-sm text-gray-500 text-center mt-6">
+					<p class="text-sm text-gray-600 text-center mt-6">
 						<svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20">
 							<path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
 						</svg>
