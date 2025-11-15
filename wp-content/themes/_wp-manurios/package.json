@@ -6,12 +6,14 @@
 		"development:tailwind:frontend": "npx postcss ./tailwind.css -o ./theme/style.css --verbose",
 		"development:tailwind:editor": "cross-env _TW_TARGET=editor npx postcss ./tailwind.css -o ./theme/style-editor.css",
 		"development:tailwind:intellisense": "cross-env _TW_TARGET=intellisense npx postcss ./tailwind.css -o ./tailwind-intellisense.css",
+		"development:sass": "sass scss/main.scss:theme/css/main.css --style=expanded --source-map",
 		"development:esbuild": "npx esbuild ./javascript/script.js ./javascript/block-editor.js --target=esnext --bundle --outdir=./theme/js --out-extension:.js=.min.js",
 		"development": "run-p \"development:**\"",
 		"dev": "npm run development",
 		"watch:tailwind:frontend": "npm run development:tailwind:frontend -- --watch",
 		"watch:tailwind:editor": "npm run development:tailwind:editor -- --watch",
 		"watch:tailwind:intellisense": "npm run development:tailwind:intellisense -- --watch",
+		"watch:sass": "sass --watch scss/main.scss:theme/css/main.css --style=expanded --source-map",
 		"watch:esbuild": "npm run development:esbuild -- --watch",
 		"watch": "run-p \"watch:**\"",
 		"lint:eslint": "npx eslint",
@@ -22,6 +24,7 @@
 		"lint-fix": "run-p \"lint-fix:*\"",
 		"production:tailwind:frontend": "cross-env _TW_ENV=production npm run development:tailwind:frontend",
 		"production:tailwind:editor": "cross-env _TW_ENV=production npm run development:tailwind:editor",
+		"production:sass": "sass scss/main.scss:theme/css/main.css --style=compressed --no-source-map",
 		"production:esbuild": "npm run development:esbuild -- --minify",
 		"production": "run-p \"production:**\"",
 		"prod": "npm run production",
@@ -48,6 +51,7 @@
 		"postcss-nesting": "^13.0.2",
 		"prettier": "^3.6.2",
 		"prettier-plugin-tailwindcss": "^0.7.0",
+		"sass": "^1.83.0",
 		"tailwindcss": "^4.1.14"
 	}
 }

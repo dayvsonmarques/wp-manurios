@@ -8,19 +8,9 @@
 get_header();
 ?>
 
-<style>
-	.home .h-20,
-	.home .h-24 { display: none; }
+<main id="main" class="site-main home">
 
-	/* Add padding to about section when header becomes fixed */
-	.home.fixed-header-active #about {
-		padding-top: 96px; /* Height of header */
-	}
-</style>
-
-<main id="main" class="site-main">
-
-	<section class="relative bg-cover bg-center bg-no-repeat h-[85vh] min-h-[600px] flex items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<?php echo esc_url( get_template_directory_uri() . '/assets/img/banner-1.jpg' ); ?>');">
+	<section class="hero-section relative h-[85vh] min-h-[600px] flex items-center">
 		<div class="container mx-auto px-4 lg:px-8 w-full">
 			<div class="grid lg:grid-cols-2 gap-12 items-center">
 				<div></div>
@@ -42,10 +32,12 @@ get_header();
 
 	<?php get_template_part( 'template-parts/content/content', 'about' ); ?>
 
+	<div class="section-transition"></div>
+
 	<section id="palestras" class="py-20 lg:py-32 bg-white">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-				<div class="relative rounded-2xl overflow-hidden shadow-2xl" style="aspect-ratio: 16/9;">
+				<div class="video-container relative rounded-2xl overflow-hidden shadow-2xl">
 					<iframe
 						class="absolute inset-0 w-full h-full"
 						src="https://www.youtube.com/embed/o-4QM1vbMes"
@@ -121,7 +113,7 @@ get_header();
 		</div>
 	</section>
 
-	<section id="contact" class="py-28 lg:py-40" style="background-image: linear-gradient(to bottom, #027c6b, #3c8e5a, #749d41, #b4a42a, #f9a234);">
+	<section id="contact" class="py-28 lg:py-40">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="max-w-4xl mx-auto text-center">
 				<h2 class="text-3xl lg:text-5xl font-bold text-white mb-6">Pronto para começar seu projeto?</h2>
@@ -136,13 +128,15 @@ get_header();
 		</div>
 	</section>
 
-	<section id="newsletter" class="py-20 bg-white">
+	<div class="section-transition-green-orange"></div>
+
+	<section id="newsletter" class="py-20 newsletter-section">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="max-w-3xl mx-auto">
 				<div class="p-8 lg:p-12">
 					<div class="text-center mb-8">
-						<h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Receba novidades</h2>
-						<p class="text-lg text-gray-600">Inscreva-se em nossa newsletter e receba conteúdos exclusivos, dicas e atualizações direto no seu e-mail.</p>
+						<h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Receba novidades</h2>
+						<p class="text-lg text-white">Inscreva-se em nossa newsletter e receba conteúdos exclusivos, dicas e atualizações direto no seu e-mail.</p>
 					</div>
 
 					<form id="newsletter-form" class="space-y-4" x-data="{ submitting: false, message: '', success: false }">
@@ -164,12 +158,12 @@ get_header();
 							</button>
 						</div>
 
-						<div x-show="message" x-transition class="p-4 rounded-lg text-center" :class="success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'" style="display: none;">
+						<div x-show="message" x-transition class="newsletter-message p-4 rounded-lg text-center" :class="success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
 							<p x-text="message"></p>
 						</div>
 					</form>
 
-					<p class="text-sm text-gray-500 text-center mt-6">
+					<p class="text-sm text-white/80 text-center mt-6">
 						<svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20">
 							<path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
 						</svg>
@@ -179,6 +173,8 @@ get_header();
 			</div>
 		</div>
 	</section>
+
+	<div class="section-transition-orange-white"></div>
 
 </main>
 

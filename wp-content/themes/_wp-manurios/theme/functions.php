@@ -114,6 +114,14 @@ if ( ! function_exists( '_wp_manurios_setup' ) ) :
 		// Add support for responsive embedded content.
 		add_theme_support( 'responsive-embeds' );
 
+		// Add support for custom logo
+		add_theme_support( 'custom-logo', array(
+			'height'      => 100,
+			'width'       => 400,
+			'flex-height' => true,
+			'flex-width'  => true,
+		) );
+
 		// Remove support for block templates.
 		remove_theme_support( 'block-templates' );
 	}
@@ -147,7 +155,12 @@ function _wp_manurios_scripts() {
 	// Google Fonts - Dancing Script para logo e Inter para o site
 	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap', array(), null );
 
+	// Main theme stylesheet (Tailwind)
 	wp_enqueue_style( '_wp-manurios-style', get_stylesheet_uri(), array(), _WP_MANURIOS_VERSION );
+	
+	// Compiled SCSS styles
+	wp_enqueue_style( '_wp-manurios-scss', get_template_directory_uri() . '/css/main.css', array( '_wp-manurios-style' ), _WP_MANURIOS_VERSION );
+	
 	wp_enqueue_script( '_wp-manurios-script', get_template_directory_uri() . '/js/script.min.js', array(), _WP_MANURIOS_VERSION, true );
 
 	// Alpine.js for interactive components
@@ -252,6 +265,9 @@ function _wp_manurios_customize_register( $wp_customize ) {
 		'section'     => 'whatsapp_settings',
 		'type'        => 'textarea',
 	) );
+
+	// Logo Section (using WordPress default custom-logo support)
+	// The logo option will appear in "Site Identity" section automatically
 }
 add_action( 'customize_register', '_wp_manurios_customize_register' );
 

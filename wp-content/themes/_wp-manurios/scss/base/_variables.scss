@@ -1,0 +1,24 @@
+/**
+ * Variables
+ * Define all Sass variables here
+ */
+
+// Colors
+$brand-green: #027c6b;
+$brand-gold: #f9a234;
+$brand-orange: #ff6b35;
+
+// Gradients
+$contact-gradient: linear-gradient(to bottom, #027c6b, #3c8e5a, #749d41, #b4a42a, #f9a234);
+$hero-overlay: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+
+// Spacing
+$header-height: 96px;
+$header-height-mobile: 80px;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+

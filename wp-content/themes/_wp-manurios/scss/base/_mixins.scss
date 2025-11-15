@@ -1,0 +1,24 @@
+/**
+ * Mixins
+ * Reusable Sass mixins
+ */
+
+@use "sass:math";
+
+@mixin hero-background($image-url) {
+	background-image: $hero-overlay, url($image-url);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+@mixin aspect-ratio($width, $height) {
+	aspect-ratio: math.div($width, $height);
+}
+
+@mixin responsive($breakpoint) {
+	@media (min-width: $breakpoint) {
+		@content;
+	}
+}
+

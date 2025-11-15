@@ -8,7 +8,7 @@
 
 <section id="about" class="py-20 lg:py-32 bg-gray-50">
 	<div class="container mx-auto px-4 lg:px-8">
-		<div class="flex flex-col lg:flex-row lg:flex-nowrap items-start lg:items-center text-center">
+		<div class="flex flex-col lg:flex-row lg:flex-nowrap items-start lg:items-center text-center about-content">
 			<div class="flex-1 min-w-0 space-y-6 px-8 lg:px-12" aria-label="Sobre Mim">
 				<p class="text-3xl text-gray-600 leading-relaxed py-5">
 					Enfermeira há mais de 20 anos e 1ª enfermeira do Brasil certificada em Medicina do Estilo de Vida pelo IBLM e CBMEV.

@@ -1,0 +1,20 @@
+/**
+ * About Section Styles
+ */
+
+.about-content {
+	// Add horizontal padding for better text centering
+	padding-left: 2rem;
+	padding-right: 2rem;
+	
+	@include responsive($breakpoint-lg) {
+		padding-left: 4rem;
+		padding-right: 4rem;
+	}
+	
+	@include responsive($breakpoint-xl) {
+		padding-left: 6rem;
+		padding-right: 6rem;
+	}
+}
+

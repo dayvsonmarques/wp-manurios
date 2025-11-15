@@ -18,18 +18,42 @@ $position_class = $is_home ? 'absolute' : 'fixed';
 	<div class="container mx-auto px-4 lg:px-8">
 		<div class="flex items-center justify-between py-5 lg:py-6">
 			<div class="flex items-center flex-shrink-0 relative z-[60]">
-				<?php if ( is_front_page() ) : ?>
-					<h1 class="text-3xl lg:text-4xl font-signature">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="transition-colors" :class="(scrolled || mobileMenuOpen) ? 'text-gray-900 hover:text-blue-600' : '<?php echo esc_attr( $text_class . ' ' . $hover_class ); ?>'">
-							<?php bloginfo( 'name' ); ?>
-						</a>
-					</h1>
+				<?php
+				$custom_logo_id = get_theme_mod( 'custom_logo' );
+				if ( $custom_logo_id ) :
+					$logo = wp_get_attachment_image_src( $custom_logo_id, 'full' );
+					$logo_alt = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
+					if ( empty( $logo_alt ) ) {
+						$logo_alt = get_bloginfo( 'name' );
+					}
+					?>
+					<?php if ( is_front_page() ) : ?>
+						<h1 class="site-logo">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="block">
+								<img src="<?php echo esc_url( $logo[0] ); ?>" alt="<?php echo esc_attr( $logo_alt ); ?>" class="h-10 lg:h-12 w-auto transition-opacity" :class="(scrolled || mobileMenuOpen) ? 'opacity-100' : '<?php echo $is_home ? 'opacity-100' : 'opacity-100'; ?>'">
+							</a>
+						</h1>
+					<?php else : ?>
+						<p class="site-logo mb-0">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="block">
+								<img src="<?php echo esc_url( $logo[0] ); ?>" alt="<?php echo esc_attr( $logo_alt ); ?>" class="h-10 lg:h-12 w-auto">
+							</a>
+						</p>
+					<?php endif; ?>
 				<?php else : ?>
-					<p class="text-3xl lg:text-4xl font-signature mb-0">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="transition-colors" :class="mobileMenuOpen ? 'text-gray-900 hover:text-blue-600' : '<?php echo esc_attr( $text_class . ' ' . $hover_class ); ?>'">
-							<?php bloginfo( 'name' ); ?>
-						</a>
-					</p>
+					<?php if ( is_front_page() ) : ?>
+						<h1 class="text-3xl lg:text-4xl font-signature">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="transition-colors" :class="(scrolled || mobileMenuOpen) ? 'text-gray-900 hover:text-blue-600' : '<?php echo esc_attr( $text_class . ' ' . $hover_class ); ?>'">
+								<?php bloginfo( 'name' ); ?>
+							</a>
+						</h1>
+					<?php else : ?>
+						<p class="text-3xl lg:text-4xl font-signature mb-0">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="transition-colors" :class="mobileMenuOpen ? 'text-gray-900 hover:text-blue-600' : '<?php echo esc_attr( $text_class . ' ' . $hover_class ); ?>'">
+								<?php bloginfo( 'name' ); ?>
+							</a>
+						</p>
+					<?php endif; ?>
 				<?php endif; ?>
 			</div>
 
@@ -51,13 +75,13 @@ $position_class = $is_home ? 'absolute' : 'fixed';
 				<svg x-show="!mobileMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
 				</svg>
-				<svg x-show="mobileMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
+				<svg x-show="mobileMenuOpen" class="mobile-menu-icon w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
 				</svg>
 			</button>
 		</div>
 
-		<div x-show="mobileMenuOpen" x-transition class="lg:hidden fixed inset-0 top-0 bg-white z-50 flex items-center justify-center" style="display: none;" @click.away="mobileMenuOpen = false">
+		<div x-show="mobileMenuOpen" x-transition class="mobile-menu-overlay lg:hidden fixed inset-0 top-0 bg-white z-50 flex items-center justify-center" @click.away="mobileMenuOpen = false">
 			<div class="w-full h-full flex items-center justify-center px-4">
 				<?php
 				wp_nav_menu(

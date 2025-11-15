@@ -1,0 +1,24 @@
+/**
+ * Home Page Layout Styles
+ */
+
+.home {
+	// Hide header spacing on home page
+	.h-20,
+	.h-24 {
+		display: none;
+	}
+	
+	// Add padding to about section when header becomes fixed
+	&.fixed-header-active {
+		#about {
+			padding-top: $header-height;
+		}
+	}
+}
+
+// Video iframe aspect ratio
+.video-container {
+	@include aspect-ratio(16, 9);
+}
+

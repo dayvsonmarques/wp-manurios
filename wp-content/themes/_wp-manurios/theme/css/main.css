@@ -1,0 +1,144 @@
+/**
+ * Main SCSS file
+ * Import all partials here
+ */
+/**
+ * Variables
+ * Define all Sass variables here
+ */
+/**
+ * Mixins
+ * Reusable Sass mixins
+ */
+/**
+ * Reset and base styles
+ */
+/**
+ * Header Component Styles
+ */
+.site-logo {
+  margin: 0;
+}
+.site-logo img {
+  max-height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+#primary-menu a:hover::after {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.header-nav[data-is-home=true] #primary-menu a:hover::after,
+.scrolled .header-nav[data-is-home=true] #primary-menu a:hover::after {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/**
+ * Footer Component Styles
+ */
+#colophon {
+  margin-top: 5rem;
+}
+@media (min-width: 1024px) {
+  #colophon {
+    margin-top: 8rem;
+  }
+}
+
+/**
+ * Hero Section Styles
+ */
+.hero-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../assets/img/banner-1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 85vh;
+  min-height: 600px;
+}
+
+/**
+ * About Section Styles
+ */
+.about-content {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+@media (min-width: 1024px) {
+  .about-content {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+@media (min-width: 1280px) {
+  .about-content {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+/**
+ * Section Transition Styles
+ */
+.section-transition {
+  height: 80px;
+  background: linear-gradient(to bottom, #f9fafb, #ffffff);
+  width: 100%;
+}
+
+.section-transition-green-orange {
+  height: 80px;
+  background: linear-gradient(to bottom, #027c6b, #ff6b35);
+  width: 100%;
+}
+
+.section-transition-orange-white {
+  height: 80px;
+  background: linear-gradient(to bottom, #ff6b35, #ffffff);
+  width: 100%;
+}
+
+/**
+ * Contact Section Styles
+ */
+#contact {
+  background-color: #027c6b;
+}
+
+/**
+ * Newsletter Component Styles
+ */
+.newsletter-section {
+  background-color: #ff6b35;
+}
+
+/**
+ * Home Page Layout Styles
+ */
+.home .h-20,
+.home .h-24 {
+  display: none;
+}
+.home.fixed-header-active #about {
+  padding-top: 96px;
+}
+
+.video-container {
+  aspect-ratio: 1.7777777778;
+}
+
+/**
+ * General Page Layout Styles
+ */
+/**
+ * Utility Classes
+ */
+
+/*# sourceMappingURL=main.css.map */

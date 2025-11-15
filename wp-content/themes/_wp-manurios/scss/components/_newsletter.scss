@@ -1,0 +1,14 @@
+/**
+ * Newsletter Component Styles
+ */
+
+.newsletter-section {
+	background-color: $brand-orange;
+}
+
+// Newsletter message visibility is handled by Alpine.js x-show
+// This is just for structure
+.newsletter-message {
+	// Alpine.js x-show handles visibility
+}
+

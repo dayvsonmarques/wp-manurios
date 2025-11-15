@@ -1,0 +1,13 @@
+/**
+ * Hero Section Styles
+ */
+
+.hero-section {
+	background-image: $hero-overlay, url('../assets/img/banner-1.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 85vh;
+	min-height: 600px;
+}
+
