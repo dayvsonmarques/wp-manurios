@@ -1,0 +1,33 @@
+/**
+ * Header Component Styles
+ */
+
+// Header transparent on homepage by default
+#masthead.absolute {
+	background-color: transparent !important;
+}
+
+// Header white when scrolled or on other pages
+#masthead.fixed,
+#masthead.bg-white {
+	background-color: #ffffff !important;
+}
+
+// Site Logo Styles
+.site-logo {
+	margin: 0;
+	
+	img {
+		max-height: 60px;
+		width: auto;
+		object-fit: contain;
+	}
+}
+
+// Remove underline on menu hover
+#primary-menu a:hover::after {
+	display: none !important;
+	content: none !important;
+	width: 0 !important;
+	height: 0 !important;
+}

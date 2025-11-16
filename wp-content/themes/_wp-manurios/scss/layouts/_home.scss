@@ -1,0 +1,9 @@
+/**
+ * Home Page Layout Styles
+ */
+
+// Video iframe aspect ratio
+.video-container {
+	@include aspect-ratio(16, 9);
+}
+

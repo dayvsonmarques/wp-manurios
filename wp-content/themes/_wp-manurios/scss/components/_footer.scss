@@ -1,0 +1,12 @@
+/**
+ * Footer Component Styles
+ */
+
+#colophon {
+	margin-top: 5rem; // 80px - maior que 50px
+	
+	@include responsive($breakpoint-lg) {
+		margin-top: 8rem; // 128px - maior que 50px
+	}
+}
+
