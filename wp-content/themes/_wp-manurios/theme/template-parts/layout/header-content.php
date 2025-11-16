@@ -16,7 +16,7 @@ $position_class = $is_home ? 'absolute' : 'fixed';
 
 <header id="masthead" class="<?php echo esc_attr( $position_class ); ?> top-0 left-0 right-0 z-50 transition-all duration-300 <?php echo esc_attr( $header_class ); ?>" x-data="{ mobileMenuOpen: false, scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 50)" :class="[scrolled ? '<?php echo $is_home ? 'bg-white shadow-lg' : 'shadow-lg'; ?>' : '<?php echo esc_attr( $header_class ); ?>', mobileMenuOpen ? 'bg-white shadow-lg' : '']">
 	<div class="container mx-auto px-4 lg:px-8">
-		<div class="flex items-center justify-between py-5 lg:py-6">
+		<div class="flex items-center justify-between py-3 lg:py-4">
 			<div class="flex items-center flex-shrink-0 relative z-[60]">
 				<?php
 				$custom_logo_id = get_theme_mod( 'custom_logo' );
@@ -99,4 +99,4 @@ $position_class = $is_home ? 'absolute' : 'fixed';
 	 </div>
 	</header>
 
-<div class="h-20 lg:h-24"></div>
+<div class="h-16 lg:h-20"></div>
