@@ -8,5 +8,24 @@
 	@include responsive($breakpoint-lg) {
 		margin-top: 8rem; // 128px - maior que 50px
 	}
+
+	// Social icons - increased size
+	.flex.justify-center a svg,
+	a[href*="instagram"] svg,
+	a[href*="youtube"] svg,
+	a[href*="linkedin"] svg {
+		width: 3.5rem !important;
+		height: 3.5rem !important;
+		min-width: 3.5rem !important;
+		min-height: 3.5rem !important;
+		display: block !important;
+
+		@include responsive($breakpoint-lg) {
+			width: 4rem !important;
+			height: 4rem !important;
+			min-width: 4rem !important;
+			min-height: 4rem !important;
+		}
+	}
 }
 

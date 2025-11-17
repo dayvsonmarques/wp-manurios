@@ -9,5 +9,43 @@
 	background-repeat: no-repeat;
 	height: 85vh;
 	min-height: 600px;
+	
+	// Scroll arrow styles
+	.hero-scroll-arrow {
+		position: absolute;
+		bottom: 2rem;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		animation: bounce-arrow 2s infinite;
+		
+		&:hover {
+			animation: none;
+			transform: translateX(-50%) translateY(4px);
+		}
+		
+		svg {
+			filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+		}
+	}
+}
+
+// Bounce animation for scroll arrow
+@keyframes bounce-arrow {
+	0%, 100% {
+		transform: translateX(-50%) translateY(0);
+	}
+	50% {
+		transform: translateX(-50%) translateY(10px);
+	}
+}
+
+// Smooth scroll behavior
+html {
+	scroll-behavior: smooth;
 }
 

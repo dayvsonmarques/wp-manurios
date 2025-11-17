@@ -28,6 +28,13 @@ get_header();
 				</div>
 			</div>
 		</div>
+		
+		<!-- Scroll to next section arrow -->
+		<a href="#about" class="hero-scroll-arrow text-white hover:text-gray-200 transition-all duration-300 cursor-pointer z-10 flex items-center justify-center" aria-label="Ir para próxima seção">
+			<svg class="w-8 h-8 lg:w-10 lg:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M19 13l-7 7-7-7m14-6l-7 7-7-7"/>
+			</svg>
+		</a>
 	</section>
 
 	<?php get_template_part( 'template-parts/content/content', 'about' ); ?>
@@ -50,10 +57,10 @@ get_header();
 				</div>
 
 				<div class="space-y-6">
-					<h2 class="text-3xl lg:text-5xl font-bold text-gray-900">
+					<h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-2 uppercase">
 						Palestras
 					</h2>
-					<div class="h-1 w-20 bg-brand-green"></div>
+					<div class="h-1 w-20 bg-brand-green mb-4"></div>
 					<p class="text-lg lg:text-xl text-gray-600 leading-relaxed">
 						Confira mais conversas sobre saúde no seu aspecto mais amplo, desde saúde física e mental, até saúde financeira e profissional, a fim de promover qualidade de vida, bem-estar e longevidade saudável.
 					</p>
@@ -74,7 +81,7 @@ get_header();
 	<section id="features" class="py-10 bg-gray-50">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="text-center mb-16">
-				<h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-2">Serviços & Produtos</h2>
+				<h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-2 uppercase">Serviços & Produtos</h2>
 				<div class="h-1 w-20 bg-brand-green mx-auto mb-4"></div>
 				<p class="text-xl text-gray-600 max-w-2xl mx-auto">Soluções em saúde para promover seu bem-estar integral</p>
 			</div>
@@ -113,11 +120,78 @@ get_header();
 		</div>
 	</section>
 
+	<section id="blog" class="py-20 lg:py-32 bg-white">
+		<div class="container mx-auto px-4 lg:px-8">
+			<div class="text-center mb-16">
+				<h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-2 uppercase">Blog</h2>
+				<div class="h-1 w-20 bg-brand-green mx-auto mb-4"></div>
+				<p class="text-xl text-gray-600 max-w-2xl mx-auto">Confira nossos últimos artigos e conteúdos sobre saúde e bem-estar</p>
+			</div>
+
+			<?php
+			$recent_posts = new WP_Query( array(
+				'post_type'      => 'post',
+				'posts_per_page' => 3,
+				'post_status'    => 'publish',
+			) );
+
+			if ( $recent_posts->have_posts() ) :
+			?>
+				<div class="grid md:grid-cols-3 gap-8">
+					<?php while ( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
+						<article class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 overflow-hidden group">
+							<?php if ( has_post_thumbnail() ) : ?>
+								<a href="<?php the_permalink(); ?>" class="block">
+									<?php the_post_thumbnail( 'medium', array( 'class' => 'w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300' ) ); ?>
+								</a>
+							<?php endif; ?>
+							<div class="p-6">
+								<h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-green transition-colors">
+									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+								</h3>
+								<div class="text-sm text-gray-500 mb-3">
+									<time datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
+								</div>
+								<p class="text-gray-600 leading-relaxed mb-4">
+									<?php echo wp_trim_words( get_the_excerpt(), 20 ); ?>
+								</p>
+								<a href="<?php the_permalink(); ?>" class="inline-flex items-center text-brand-green hover:text-brand-gold font-semibold group/link">
+									<span>Ler mais</span>
+									<svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+									</svg>
+								</a>
+							</div>
+						</article>
+					<?php endwhile; ?>
+				</div>
+				<div class="text-center mt-12">
+					<a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ?: home_url( '/blog' ) ); ?>" class="inline-flex items-center px-8 py-4 bg-brand-green text-white font-semibold rounded-lg hover:bg-brand-gold transition-all shadow-lg hover:shadow-xl">
+						<span>Ver todos os posts</span>
+						<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+						</svg>
+					</a>
+				</div>
+			<?php
+			else :
+			?>
+				<div class="text-center py-12">
+					<p class="text-gray-600 text-lg">Nenhum post encontrado ainda.</p>
+				</div>
+			<?php
+			endif;
+			wp_reset_postdata();
+			?>
+		</div>
+	</section>
+
 	<section id="contact" class="py-28 lg:py-40">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="max-w-4xl mx-auto text-center">
-				<h2 class="text-3xl lg:text-5xl font-bold text-white mb-6">Pronto para começar seu projeto?</h2>
-				<p class="text-xl text-white/90 mb-8">Entre em contato conosco e vamos transformar suas ideias em realidade</p>
+				<h2 class="text-3xl lg:text-5xl font-bold text-white mb-2 uppercase">Contato</h2>
+				<div class="h-1 w-20 bg-white mx-auto mb-6"></div>
+				<p class="text-xl text-white/90 mb-8">Pronto para começar seu projeto? Entre em contato conosco e vamos transformar suas ideias em realidade</p>
 				<a href="#" class="inline-flex items-center px-8 py-4 bg-white text-brand-green font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl">
 					<span>Fale Conosco</span>
 					<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -135,7 +209,8 @@ get_header();
 			<div class="max-w-3xl mx-auto">
 				<div class="p-8 lg:p-12">
 					<div class="text-center mb-8">
-						<h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Receba novidades</h2>
+						<h2 class="text-3xl lg:text-5xl font-bold text-white mb-2 uppercase">Receba novidades</h2>
+						<div class="h-1 w-20 bg-white mx-auto mb-4"></div>
 						<p class="text-lg text-white">Inscreva-se em nossa newsletter e receba conteúdos exclusivos, dicas e atualizações direto no seu e-mail.</p>
 					</div>
 

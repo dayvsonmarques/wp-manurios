@@ -8,6 +8,10 @@
 
 <section id="about" class="py-20 lg:py-32 bg-gray-50">
 	<div class="container mx-auto px-4 lg:px-8">
+		<div class="text-center mb-12 lg:mb-16">
+			<h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-2 uppercase">Sobre</h2>
+			<div class="h-1 w-20 bg-brand-green mx-auto mb-4"></div>
+		</div>
 		<div class="flex flex-col lg:flex-row lg:flex-nowrap items-start lg:items-center text-center about-content">
 			<div class="flex-1 min-w-0 space-y-6 px-8 lg:px-12" aria-label="Sobre Mim">
 				<p class="text-3xl text-gray-600 leading-relaxed py-5">
