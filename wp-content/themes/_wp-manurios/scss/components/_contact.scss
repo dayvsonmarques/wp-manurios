@@ -4,5 +4,9 @@
 
 #contact {
 	background-color: $brand-green;
+	// Remover qualquer sombra que possa interferir na transição
+	box-shadow: none;
+	position: relative;
+	z-index: 0;
 }
 

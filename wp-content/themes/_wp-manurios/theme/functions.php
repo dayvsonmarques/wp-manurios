@@ -369,6 +369,63 @@ add_action( 'wp_ajax_newsletter_subscribe', '_wp_manurios_newsletter_subscribe' 
 add_action( 'wp_ajax_nopriv_newsletter_subscribe', '_wp_manurios_newsletter_subscribe' );
 
 /**
+ * Modify menu items to link to home sections when on front page
+ */
+function _wp_manurios_nav_menu_items( $items, $args ) {
+	// Only modify the primary menu on the front page
+	if ( ! is_front_page() ) {
+		return $items;
+	}
+
+	// Check if this is the primary menu
+	$is_primary_menu = false;
+	if ( is_object( $args ) && isset( $args->theme_location ) && 'menu-1' === $args->theme_location ) {
+		$is_primary_menu = true;
+	} elseif ( is_array( $args ) && isset( $args['theme_location'] ) && 'menu-1' === $args['theme_location'] ) {
+		$is_primary_menu = true;
+	}
+
+	if ( ! $is_primary_menu ) {
+		return $items;
+	}
+
+	// Map menu item titles to section IDs
+	$section_map = array(
+		'sobre'            => '#about',
+		'about'            => '#about',
+		'palestras'        => '#palestras',
+		'serviços'         => '#features',
+		'servicos'         => '#features',
+		'produtos'         => '#features',
+		'features'         => '#features',
+		'serviços & produtos' => '#features',
+		'servicos & produtos' => '#features',
+		'blog'             => '#blog',
+		'contato'          => '#contact',
+		'contact'          => '#contact',
+		'newsletter'       => '#newsletter',
+		'receba novidades' => '#newsletter',
+	);
+
+	foreach ( $items as $item ) {
+		// Get the menu item title in lowercase for comparison
+		$title_lower = strtolower( trim( $item->title ) );
+		
+		// Check if this menu item should link to a section
+		foreach ( $section_map as $key => $section_id ) {
+			if ( false !== strpos( $title_lower, $key ) ) {
+				// Modify the URL to point to the section anchor
+				$item->url = home_url( '/' ) . $section_id;
+				break;
+			}
+		}
+	}
+
+	return $items;
+}
+add_filter( 'wp_nav_menu_objects', '_wp_manurios_nav_menu_items', 10, 2 );
+
+/**
  * Enqueue newsletter script
  */
 function _wp_manurios_newsletter_script() {

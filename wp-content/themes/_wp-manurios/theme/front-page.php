@@ -139,23 +139,55 @@ get_header();
 			?>
 				<div class="grid md:grid-cols-3 gap-8">
 					<?php while ( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
-						<article class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 overflow-hidden group">
+						<article class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 overflow-hidden group flex flex-col">
 							<?php if ( has_post_thumbnail() ) : ?>
-								<a href="<?php the_permalink(); ?>" class="block">
-									<?php the_post_thumbnail( 'medium', array( 'class' => 'w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300' ) ); ?>
+								<a href="<?php the_permalink(); ?>" class="block relative overflow-hidden">
+									<?php the_post_thumbnail( 'medium_large', array( 'class' => 'w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500' ) ); ?>
+									<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+								</a>
+							<?php else : ?>
+								<a href="<?php the_permalink(); ?>" class="block relative overflow-hidden bg-gray-200 h-56 flex items-center justify-center">
+									<svg class="w-24 h-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+									</svg>
 								</a>
 							<?php endif; ?>
-							<div class="p-6">
-								<h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-green transition-colors">
+							<div class="p-8 flex-1 flex flex-col">
+								<?php
+								$categories = get_the_category();
+								if ( ! empty( $categories ) ) :
+								?>
+									<div class="flex flex-wrap gap-2 mb-3">
+										<?php foreach ( array_slice( $categories, 0, 2 ) as $category ) : ?>
+											<a href="<?php echo esc_url( get_category_link( $category->term_id ) ); ?>" class="inline-block px-3 py-1 text-xs font-semibold text-brand-green bg-green-50 rounded-full hover:bg-brand-green hover:text-white transition-colors">
+												<?php echo esc_html( $category->name ); ?>
+											</a>
+										<?php endforeach; ?>
+									</div>
+								<?php endif; ?>
+								
+								<h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-green transition-colors line-clamp-2">
 									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 								</h3>
-								<div class="text-sm text-gray-500 mb-3">
-									<time datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
+								
+								<div class="flex items-center text-sm text-gray-500 mb-4">
+									<svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+									</svg>
+									<time datetime="<?php echo get_the_date( 'c' ); ?>">
+										<?php
+										// Formatar data para pt-BR (dd/mm/yyyy)
+										$date = get_the_date( 'd/m/Y' );
+										echo esc_html( $date );
+										?>
+									</time>
 								</div>
-								<p class="text-gray-600 leading-relaxed mb-4">
+								
+								<p class="text-gray-600 leading-relaxed mb-4 flex-1 line-clamp-3">
 									<?php echo wp_trim_words( get_the_excerpt(), 20 ); ?>
 								</p>
-								<a href="<?php the_permalink(); ?>" class="inline-flex items-center text-brand-green hover:text-brand-gold font-semibold group/link">
+								
+								<a href="<?php the_permalink(); ?>" class="inline-flex items-center text-brand-green hover:text-brand-gold font-semibold group/link mt-auto">
 									<span>Ler mais</span>
 									<svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -165,7 +197,7 @@ get_header();
 						</article>
 					<?php endwhile; ?>
 				</div>
-				<div class="text-center mt-12">
+				<div class="text-center mt-16">
 					<a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ?: home_url( '/blog' ) ); ?>" class="inline-flex items-center px-8 py-4 bg-brand-green text-white font-semibold rounded-lg hover:bg-brand-gold transition-all shadow-lg hover:shadow-xl">
 						<span>Ver todos os posts</span>
 						<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -191,7 +223,7 @@ get_header();
 			<div class="max-w-4xl mx-auto text-center">
 				<h2 class="text-3xl lg:text-5xl font-bold text-white mb-2 uppercase">Contato</h2>
 				<div class="h-1 w-20 bg-white mx-auto mb-6"></div>
-				<p class="text-xl text-white/90 mb-8">Pronto para começar seu projeto? Entre em contato conosco e vamos transformar suas ideias em realidade</p>
+				<p class="text-3xl text-white/90 my-8 mb-12">Pronto para começar seu projeto? Entre em contato conosco e vamos transformar suas ideias em realidade</p>
 				<a href="#" class="inline-flex items-center px-8 py-4 bg-white text-brand-green font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl">
 					<span>Fale Conosco</span>
 					<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -211,7 +243,7 @@ get_header();
 					<div class="text-center mb-8">
 						<h2 class="text-3xl lg:text-5xl font-bold text-white mb-2 uppercase">Receba novidades</h2>
 						<div class="h-1 w-20 bg-white mx-auto mb-4"></div>
-						<p class="text-lg text-white">Inscreva-se em nossa newsletter e receba conteúdos exclusivos, dicas e atualizações direto no seu e-mail.</p>
+						<p class="text-2xl text-white my-6">Inscreva-se em nossa newsletter e receba conteúdos exclusivos, dicas e atualizações direto no seu e-mail.</p>
 					</div>
 
 					<form id="newsletter-form" class="space-y-4" x-data="{ submitting: false, message: '', success: false }">
@@ -221,12 +253,12 @@ get_header();
 								name="email"
 								required
 								placeholder="Seu melhor e-mail"
-								class="flex-1 px-6 py-4 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-lg"
+								class="flex-1 px-6 py-4 bg-white border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-lg"
 							>
 							<button
 								type="submit"
 								:disabled="submitting"
-								class="px-8 py-4 bg-brand-green text-white font-semibold rounded-lg hover:bg-brand-gold transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+								class="px-8 py-4 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
 								x-text="submitting ? 'Enviando...' : 'Inscrever-se'"
 							>
 								Inscrever-se
@@ -238,7 +270,7 @@ get_header();
 						</div>
 					</form>
 
-					<p class="text-sm text-white/80 text-center mt-6">
+					<p class="text-sm text-white text-center mt-6">
 						<svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20">
 							<path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
 						</svg>

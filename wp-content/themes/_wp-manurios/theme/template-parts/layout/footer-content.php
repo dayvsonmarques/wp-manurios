@@ -9,7 +9,7 @@
 
 ?>
 
-<footer id="colophon" class="bg-white pb-10">
+<footer id="colophon" class="bg-white py-8">
 	<div class="container mx-auto px-4 lg:px-8">
 		<div class="text-center">
 			<div class="flex justify-center gap-8 lg:gap-10 mb-10 lg:mb-14">

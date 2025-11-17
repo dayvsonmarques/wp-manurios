@@ -24,6 +24,42 @@
 	}
 }
 
+// Menu items visibility - ensure they're always visible
+// On homepage with transparent header, menu should be white
+// Using multiple selectors to ensure visibility on page load
+body.home #masthead.absolute #primary-menu a,
+body.home #masthead:not(.fixed):not(.bg-white) #primary-menu a,
+.home #masthead.absolute #primary-menu a,
+.home #masthead:not(.fixed):not(.bg-white) #primary-menu a,
+#masthead.absolute[data-is-home="true"] #primary-menu a,
+.header-nav[data-is-home="true"] #primary-menu a {
+	color: #ffffff !important;
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+// When scrolled or on other pages, menu should be dark
+#masthead.fixed #primary-menu a,
+#masthead.bg-white #primary-menu a,
+body:not(.home) #masthead #primary-menu a,
+body:not(.home) .header-nav #primary-menu a {
+	color: #4b5563 !important;
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+// Menu hover states
+#primary-menu a:hover {
+	color: #f9a234 !important; // brand-gold
+}
+
+body.home #masthead.absolute #primary-menu a:hover,
+body.home #masthead:not(.fixed):not(.bg-white) #primary-menu a:hover,
+.home #masthead.absolute #primary-menu a:hover,
+.header-nav[data-is-home="true"] #primary-menu a:hover {
+	color: #f9a234 !important; // brand-gold on transparent header
+}
+
 // Remove underline on menu hover
 #primary-menu a:hover::after {
 	display: none !important;

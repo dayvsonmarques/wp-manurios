@@ -4,6 +4,26 @@
 
 .newsletter-section {
 	background-color: $brand-orange;
+
+	// Input styles - ensure white background
+	input[type="email"] {
+		background-color: #ffffff !important;
+		color: #1f2937; // gray-800
+		
+		&::placeholder {
+			color: #9ca3af; // gray-400
+		}
+	}
+
+	// Button styles - gray background
+	button[type="submit"] {
+		background-color: #4b5563 !important; // gray-600
+		color: #ffffff !important;
+		
+		&:hover:not(:disabled) {
+			background-color: #374151 !important; // gray-700
+		}
+	}
 }
 
 // Newsletter message visibility is handled by Alpine.js x-show

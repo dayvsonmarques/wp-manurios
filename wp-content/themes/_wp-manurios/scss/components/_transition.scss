@@ -3,20 +3,14 @@
  */
 
 .section-transition {
-	height: 80px;
-	background: linear-gradient(to bottom, #f9fafb, #ffffff);
-	width: 100%;
+	display: none;
 }
 
 .section-transition-green-orange {
-	height: 80px;
-	background: linear-gradient(to bottom, $brand-green, $brand-orange);
-	width: 100%;
+	display: none;
 }
 
 .section-transition-orange-white {
-	height: 80px;
-	background: linear-gradient(to bottom, $brand-orange, #ffffff);
-	width: 100%;
+	display: none;
 }
 
