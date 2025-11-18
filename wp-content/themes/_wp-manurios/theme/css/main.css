@@ -14,6 +14,34 @@
  * Reset and base styles
  */
 /**
+ * Font Families
+ * Ubuntu and Ubuntu Mono for the entire theme
+ */
+html,
+body {
+  font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: "Ubuntu Mono", "Courier New", monospace;
+}
+
+.font-signature {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.font-menu {
+  font-family: "Ubuntu", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Ubuntu", sans-serif;
+}
+
+/**
  * Header Component Styles
  */
 #masthead.absolute {

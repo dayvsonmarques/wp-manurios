@@ -1,0 +1,34 @@
+/**
+ * Font Families
+ * Ubuntu and Ubuntu Mono for the entire theme
+ */
+
+// Global font family - Ubuntu for all text
+html,
+body {
+	font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+// Monospace font - Ubuntu Mono for code
+code,
+kbd,
+samp,
+pre {
+	font-family: 'Ubuntu Mono', 'Courier New', monospace;
+}
+
+// Signature/Logo font - Ubuntu
+.font-signature {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+// Menu font - Ubuntu
+.font-menu {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+// Heading font - Ubuntu
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Ubuntu', sans-serif;
+}
+

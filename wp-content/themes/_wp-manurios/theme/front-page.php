@@ -218,24 +218,6 @@ get_header();
 		</div>
 	</section>
 
-	<section id="contact" class="py-28 lg:py-40">
-		<div class="container mx-auto px-4 lg:px-8">
-			<div class="max-w-4xl mx-auto text-center">
-				<h2 class="text-3xl lg:text-5xl font-bold text-white mb-2 uppercase">Contato</h2>
-				<div class="h-1 w-20 bg-white mx-auto mb-6"></div>
-				<p class="text-3xl text-white/90 my-8 mb-12">Pronto para começar seu projeto? Entre em contato conosco e vamos transformar suas ideias em realidade</p>
-				<a href="#" class="inline-flex items-center px-8 py-4 bg-white text-brand-green font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl">
-					<span>Fale Conosco</span>
-					<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-					</svg>
-				</a>
-			</div>
-		</div>
-	</section>
-
-	<div class="section-transition-green-orange"></div>
-
 	<section id="newsletter" class="py-20 newsletter-section">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="max-w-3xl mx-auto">
@@ -281,7 +263,23 @@ get_header();
 		</div>
 	</section>
 
-	<div class="section-transition-orange-white"></div>
+	<div class="section-transition-orange-green"></div>
+
+	<section id="contact" class="py-28 lg:py-40">
+		<div class="container mx-auto px-4 lg:px-8">
+			<div class="max-w-4xl mx-auto text-center">
+				<h2 class="text-3xl lg:text-5xl font-bold text-white mb-2 uppercase">Contato</h2>
+				<div class="h-1 w-20 bg-white mx-auto mb-6"></div>
+				<p class="text-3xl text-white/90 my-8 mb-16">Pronto para começar seu projeto? Entre em contato conosco e vamos transformar suas ideias em realidade</p>
+				<a href="#" class="inline-flex items-center px-8 py-4 bg-white text-brand-green font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl">
+					<span>Fale Conosco</span>
+					<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</section>
 
 </main>
 

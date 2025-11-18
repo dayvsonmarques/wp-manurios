@@ -152,8 +152,8 @@ add_action( 'widgets_init', '_wp_manurios_widgets_init' );
  * Enqueue scripts and styles.
  */
 function _wp_manurios_scripts() {
-	// Google Fonts - Dancing Script para logo e Inter para o site
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap', array(), null );
+	// Google Fonts - Ubuntu e Ubuntu Mono
+	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap', array(), null );
 
 	// Main theme stylesheet (Tailwind)
 	wp_enqueue_style( '_wp-manurios-style', get_stylesheet_uri(), array(), _WP_MANURIOS_VERSION );
