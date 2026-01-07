@@ -271,45 +271,220 @@ function _wp_manurios_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', '_wp_manurios_customize_register' );
 
+
 /**
- * Register Newsletter Custom Post Type
+ * Register Custom Post Types: Newsletter & Banner
  */
-function _wp_manurios_register_newsletter_cpt() {
-	$labels = array(
-		'name'                  => __( 'Newsletter Subscribers', '_wp-manurios' ),
-		'singular_name'         => __( 'Subscriber', '_wp-manurios' ),
-		'menu_name'             => __( 'Newsletter', '_wp-manurios' ),
-		'name_admin_bar'        => __( 'Subscriber', '_wp-manurios' ),
-		'add_new'               => __( 'Add New', '_wp-manurios' ),
-		'add_new_item'          => __( 'Add New Subscriber', '_wp-manurios' ),
-		'new_item'              => __( 'New Subscriber', '_wp-manurios' ),
-		'edit_item'             => __( 'Edit Subscriber', '_wp-manurios' ),
-		'view_item'             => __( 'View Subscriber', '_wp-manurios' ),
-		'all_items'             => __( 'All Subscribers', '_wp-manurios' ),
-		'search_items'          => __( 'Search Subscribers', '_wp-manurios' ),
-		'not_found'             => __( 'No subscribers found.', '_wp-manurios' ),
-		'not_found_in_trash'    => __( 'No subscribers found in Trash.', '_wp-manurios' ),
-	);
+function _wp_manurios_register_custom_post_types() {
+       // Newsletter CPT (mantido)
+       $newsletter_labels = array(
+	       'name'                  => __( 'Newsletter Subscribers', '_wp-manurios' ),
+	       'singular_name'         => __( 'Subscriber', '_wp-manurios' ),
+	       'menu_name'             => __( 'Newsletter', '_wp-manurios' ),
+	       'name_admin_bar'        => __( 'Subscriber', '_wp-manurios' ),
+	       'add_new'               => __( 'Add New', '_wp-manurios' ),
+	       'add_new_item'          => __( 'Add New Subscriber', '_wp-manurios' ),
+	       'new_item'              => __( 'New Subscriber', '_wp-manurios' ),
+	       'edit_item'             => __( 'Edit Subscriber', '_wp-manurios' ),
+	       'view_item'             => __( 'View Subscriber', '_wp-manurios' ),
+	       'all_items'             => __( 'All Subscribers', '_wp-manurios' ),
+	       'search_items'          => __( 'Search Subscribers', '_wp-manurios' ),
+	       'not_found'             => __( 'No subscribers found.', '_wp-manurios' ),
+	       'not_found_in_trash'    => __( 'No subscribers found in Trash.', '_wp-manurios' ),
+       );
+       $newsletter_args = array(
+	       'labels'             => $newsletter_labels,
+	       'public'             => false,
+	       'publicly_queryable' => false,
+	       'show_ui'            => true,
+	       'show_in_menu'       => true,
+	       'menu_icon'          => 'dashicons-email-alt',
+	       'menu_position'      => 25,
+	       'query_var'          => false,
+	       'rewrite'            => false,
+	       'capability_type'    => 'post',
+	       'has_archive'        => false,
+	       'hierarchical'       => false,
+	       'supports'           => array( 'title' ),
+       );
+       register_post_type( 'newsletter', $newsletter_args );
 
-	$args = array(
-		'labels'             => $labels,
-		'public'             => false,
-		'publicly_queryable' => false,
-		'show_ui'            => true,
-		'show_in_menu'       => true,
-		'menu_icon'          => 'dashicons-email-alt',
-		'menu_position'      => 25,
-		'query_var'          => false,
-		'rewrite'            => false,
-		'capability_type'    => 'post',
-		'has_archive'        => false,
-		'hierarchical'       => false,
-		'supports'           => array( 'title' ),
-	);
-
-	register_post_type( 'newsletter', $args );
+       // Banner CPT
+       $banner_labels = array(
+	       'name'                  => __( 'Banners', '_wp-manurios' ),
+	       'singular_name'         => __( 'Banner', '_wp-manurios' ),
+	       'menu_name'             => __( 'Banners', '_wp-manurios' ),
+	       'name_admin_bar'        => __( 'Banner', '_wp-manurios' ),
+	       'add_new'               => __( 'Add New', '_wp-manurios' ),
+	       'add_new_item'          => __( 'Add New Banner', '_wp-manurios' ),
+	       'new_item'              => __( 'New Banner', '_wp-manurios' ),
+	       'edit_item'             => __( 'Edit Banner', '_wp-manurios' ),
+	       'view_item'             => __( 'View Banner', '_wp-manurios' ),
+	       'all_items'             => __( 'All Banners', '_wp-manurios' ),
+	       'search_items'          => __( 'Search Banners', '_wp-manurios' ),
+	       'not_found'             => __( 'No banners found.', '_wp-manurios' ),
+	       'not_found_in_trash'    => __( 'No banners found in Trash.', '_wp-manurios' ),
+       );
+       $banner_args = array(
+	       'labels'             => $banner_labels,
+	       'public'             => true,
+	       'publicly_queryable' => true,
+	       'show_ui'            => true,
+	       'show_in_menu'       => true,
+	       'menu_icon'          => 'dashicons-images-alt2',
+	       'menu_position'      => 20,
+	       'query_var'          => true,
+	       'rewrite'            => array( 'slug' => 'banner' ),
+	       'capability_type'    => 'post',
+	       'has_archive'        => false,
+	       'hierarchical'       => false,
+	       'supports'           => array( 'title', 'editor', 'thumbnail' ),
+       );
+       register_post_type( 'banner', $banner_args );
 }
-add_action( 'init', '_wp_manurios_register_newsletter_cpt' );
+add_action( 'init', '_wp_manurios_register_custom_post_types' );
+
+/**
+ * Banner: Adiciona campos extras (link)
+ */
+function _wp_manurios_banner_meta_box() {
+       add_meta_box(
+	       'banner_link',
+	       __( 'Banner Link', '_wp-manurios' ),
+	       '_wp_manurios_banner_link_callback',
+	       'banner',
+	       'normal',
+	       'default'
+       );
+}
+add_action( 'add_meta_boxes', '_wp_manurios_banner_meta_box' );
+
+function _wp_manurios_banner_link_callback( $post ) {
+       $value = get_post_meta( $post->ID, '_banner_link', true );
+       echo '<label for="_banner_link">' . __( 'Link do banner (opcional):', '_wp-manurios' ) . '</label> ';
+       echo '<input type="url" id="_banner_link" name="_banner_link" value="' . esc_attr( $value ) . '" style="width:100%" placeholder="https://..." />';
+}
+
+function _wp_manurios_save_banner_meta( $post_id ) {
+       if ( array_key_exists( '_banner_link', $_POST ) ) {
+	       update_post_meta( $post_id, '_banner_link', esc_url_raw( $_POST['_banner_link'] ) );
+       }
+}
+add_action( 'save_post_banner', '_wp_manurios_save_banner_meta' );
+/**
+ * Exibe o slider de banners na home
+ */
+function _wp_manurios_home_banner_slider() {
+       if ( ! is_front_page() ) return;
+
+       $args = array(
+	       'post_type'      => 'banner',
+	       'posts_per_page' => -1,
+	       'post_status'    => 'publish',
+	       'orderby'        => 'menu_order date',
+	       'order'          => 'ASC',
+       );
+       $banners = get_posts( $args );
+       if ( empty( $banners ) ) return;
+
+	?>
+		<div class="wp-manurios-banner-slider">
+			<div class="slider-track" style="will-change: transform;">
+			       <?php foreach ( $banners as $i => $banner ) :
+				       $img = get_the_post_thumbnail_url( $banner->ID, 'full' );
+				       $text = apply_filters( 'the_content', $banner->post_content );
+				       $link = get_post_meta( $banner->ID, '_banner_link', true );
+			       ?>
+				<div class="slide">
+				       <?php if ( $img ) : ?>
+					       <?php if ( $link ) : ?><a href="<?php echo esc_url( $link ); ?>"><?php endif; ?>
+						<img src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( get_the_title( $banner ) ); ?>" />
+					       <?php if ( $link ) : ?></a><?php endif; ?>
+				       <?php endif; ?>
+				       <?php if ( $text ) : ?>
+					       <div class="slide-caption">
+						       <div class="slide-caption-inner">
+							       <?php echo $text; ?>
+						       </div>
+					       </div>
+				       <?php endif; ?>
+			       </div>
+			       <?php endforeach; ?>
+		       </div>
+		       <!-- Arrows -->
+			 <button class="slider-arrow slider-arrow-prev" data-dir="prev" aria-label="Anterior">
+				 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+			 </button>
+			 <button class="slider-arrow slider-arrow-next" data-dir="next" aria-label="Próximo">
+				 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+			 </button>
+		       <!-- Dots -->
+		       <div class="slider-dots">
+				       <?php foreach ( $banners as $i => $banner ) : ?>
+				       <button class="slider-dot <?php if ( 0 === $i ) echo 'is-active'; ?>" data-slide="<?php echo $i; ?>" aria-label="Ir para o banner <?php echo $i+1; ?>">
+						 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+					       </button>
+				       <?php endforeach; ?>
+			       </div>
+		</div>
+	       <script>
+	       (function(){
+		       const slider = document.querySelector('.wp-manurios-banner-slider');
+		       if (!slider) return;
+		       const track = slider.querySelector('.slider-track');
+		       const slides = slider.querySelectorAll('.slide');
+		       const dots = slider.querySelectorAll('.slider-dot');
+		       const arrows = slider.querySelectorAll('.slider-arrow');
+		       let current = 0;
+		       function offsetFor(index) {
+			       const w = slider.clientWidth || slider.getBoundingClientRect().width;
+			       return -(index * w);
+		       }
+		       function goTo(idx) {
+			       current = idx;
+			       if (current < 0) current = slides.length-1;
+			       if (current >= slides.length) current = 0;
+			       track.style.transform = `translateX(${offsetFor(current)}px)`;
+			       dots.forEach((d,i)=>d.classList.toggle('is-active',i===current));
+		       }
+		       arrows.forEach(a=>a.addEventListener('click',e=>{
+			       goTo(a.dataset.dir==='next'?current+1:current-1);
+		       }));
+		       dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
+		       // Swipe support
+		       let startX = null;
+		       track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;});
+		       track.addEventListener('touchend',e=>{
+			       if(startX===null)return;
+			       let dx = e.changedTouches[0].clientX-startX;
+			       if(Math.abs(dx)>50) goTo(dx<0?current+1:current-1);
+			       startX=null;
+		       });
+		       window.addEventListener('resize',()=>goTo(current));
+		       goTo(0);
+	       })();
+	       </script>
+	       <style>
+	       .hero-section { position: relative; overflow: hidden; padding: 0; margin: 0; }
+	       .wp-manurios-banner-slider { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
+	       .wp-manurios-banner-slider .slider-track { display: flex; height: 100%; transition: transform 0.7s cubic-bezier(.4,0,.2,1); }
+	       .wp-manurios-banner-slider .slide { flex: 0 0 100%; width: 100%; height: 100%; position: relative; }
+	       .wp-manurios-banner-slider .slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+	       .wp-manurios-banner-slider .slide-caption { position: absolute; left: 0; right: 0; bottom: 2.5rem; display: flex; justify-content: center; padding: 0 1rem; }
+	       .wp-manurios-banner-slider .slide-caption-inner { background: rgba(0,0,0,0.6); color: #fff; padding: 0.75rem 1.25rem; border-radius: 0.5rem; max-width: 40rem; text-align: center; }
+	       .wp-manurios-banner-slider .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 30; background: rgba(0,0,0,0.4); color: #fff; border: 0; border-radius: 9999px; width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+	       .wp-manurios-banner-slider .slider-arrow-prev { left: 0.5rem; }
+	       .wp-manurios-banner-slider .slider-arrow-next { right: 0.5rem; }
+	       .wp-manurios-banner-slider .slider-dots { position: absolute; bottom: 1rem; left: 0; right: 0; display: flex; justify-content: center; gap: 0.5rem; z-index: 30; }
+	       .wp-manurios-banner-slider .slider-dot { width: 1.25rem; height: 1.25rem; border-radius: 9999px; background: rgba(255,255,255,0.6); border: 1px solid #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+	       .wp-manurios-banner-slider .slider-dot.is-active { background: rgba(255,255,255,0.95); }
+	       @media (max-width: 768px) {
+		       .wp-manurios-banner-slider .slide img { object-position: center center; }
+	       }
+	       </style>
+	       <?php
+}
+
 
 /**
  * Customize Newsletter columns in admin
