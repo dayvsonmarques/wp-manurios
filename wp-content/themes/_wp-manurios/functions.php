@@ -129,6 +129,34 @@ endif;
 add_action( 'after_setup_theme', '_wp_manurios_setup' );
 
 /**
+ * Fallback for primary nav when no menu is assigned.
+ */
+function _wp_manurios_nav_menu_fallback( $args ) {
+	$menu_id = '';
+	$menu_class = '';
+
+	if ( is_object( $args ) ) {
+		$menu_id = isset( $args->menu_id ) ? (string) $args->menu_id : '';
+		$menu_class = isset( $args->menu_class ) ? (string) $args->menu_class : '';
+	} elseif ( is_array( $args ) ) {
+		$menu_id = isset( $args['menu_id'] ) ? (string) $args['menu_id'] : '';
+		$menu_class = isset( $args['menu_class'] ) ? (string) $args['menu_class'] : '';
+	}
+
+	$menu_id_attr = $menu_id !== '' ? ' id="' . esc_attr( $menu_id ) . '"' : '';
+	$menu_class_attr = $menu_class !== '' ? ' class="' . esc_attr( $menu_class ) . '"' : '';
+
+	echo '<ul' . $menu_id_attr . $menu_class_attr . '>';
+	wp_list_pages(
+		array(
+			'title_li' => '',
+			'depth'    => 1,
+		)
+	);
+	echo '</ul>';
+}
+
+/**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar

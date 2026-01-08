@@ -93,7 +93,7 @@ $position_class = $is_home ? 'absolute' : 'fixed';
 						'menu_id'        => 'primary-menu',
 						'menu_class'     => 'flex items-center space-x-10 font-menu text-lg',
 						'container'      => false,
-						'fallback_cb'    => false,
+						'fallback_cb'    => '_wp_manurios_nav_menu_fallback',
 					)
 				);
 				?>
@@ -118,7 +118,7 @@ $position_class = $is_home ? 'absolute' : 'fixed';
 						'menu_id'        => 'mobile-menu',
 						'menu_class'     => 'flex flex-col items-center justify-center space-y-8 font-menu text-gray-900',
 						'container'      => false,
-						'fallback_cb'    => false,
+						'fallback_cb'    => '_wp_manurios_nav_menu_fallback',
 					)
 				);
 				?>
