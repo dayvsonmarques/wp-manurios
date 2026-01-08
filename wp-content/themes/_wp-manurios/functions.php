@@ -426,7 +426,7 @@ function _wp_manurios_home_banner_slider() {
 				<div class="slide">
 				       <?php if ( $img ) : ?>
 					       <?php if ( $link ) : ?><a href="<?php echo esc_url( $link ); ?>"><?php endif; ?>
-						<img src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( get_the_title( $banner ) ); ?>" />
+						<img src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( get_the_title( $banner ) ); ?>" draggable="false" />
 					       <?php if ( $link ) : ?></a><?php endif; ?>
 				       <?php endif; ?>
 				       <?php if ( $text ) : ?>
@@ -450,7 +450,7 @@ function _wp_manurios_home_banner_slider() {
 		       <div class="slider-dots">
 				       <?php foreach ( $banners as $i => $banner ) : ?>
 				       <button class="slider-dot <?php if ( 0 === $i ) echo 'is-active'; ?>" data-slide="<?php echo $i; ?>" aria-label="Ir para o banner <?php echo $i+1; ?>">
-						 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+					 <svg width="8" height="8" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
 					       </button>
 				       <?php endforeach; ?>
 			       </div>
@@ -464,6 +464,9 @@ function _wp_manurios_home_banner_slider() {
 		       const dots = slider.querySelectorAll('.slider-dot');
 		       const arrows = slider.querySelectorAll('.slider-arrow');
 		       let current = 0;
+		       const supportsPointer = 'PointerEvent' in window;
+		       let preventClickUntil = 0;
+		       function markDragged() { preventClickUntil = Date.now() + 250; }
 		       function offsetFor(index) {
 			       const w = slider.clientWidth || slider.getBoundingClientRect().width;
 			       return -(index * w);
@@ -479,32 +482,73 @@ function _wp_manurios_home_banner_slider() {
 			       goTo(a.dataset.dir==='next'?current+1:current-1);
 		       }));
 		       dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
-		       // Swipe support
+		       // Drag / swipe support (mouse + touch)
 		       let startX = null;
-		       track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;});
-		       track.addEventListener('touchend',e=>{
-			       if(startX===null)return;
-			       let dx = e.changedTouches[0].clientX-startX;
-			       if(Math.abs(dx)>50) goTo(dx<0?current+1:current-1);
-			       startX=null;
-		       });
+		       let dragging = false;
+		       let moved = false;
+		       function startDrag(x) {
+			       startX = x;
+			       dragging = true;
+			       moved = false;
+			       slider.classList.add('is-dragging');
+		       }
+		       function moveDrag(x) {
+			       if (!dragging || startX === null) return;
+			       const dx = x - startX;
+			       if (Math.abs(dx) > 5) moved = true;
+		       }
+		       function endDrag(x) {
+			       if (!dragging || startX === null) return;
+			       const dx = x - startX;
+			       if (Math.abs(dx) > 50) {
+				       goTo(dx < 0 ? current + 1 : current - 1);
+				       markDragged();
+			       } else if (moved) {
+				       markDragged();
+			       }
+			       startX = null;
+			       dragging = false;
+			       moved = false;
+			       slider.classList.remove('is-dragging');
+		       }
+		       if (supportsPointer) {
+			       track.addEventListener('pointerdown', (e) => {
+				       if (e.pointerType === 'mouse' && e.button !== 0) return;
+				       startDrag(e.clientX);
+				       try { track.setPointerCapture(e.pointerId); } catch (_) {}
+			       });
+			       track.addEventListener('pointermove', (e) => moveDrag(e.clientX));
+			       track.addEventListener('pointerup', (e) => endDrag(e.clientX));
+			       track.addEventListener('pointercancel', (e) => endDrag(e.clientX));
+		       } else {
+			       track.addEventListener('touchstart', (e) => startDrag(e.touches[0].clientX), { passive: true });
+			       track.addEventListener('touchmove', (e) => moveDrag(e.touches[0].clientX), { passive: true });
+			       track.addEventListener('touchend', (e) => endDrag(e.changedTouches[0].clientX));
+		       }
+		       slider.addEventListener('click', (e) => {
+			       if (Date.now() < preventClickUntil) {
+				       e.preventDefault();
+				       e.stopPropagation();
+			       }
+		       }, true);
 		       window.addEventListener('resize',()=>goTo(current));
 		       goTo(0);
 	       })();
 	       </script>
 	       <style>
-	       .hero-section { position: relative; overflow: hidden; padding: 0; margin: 0; }
+	       .hero-section { position: relative; overflow: hidden; padding: 0; margin: 0; height: 90vh; min-height: 600px; }
 	       .wp-manurios-banner-slider { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
-	       .wp-manurios-banner-slider .slider-track { display: flex; height: 100%; transition: transform 0.7s cubic-bezier(.4,0,.2,1); }
+	       .wp-manurios-banner-slider .slider-track { display: flex; height: 100%; transition: transform 0.7s cubic-bezier(.4,0,.2,1); cursor: grab; touch-action: pan-y; }
+	       .wp-manurios-banner-slider.is-dragging .slider-track { cursor: grabbing; }
 	       .wp-manurios-banner-slider .slide { flex: 0 0 100%; width: 100%; height: 100%; position: relative; }
-	       .wp-manurios-banner-slider .slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+	       .wp-manurios-banner-slider .slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; user-select: none; -webkit-user-drag: none; }
 	       .wp-manurios-banner-slider .slide-caption { position: absolute; left: 0; right: 0; bottom: 2.5rem; display: flex; justify-content: center; padding: 0 1rem; }
 	       .wp-manurios-banner-slider .slide-caption-inner { background: rgba(0,0,0,0.6); color: #fff; padding: 0.75rem 1.25rem; border-radius: 0.5rem; max-width: 40rem; text-align: center; }
 	       .wp-manurios-banner-slider .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 30; background: rgba(0,0,0,0.4); color: #fff; border: 0; border-radius: 9999px; width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; }
 	       .wp-manurios-banner-slider .slider-arrow-prev { left: 0.5rem; }
 	       .wp-manurios-banner-slider .slider-arrow-next { right: 0.5rem; }
 	       .wp-manurios-banner-slider .slider-dots { position: absolute; bottom: 1rem; left: 0; right: 0; display: flex; justify-content: center; gap: 0.5rem; z-index: 30; }
-	       .wp-manurios-banner-slider .slider-dot { width: 1.25rem; height: 1.25rem; border-radius: 9999px; background: rgba(255,255,255,0.6); border: 1px solid #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+	       .wp-manurios-banner-slider .slider-dot { width: 0.85rem; height: 0.85rem; border-radius: 9999px; background: rgba(255,255,255,0.6); border: 1px solid #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
 	       .wp-manurios-banner-slider .slider-dot.is-active { background: rgba(255,255,255,0.95); }
 	       @media (max-width: 768px) {
 		       .wp-manurios-banner-slider .slide img { object-position: center center; }
