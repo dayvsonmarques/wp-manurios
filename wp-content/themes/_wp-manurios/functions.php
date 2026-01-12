@@ -191,6 +191,23 @@ function _wp_manurios_scripts() {
 	
 	wp_enqueue_script( '_wp-manurios-script', get_template_directory_uri() . '/js/script.min.js', array(), _WP_MANURIOS_VERSION, true );
 
+	wp_add_inline_script(
+		'_wp-manurios-script',
+		"(function(){\n" .
+		"  function ready(fn){ if(document.readyState!=='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }\n" .
+		"  ready(function(){\n" .
+		"    var contactBtn = document.getElementById('btn-contact-me');\n" .
+		"    if(!contactBtn) return;\n" .
+		"    var whatsappBtn = document.getElementById('btn-whatsapp-float') || document.querySelector('a[aria-label=\"Contato via WhatsApp\"]');\n" .
+		"    if(!whatsappBtn) return;\n" .
+		"    contactBtn.addEventListener('click', function(e){\n" .
+		"      e.preventDefault();\n" .
+		"      whatsappBtn.click();\n" .
+		"    });\n" .
+		"  });\n" .
+		"})();\n"
+	);
+
 	// Alpine.js for interactive components
 	wp_enqueue_script( 'alpinejs', 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js', array(), '3.x.x', true );
 	wp_script_add_data( 'alpinejs', 'defer', true );
