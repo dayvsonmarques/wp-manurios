@@ -432,6 +432,8 @@ function _wp_manurios_home_banner_slider() {
        $banners = get_posts( $args );
        if ( empty( $banners ) ) return;
 
+	$has_multiple_slides = count( $banners ) > 1;
+
 	?>
 		<div class="wp-manurios-banner-slider">
 			<div class="slider-track" style="will-change: transform;">
@@ -456,21 +458,23 @@ function _wp_manurios_home_banner_slider() {
 			       </div>
 			       <?php endforeach; ?>
 		       </div>
-		       <!-- Arrows -->
-			 <button class="slider-arrow slider-arrow-prev" data-dir="prev" aria-label="Anterior">
-				 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-			 </button>
-			 <button class="slider-arrow slider-arrow-next" data-dir="next" aria-label="Próximo">
-				 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-			 </button>
-		       <!-- Dots -->
-		       <div class="slider-dots">
-				       <?php foreach ( $banners as $i => $banner ) : ?>
-				       <button class="slider-dot <?php if ( 0 === $i ) echo 'is-active'; ?>" data-slide="<?php echo $i; ?>" aria-label="Ir para o banner <?php echo $i+1; ?>">
-					 <svg width="8" height="8" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-					       </button>
-				       <?php endforeach; ?>
-			       </div>
+			<?php if ( $has_multiple_slides ) : ?>
+				<!-- Arrows -->
+				<button class="slider-arrow slider-arrow-prev" data-dir="prev" aria-label="Anterior">
+					<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+				</button>
+				<button class="slider-arrow slider-arrow-next" data-dir="next" aria-label="Próximo">
+					<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+				</button>
+				<!-- Dots -->
+				<div class="slider-dots">
+					<?php foreach ( $banners as $i => $banner ) : ?>
+						<button class="slider-dot <?php if ( 0 === $i ) echo 'is-active'; ?>" data-slide="<?php echo $i; ?>" aria-label="Ir para o banner <?php echo $i+1; ?>">
+							<svg width="8" height="8" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+						</button>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
 		</div>
 	       <script>
 	       (function(){
@@ -480,6 +484,16 @@ function _wp_manurios_home_banner_slider() {
 		       const slides = slider.querySelectorAll('.slide');
 		       const dots = slider.querySelectorAll('.slider-dot');
 		       const arrows = slider.querySelectorAll('.slider-arrow');
+		       const dotsWrap = slider.querySelector('.slider-dots');
+		       if (slides.length <= 1) {
+			       arrows.forEach((a) => (a.style.display = 'none'));
+			       if (dotsWrap) dotsWrap.style.display = 'none';
+			       if (track) {
+				       track.style.transform = 'translateX(0px)';
+				       track.style.cursor = 'default';
+			       }
+			       return;
+		       }
 		       let current = 0;
 		       const supportsPointer = 'PointerEvent' in window;
 		       let preventClickUntil = 0;
@@ -667,8 +681,6 @@ function _wp_manurios_nav_menu_items( $items, $args ) {
 		'blog'             => '#blog',
 		'contato'          => '#contact',
 		'contact'          => '#contact',
-		'newsletter'       => '#newsletter',
-		'receba novidades' => '#newsletter',
 	);
 
 	foreach ( $items as $item ) {

@@ -60,14 +60,6 @@ get_header();
 					<p class="text-lg lg:text-xl text-gray-600 leading-relaxed">
 						Confira mais conversas sobre saúde no seu aspecto mais amplo, desde saúde física e mental, até saúde financeira e profissional, a fim de promover qualidade de vida, bem-estar e longevidade saudável.
 					</p>
-					<div class="pt-4">
-						<a href="https://www.youtube.com/@saudem1lugar" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 bg-brand-green text-white font-semibold rounded-lg hover:bg-brand-gold transition-all shadow-lg hover:shadow-xl">
-							<svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-							</svg>
-							<span>Ver Canal no YouTube</span>
-						</a>
-					</div>
 				</div>
 
 			</div>
@@ -211,51 +203,6 @@ get_header();
 			endif;
 			wp_reset_postdata();
 			?>
-		</div>
-	</section>
-
-	<section id="newsletter" class="py-20 newsletter-section">
-		<div class="container mx-auto px-4 lg:px-8">
-			<div class="max-w-3xl mx-auto">
-				<div class="p-8 lg:p-12">
-					<div class="text-center mb-8">
-						<h2 class="text-3xl lg:text-5xl font-bold text-white mb-2 uppercase">Receba novidades</h2>
-						<div class="h-1 w-20 bg-white mx-auto mb-4"></div>
-						<p class="text-2xl text-white my-6">Inscreva-se em nossa newsletter e receba conteúdos exclusivos, dicas e atualizações direto no seu e-mail.</p>
-					</div>
-
-					<form id="newsletter-form" class="space-y-4" x-data="{ submitting: false, message: '', success: false }">
-						<div class="flex flex-col sm:flex-row gap-4">
-							<input
-								type="email"
-								name="email"
-								required
-								placeholder="Seu melhor e-mail"
-								class="flex-1 px-6 py-4 bg-white border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-lg"
-							>
-							<button
-								type="submit"
-								:disabled="submitting"
-								class="px-8 py-4 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-								x-text="submitting ? 'Enviando...' : 'Inscrever-se'"
-							>
-								Inscrever-se
-							</button>
-						</div>
-
-						<div x-show="message" x-transition class="newsletter-message p-4 rounded-lg text-center" :class="success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
-							<p x-text="message"></p>
-						</div>
-					</form>
-
-					<p class="text-sm text-white text-center mt-6">
-						<svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20">
-							<path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
-						</svg>
-						Seus dados estão seguros conosco. Nunca compartilharemos seu e-mail.
-					</p>
-				</div>
-			</div>
 		</div>
 	</section>
 
