@@ -32,14 +32,6 @@
 					<p class="text-3xl text-gray-600 leading-relaxed py-5">
 						Venha melhorar seus hábitos de saúde! Palestrante | Especialista em Oncologia | Mentora de Saúde e Bem-Estar | Escritora | Podcast 'Saúde em 1º Lugar'
 					</p>
-					<div class="pt-4">
-						<a href="<?php echo esc_url(get_permalink(get_page_by_path('sobre')) ?: '#'); ?>" class="inline-flex items-center text-brand-green hover:text-brand-gold font-semibold text-2xl group">
-							<span>Continue lendo</span>
-							<svg class="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-							</svg>
-						</a>
-					</div>
 				</div>
 			</div>
 		</div>

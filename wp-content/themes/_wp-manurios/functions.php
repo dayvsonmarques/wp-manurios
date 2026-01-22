@@ -184,10 +184,14 @@ function _wp_manurios_scripts() {
 	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap', array(), null );
 
 	// Main theme stylesheet (Tailwind)
-	wp_enqueue_style( '_wp-manurios-style', get_stylesheet_uri(), array(), _WP_MANURIOS_VERSION );
+	$style_css_path = get_stylesheet_directory() . '/style.css';
+	$style_css_ver  = file_exists( $style_css_path ) ? (string) filemtime( $style_css_path ) : _WP_MANURIOS_VERSION;
+	wp_enqueue_style( '_wp-manurios-style', get_stylesheet_uri(), array(), $style_css_ver );
 	
 	// Compiled SCSS styles (loaded after Tailwind to override)
-	wp_enqueue_style( '_wp-manurios-scss', get_template_directory_uri() . '/css/main.css', array( '_wp-manurios-style' ), _WP_MANURIOS_VERSION . '-scss' );
+	$main_css_path = get_template_directory() . '/css/main.css';
+	$main_css_ver  = file_exists( $main_css_path ) ? (string) filemtime( $main_css_path ) : ( _WP_MANURIOS_VERSION . '-scss' );
+	wp_enqueue_style( '_wp-manurios-scss', get_template_directory_uri() . '/css/main.css', array( '_wp-manurios-style' ), $main_css_ver );
 	
 	wp_enqueue_script( '_wp-manurios-script', get_template_directory_uri() . '/js/script.min.js', array(), _WP_MANURIOS_VERSION, true );
 
@@ -309,6 +313,38 @@ function _wp_manurios_customize_register( $wp_customize ) {
 		'description' => __( 'Mensagem que será enviada ao clicar no botão', '_wp-manurios' ),
 		'section'     => 'whatsapp_settings',
 		'type'        => 'textarea',
+	) );
+
+	// Links Section
+	$wp_customize->add_section( 'links_settings', array(
+		'title'    => __( 'Links (Home/Redes)', '_wp-manurios' ),
+		'priority' => 31,
+	) );
+
+	// Spotify URL
+	$wp_customize->add_setting( 'spotify_url', array(
+		'default'           => 'https://open.spotify.com/',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( 'spotify_url', array(
+		'label'       => __( 'URL do Spotify', '_wp-manurios' ),
+		'description' => __( 'Link do perfil/playlist no Spotify', '_wp-manurios' ),
+		'section'     => 'links_settings',
+		'type'        => 'url',
+	) );
+
+	// Book purchase URL
+	$wp_customize->add_setting( 'book_purchase_url', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( 'book_purchase_url', array(
+		'label'       => __( 'URL de compra do Livro', '_wp-manurios' ),
+		'description' => __( 'Link para a página de compra (Amazon/Hotmart/etc.)', '_wp-manurios' ),
+		'section'     => 'links_settings',
+		'type'        => 'url',
 	) );
 
 	// Logo Section (using WordPress default custom-logo support)
@@ -679,6 +715,10 @@ function _wp_manurios_nav_menu_items( $items, $args ) {
 		'serviços & produtos' => '#features',
 		'servicos & produtos' => '#features',
 		'blog'             => '#blog',
+		'na mídia'         => '#blog',
+		'na midia'         => '#blog',
+		'mídia'            => '#blog',
+		'midia'            => '#blog',
 		'contato'          => '#contact',
 		'contact'          => '#contact',
 	);

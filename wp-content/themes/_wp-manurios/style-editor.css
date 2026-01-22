@@ -453,6 +453,16 @@ body {
     max-width: 48rem;
   }
 }
+@media (min-width: 48rem) {
+  #features .features-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 64rem) {
+  #features .features-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
 @media (width >= 64rem) {
   .container {
     max-width: 64rem;

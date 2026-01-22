@@ -100,6 +100,22 @@ body.home #masthead:not(.fixed):not(.bg-white) #primary-menu a:hover,
   height: 0 !important;
 }
 
+/* Home: Serviços & Produtos (definitivo) */
+#features .features-grid {
+  display: grid !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+@media (min-width: 768px) {
+  #features .features-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  #features .features-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 #colophon a[href*=instagram] svg {
   width: 3.5rem !important;
   height: 3.5rem !important;
