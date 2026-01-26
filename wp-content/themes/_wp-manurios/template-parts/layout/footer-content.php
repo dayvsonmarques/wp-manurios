@@ -13,7 +13,7 @@
 	<div class="container mx-auto px-4 lg:px-8">
 		<div class="text-center">
 			<div class="flex justify-center gap-12 lg:gap-16 mb-10 lg:mb-14">
-				<?php $spotify_url = get_theme_mod( 'spotify_url', 'https://open.spotify.com/' ); ?>
+				<?php $spotify_url = get_theme_mod( 'spotify_url', 'https://open.spotify.com/show/6TclgDMrPS66MIj85kTUjX' ); ?>
 
 				<a href="https://instagram.com/manurios_al" target="_blank" rel="noopener noreferrer" class="text-white hover:text-brand-gold transition-colors" aria-label="Instagram">
 					<svg class="w-12 h-12 lg:w-14 lg:h-14" fill="currentColor" viewBox="0 0 24 24">

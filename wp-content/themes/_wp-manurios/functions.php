@@ -323,7 +323,7 @@ function _wp_manurios_customize_register( $wp_customize ) {
 
 	// Spotify URL
 	$wp_customize->add_setting( 'spotify_url', array(
-		'default'           => 'https://open.spotify.com/',
+		'default'           => 'https://open.spotify.com/show/6TclgDMrPS66MIj85kTUjX',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 
@@ -343,6 +343,19 @@ function _wp_manurios_customize_register( $wp_customize ) {
 	$wp_customize->add_control( 'book_purchase_url', array(
 		'label'       => __( 'URL de compra do Livro', '_wp-manurios' ),
 		'description' => __( 'Link para a página de compra (Amazon/Hotmart/etc.)', '_wp-manurios' ),
+		'section'     => 'links_settings',
+		'type'        => 'url',
+	) );
+
+	// Podcast RSS URL
+	$wp_customize->add_setting( 'podcast_rss_url', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( 'podcast_rss_url', array(
+		'label'       => __( 'RSS do Podcast (para listar episódios)', '_wp-manurios' ),
+		'description' => __( 'Opcional. Se você tiver um feed RSS do podcast, cole aqui para exibir os 5 últimos episódios em lista compacta na home. Caso contrário, o site tenta montar a lista a partir do link do Spotify.', '_wp-manurios' ),
 		'section'     => 'links_settings',
 		'type'        => 'url',
 	) );
@@ -763,6 +776,118 @@ function _wp_manurios_disable_service_workers() {
 	remove_action( 'wp_front_service_worker', 'wp_default_service_worker' );
 }
 add_action( 'init', '_wp_manurios_disable_service_workers', 1 );
+
+/**
+ * Fetch latest episodes from a Spotify Show URL without requiring API keys.
+ *
+ * Strategy:
+ * - Fetch show page HTML and extract episode URLs
+ * - For each episode, use Spotify oEmbed to get title + thumbnail
+ * - Cache results with transients to avoid frequent requests
+ */
+function _wp_manurios_get_spotify_latest_episodes( $spotify_url, $limit = 5 ) {
+	$spotify_url = trim( (string) $spotify_url );
+	$limit       = max( 1, (int) $limit );
+
+	if ( $spotify_url === '' ) {
+		return array();
+	}
+
+	// Normalize embed URLs back to canonical spotify.com URLs.
+	$spotify_show_url = preg_replace( '~^https?://open\.spotify\.com/embed/~', 'https://open.spotify.com/', $spotify_url, 1 );
+
+	if ( ! preg_match( '~^https?://open\.spotify\.com/show/([A-Za-z0-9]+)~', $spotify_show_url, $m ) ) {
+		return array();
+	}
+
+	$show_id   = (string) $m[1];
+	$cache_key = '_wp_mnr_sp_show_' . $show_id;
+	$cached    = get_transient( $cache_key );
+	if ( is_array( $cached ) && ! empty( $cached ) ) {
+		return array_slice( $cached, 0, $limit );
+	}
+
+	$response = wp_remote_get(
+		$spotify_show_url,
+		array(
+			'timeout'     => 8,
+			'redirection' => 3,
+			'headers'     => array(
+				'User-Agent' => 'Mozilla/5.0 (WordPress; _wp-manurios)',
+			),
+		)
+	);
+
+	if ( is_wp_error( $response ) ) {
+		return array();
+	}
+
+	$body = (string) wp_remote_retrieve_body( $response );
+	if ( $body === '' ) {
+		return array();
+	}
+
+	// Spotify show pages commonly use relative episode links like "/episode/{id}".
+	preg_match_all( '~/(?:intl-[a-z]{2}/)?episode/([A-Za-z0-9]+)~', $body, $matches );
+	$episode_ids = isset( $matches[1] ) ? array_values( array_unique( $matches[1] ) ) : array();
+	$episode_ids = array_slice( $episode_ids, 0, $limit );
+
+	$episode_urls = array();
+	foreach ( $episode_ids as $episode_id ) {
+		$episode_urls[] = 'https://open.spotify.com/episode/' . $episode_id;
+	}
+
+	$episodes = array();
+	foreach ( $episode_urls as $episode_url ) {
+		$episode_url = trim( (string) $episode_url );
+		if ( $episode_url === '' ) {
+			continue;
+		}
+
+		$oembed_key = '_wp_mnr_sp_ep_' . md5( $episode_url );
+		$oembed     = get_transient( $oembed_key );
+
+		if ( ! is_array( $oembed ) ) {
+			$oembed_response = wp_remote_get(
+				'https://open.spotify.com/oembed?url=' . rawurlencode( $episode_url ),
+				array(
+					'timeout'     => 8,
+					'redirection' => 3,
+					'headers'     => array(
+						'User-Agent' => 'Mozilla/5.0 (WordPress; _wp-manurios)',
+					),
+				)
+			);
+
+			if ( ! is_wp_error( $oembed_response ) ) {
+				$json = json_decode( (string) wp_remote_retrieve_body( $oembed_response ), true );
+				if ( is_array( $json ) ) {
+					$oembed = $json;
+					set_transient( $oembed_key, $oembed, 12 * HOUR_IN_SECONDS );
+				}
+			}
+		}
+
+		if ( is_array( $oembed ) ) {
+			$title     = isset( $oembed['title'] ) ? (string) $oembed['title'] : '';
+			$thumb_url = isset( $oembed['thumbnail_url'] ) ? (string) $oembed['thumbnail_url'] : '';
+
+			if ( $title !== '' ) {
+				$episodes[] = array(
+					'title'     => $title,
+					'url'       => $episode_url,
+					'thumb_url' => $thumb_url,
+				);
+			}
+		}
+	}
+
+	if ( ! empty( $episodes ) ) {
+		set_transient( $cache_key, $episodes, 6 * HOUR_IN_SECONDS );
+	}
+
+	return $episodes;
+}
 
 /**
  * Hide admin bar on front-end
