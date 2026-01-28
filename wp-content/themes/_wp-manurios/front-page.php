@@ -343,92 +343,86 @@ get_header();
 			</div>
 
 			<?php
-			$recent_posts = new WP_Query( array(
-				'post_type'      => 'post',
-				'posts_per_page' => 3,
-				'post_status'    => 'publish',
-			) );
+			// Dados exemplo para a seção "Na Mídia"
+			$media_items = array(
+				array(
+					'title'    => 'Entrevista ao Portal G1: Ansiedade e Tecnologia',
+					'source'   => 'Portal G1',
+					'date'     => date('d/m/Y', strtotime('-15 days')),
+					'excerpt'  => 'Confira a batéria completa onde discuto os impactos do uso excessivo de telas na saúde mental e estratégias de equilíbrio.',
+					'link'     => '#',
+					'image'    => get_template_directory_uri() . '/assets/img/banner-1.jpg'
+				),
+				array(
+					'title'    => 'Podcast Mente em Foco: Carreira e Bem-estar',
+					'source'   => 'YouTube',
+					'date'     => date('d/m/Y', strtotime('-1 month')),
+					'excerpt'  => 'Um bate-papo descontraído sobre como gerenciar o estresse no ambiente corporativo e a importância do autocuidado.',
+					'link'     => '#',
+					'image'    => get_template_directory_uri() . '/assets/img/banner-2.jpg'
+				),
+				array(
+					'title'    => 'Revista Saúde: A importância do sono',
+					'source'   => 'Revista Saúde',
+					'date'     => date('d/m/Y', strtotime('-2 months')),
+					'excerpt'  => 'Meu artigo mais recente aborda a higiene do sono como pilar fundamental para uma vida saudável e produtiva.',
+					'link'     => '#',
+					'image'    => get_template_directory_uri() . '/assets/img/banner-1.jpg'
+				)
+			);
+			?>
 
-			if ( $recent_posts->have_posts() ) :
-			?>
-				<div class="grid md:grid-cols-3 gap-8">
-					<?php while ( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
-						<article class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 overflow-hidden group flex flex-col">
-							<?php if ( has_post_thumbnail() ) : ?>
-								<a href="<?php the_permalink(); ?>" class="block relative overflow-hidden">
-									<?php the_post_thumbnail( 'medium_large', array( 'class' => 'w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500' ) ); ?>
-									<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-								</a>
-							<?php else : ?>
-								<a href="<?php the_permalink(); ?>" class="block relative overflow-hidden bg-gray-200 h-56 flex items-center justify-center">
-									<svg class="w-24 h-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-									</svg>
-								</a>
-							<?php endif; ?>
-							<div class="p-8 flex-1 flex flex-col">
-								<?php
-								$categories = get_the_category();
-								if ( ! empty( $categories ) ) :
-								?>
-									<div class="flex flex-wrap gap-2 mb-3">
-										<?php foreach ( array_slice( $categories, 0, 2 ) as $category ) : ?>
-											<a href="<?php echo esc_url( get_category_link( $category->term_id ) ); ?>" class="inline-block px-3 py-1 text-xs font-semibold text-brand-green bg-green-50 rounded-full hover:bg-brand-green hover:text-white transition-colors">
-												<?php echo esc_html( $category->name ); ?>
-											</a>
-										<?php endforeach; ?>
-									</div>
-								<?php endif; ?>
-								
-								<h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-green transition-colors line-clamp-2">
-									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-								</h3>
-								
-								<div class="flex items-center text-sm text-gray-500 mb-4">
-									<svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-									</svg>
-									<time datetime="<?php echo get_the_date( 'c' ); ?>">
-										<?php
-										// Formatar data para pt-BR (dd/mm/yyyy)
-										$date = get_the_date( 'd/m/Y' );
-										echo esc_html( $date );
-										?>
-									</time>
-								</div>
-								
-								<p class="text-gray-600 leading-relaxed mb-4 flex-1 line-clamp-3">
-									<?php echo wp_trim_words( get_the_excerpt(), 20 ); ?>
-								</p>
-								
-								<a href="<?php the_permalink(); ?>" class="inline-flex items-center text-brand-green hover:text-brand-gold font-semibold group/link mt-auto">
-									<span>Ler mais</span>
-									<svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-									</svg>
-								</a>
+			<div class="grid md:grid-cols-3 gap-8">
+				<?php foreach ( $media_items as $item ) : ?>
+					<article class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 overflow-hidden group flex flex-col">
+						<a href="<?php echo esc_url( $item['link'] ); ?>" target="_blank" class="block relative overflow-hidden h-56">
+							<img src="<?php echo esc_url( $item['image'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+							<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+						</a>
+
+						<div class="p-8 flex-1 flex flex-col">
+							<div class="mb-3">
+								<span class="inline-block px-3 py-1 text-xs font-semibold text-brand-green bg-green-50 rounded-full">
+									<?php echo esc_html( $item['source'] ); ?>
+								</span>
 							</div>
-						</article>
-					<?php endwhile; ?>
-				</div>
-				<div class="text-center mt-16">
-					<a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ?: home_url( '/blog' ) ); ?>" class="inline-flex items-center px-8 py-4 bg-brand-green text-white font-semibold rounded-lg hover:bg-brand-gold transition-all shadow-lg hover:shadow-xl">
-						<span>Ver todas as matérias</span>
-						<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-						</svg>
-					</a>
-				</div>
-			<?php
-			else :
-			?>
-				<div class="text-center py-12">
-					<p class="text-gray-600 text-lg">Nenhum post encontrado ainda.</p>
-				</div>
-			<?php
-			endif;
-			wp_reset_postdata();
-			?>
+							
+							<h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-green transition-colors line-clamp-2">
+								<a href="<?php echo esc_url( $item['link'] ); ?>" target="_blank"><?php echo esc_html( $item['title'] ); ?></a>
+							</h3>
+							
+							<div class="flex items-center text-sm text-gray-500 mb-4">
+								<svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+								</svg>
+								<time>
+									<?php echo esc_html( $item['date'] ); ?>
+								</time>
+							</div>
+							
+							<p class="text-gray-600 leading-relaxed mb-4 flex-1 line-clamp-3">
+								<?php echo esc_html( $item['excerpt'] ); ?>
+							</p>
+							
+							<a href="<?php echo esc_url( $item['link'] ); ?>" target="_blank" class="inline-flex items-center text-brand-green hover:text-brand-gold font-semibold group/link mt-auto">
+								<span>Acessar conteúdo</span>
+								<svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+								</svg>
+							</a>
+						</div>
+					</article>
+				<?php endforeach; ?>
+			</div>
+			
+			<div class="text-center mt-16">
+				<a href="#" class="inline-flex items-center px-8 py-4 bg-brand-green text-white font-semibold rounded-lg hover:bg-brand-gold transition-all shadow-lg hover:shadow-xl">
+					<span>Ver mais na mídia</span>
+					<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+					</svg>
+				</a>
+			</div>
 		</div>
 	</section>
 
