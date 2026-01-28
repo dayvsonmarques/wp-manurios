@@ -116,6 +116,62 @@ body.home #masthead:not(.fixed):not(.bg-white) #primary-menu a:hover,
   }
 }
 
+/* Home: Podcast (episódios) */
+#podcast .podcast-episodes-panel {
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#podcast .podcast-episode-item {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 1rem;
+}
+
+@media (max-width: 420px) {
+  #podcast .podcast-episode-item {
+    padding: 0.875rem;
+  }
+}
+
+#podcast .podcast-episode-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+#podcast .podcast-episodes-header-inner {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#podcast .podcast-episode-thumb {
+  width: 120px;
+  height: 120px;
+}
+
+@media (min-width: 1024px) {
+  #podcast .podcast-episode-thumb {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+#podcast .podcast-episode-meta {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+#podcast .podcast-episode-title {
+  color: #fff;
+}
+
+#podcast .podcast-episode-link {
+  color: var(--brand-gold, #f9a234);
+}
+
+#podcast .podcast-episode-link:hover {
+  color: rgba(255, 255, 255, 0.92);
+}
+
 #colophon a[href*=instagram] svg {
   width: 3.5rem !important;
   height: 3.5rem !important;

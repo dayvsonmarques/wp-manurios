@@ -120,7 +120,7 @@ get_header();
 					</div>
 
 					<div class="flex flex-wrap gap-4">
-						<a href="https://www.youtube.com/@saudem1lugar" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 bg-white text-brand-green font-semibold rounded-lg hover:bg-brand-gold hover:text-white transition-all shadow-lg hover:shadow-xl">
+						<a href="https://www.youtube.com/@saudem1lugar" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-4 bg-white text-brand-green font-semibold rounded-lg hover:bg-brand-gold hover:text-white transition-all shadow-lg hover:shadow-xl">
 							<svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 								<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
 							</svg>
@@ -128,7 +128,7 @@ get_header();
 						</a>
 
 						<?php if ( ! empty( $spotify_url ) ) : ?>
-							<a href="<?php echo esc_url( $spotify_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-brand-green transition-all">
+							<a href="<?php echo esc_url( $spotify_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center  px-6 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-brand-green transition-all">
 								<span>Ouça no Spotify</span>
 							</a>
 						<?php endif; ?>
@@ -145,14 +145,16 @@ get_header();
 					</div>
 				</div>
 
-				<div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
-					<div class="p-6 lg:p-8 flex items-center justify-between gap-6">
-						<h3 class="text-2xl lg:text-3xl font-bold text-gray-900">Últimos episódios</h3>
-						<div class="flex items-center gap-3">
-							<span class="text-gray-500 font-semibold">Spotify</span>
-							<svg class="w-10 h-10 text-brand-green" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-								<path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.52 17.29a.75.75 0 0 1-1.03.25c-2.82-1.73-6.37-2.12-10.55-1.16a.75.75 0 0 1-.34-1.46c4.57-1.05 8.49-.6 11.58 1.3.35.2.46.67.24 1.07zm1.47-3.27a.94.94 0 0 1-1.3.31c-3.23-1.98-8.15-2.55-11.95-1.4a.94.94 0 1 1-.54-1.8c4.34-1.31 9.72-.67 13.45 1.62.44.27.59.85.34 1.27zm.13-3.4c-3.87-2.3-10.26-2.51-13.96-1.38a1.13 1.13 0 0 1-.66-2.16c4.25-1.29 11.31-1.04 15.8 1.63a1.13 1.13 0 0 1-1.18 1.91z"/>
-							</svg>
+				<div class="podcast-episodes-panel rounded-2xl shadow-2xl overflow-hidden">
+					<div class="podcast-episodes-header px-6 lg:px-8 py-8 lg:py-10">
+						<div class="podcast-episodes-header-inner flex items-center justify-between gap-6  py-5">
+							<h3 class="text-2xl lg:text-3xl font-bold text-white">Últimos episódios</h3>
+							<div class="flex items-center">
+								<svg class="w-8 h-8 text-white opacity-90" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+									<path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.52 17.29a.75.75 0 0 1-1.03.25c-2.82-1.73-6.37-2.12-10.55-1.16a.75.75 0 0 1-.34-1.46c4.57-1.05 8.49-.6 11.58 1.3.35.2.46.67.24 1.07zm1.47-3.27a.94.94 0 0 1-1.3.31c-3.23-1.98-8.15-2.55-11.95-1.4a.94.94 0 1 1-.54-1.8c4.34-1.31 9.72-.67 13.45 1.62.44.27.59.85.34 1.27zm.13-3.4c-3.87-2.3-10.26-2.51-13.96-1.38a1.13 1.13 0 0 1-.66-2.16c4.25-1.29 11.31-1.04 15.8 1.63a1.13 1.13 0 0 1-1.18 1.91z"/>
+								</svg>
+								<span class="text-white font-semibold opacity-80 ml-2">Spotify</span>
+							</div>
 						</div>
 					</div>
 
@@ -171,14 +173,14 @@ get_header();
 											$thumb_url = (string) $enclosure->get_thumbnail();
 										}
 									?>
-									<div class="p-4 bg-white rounded-xl border border-gray-100 hover:border-brand-green transition-all shadow-lg hover:shadow-2xl">
-										<div class="flex items-start gap-4">
-											<div class="w-14 h-14 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+									<div class="podcast-episode-item rounded-xl transition-all">
+											<div class="flex flex-col sm:flex-row sm:items-center gap-4">
+											<div class="podcast-episode-thumb rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
 												<?php if ( $thumb_url !== '' ) : ?>
 													<img src="<?php echo esc_url( $thumb_url ); ?>" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" />
 												<?php else : ?>
 													<div class="w-full h-full flex items-center justify-center text-gray-400">
-														<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+															<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-2v13" />
 															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19a3 3 0 100-6 3 3 0 000 6z" />
 															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 17a3 3 0 100-6 3 3 0 000 6z" />
@@ -187,13 +189,13 @@ get_header();
 												<?php endif; ?>
 											</div>
 
-											<div class="min-w-0 flex-1">
-												<p class="text-xs text-gray-500 mb-1"><?php echo esc_html( $date ?: '' ); ?></p>
-												<p class="text-sm font-bold text-gray-900 leading-snug line-clamp-2">
+											<div class="min-w-0 flex-1 sm:flex sm:flex-col sm:justify-center sm:min-h-[120px] lg:min-h-[80px]">
+												<p class="podcast-episode-meta text-xs mb-1"><?php echo esc_html( $date ?: '' ); ?></p>
+												<p class="podcast-episode-title text-sm font-bold leading-snug line-clamp-2">
 													<?php echo esc_html( $title ); ?>
 												</p>
 												<div class="pt-2">
-													<a href="<?php echo esc_url( $link ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-brand-green hover:text-brand-gold font-semibold text-sm group">
+													<a href="<?php echo esc_url( $link ); ?>" target="_blank" rel="noopener noreferrer" class="podcast-episode-link inline-flex items-center font-semibold text-sm group">
 														<span>Ouça agora</span>
 														<svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -213,14 +215,14 @@ get_header();
 										$episode_url   = isset( $episode['url'] ) ? (string) $episode['url'] : '';
 										$episode_thumb = isset( $episode['thumb_url'] ) ? (string) $episode['thumb_url'] : '';
 									?>
-									<div class="p-4 bg-white rounded-xl border border-gray-100 hover:border-brand-green transition-all shadow-lg hover:shadow-2xl">
-										<div class="flex items-start gap-4">
-											<div class="w-14 h-14 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+									<div class="podcast-episode-item rounded-xl transition-all">
+											<div class="flex flex-col sm:flex-row sm:items-center gap-4">
+											<div class="podcast-episode-thumb rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
 												<?php if ( $episode_thumb !== '' ) : ?>
 													<img src="<?php echo esc_url( $episode_thumb ); ?>" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async" />
 												<?php else : ?>
 													<div class="w-full h-full flex items-center justify-center text-gray-400">
-														<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+														<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-2v13" />
 															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19a3 3 0 100-6 3 3 0 000 6z" />
 															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 17a3 3 0 100-6 3 3 0 000 6z" />
@@ -229,13 +231,13 @@ get_header();
 												<?php endif; ?>
 											</div>
 
-											<div class="min-w-0 flex-1">
-												<p class="text-xs text-gray-500 mb-1">Spotify</p>
-												<p class="text-sm font-bold text-gray-900 leading-snug line-clamp-2">
+											<div class="min-w-0 flex-1 sm:flex sm:flex-col sm:justify-center sm:min-h-[120px] lg:min-h-[80px]">
+												<p class="podcast-episode-meta text-xs mb-1">Spotify</p>
+												<p class="podcast-episode-title text-sm font-bold leading-snug line-clamp-2">
 													<?php echo esc_html( $episode_title ); ?>
 												</p>
 												<div class="pt-2">
-													<a href="<?php echo esc_url( $episode_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-brand-green hover:text-brand-gold font-semibold text-sm group">
+													<a href="<?php echo esc_url( $episode_url ); ?>" target="_blank" rel="noopener noreferrer" class="podcast-episode-link inline-flex items-center font-semibold text-sm group">
 														<span>Ouça agora</span>
 														<svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
