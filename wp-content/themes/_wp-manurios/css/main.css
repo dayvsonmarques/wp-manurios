@@ -100,119 +100,25 @@ body.home #masthead:not(.fixed):not(.bg-white) #primary-menu a:hover,
   height: 0 !important;
 }
 
-/* Home: Serviços & Produtos (definitivo) */
-#features .features-grid {
-  display: grid !important;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-@media (min-width: 768px) {
-  #features .features-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (min-width: 1024px) {
-  #features .features-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
-/* Home: Podcast (episódios) */
-#podcast .podcast-episodes-panel {
-  background: rgba(0, 0, 0, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-#podcast .podcast-episode-item {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  padding: 1rem;
-}
-
-@media (max-width: 420px) {
-  #podcast .podcast-episode-item {
-    padding: 0.875rem;
-  }
-}
-
-#podcast .podcast-episode-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.22);
-}
-
-#podcast .podcast-episodes-header-inner {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-#podcast .podcast-episode-thumb {
-  width: 120px;
-  height: 120px;
-}
-
-@media (min-width: 1024px) {
-  #podcast .podcast-episode-thumb {
-    width: 80px;
-    height: 80px;
-  }
-}
-
-#podcast .podcast-episode-meta {
-  color: rgba(255, 255, 255, 0.72);
-}
-
-#podcast .podcast-episode-title {
-  color: #fff;
-}
-
-#podcast .podcast-episode-link {
-  color: var(--brand-gold, #f9a234);
-}
-
-#podcast .podcast-episode-link:hover {
-  color: rgba(255, 255, 255, 0.92);
-}
-
-#colophon a[href*=instagram] svg {
-  width: 3.5rem !important;
-  height: 3.5rem !important;
-  min-width: 3.5rem !important;
-  min-height: 3.5rem !important;
-  display: block !important;
-}
-@media (min-width: 1024px) {
-  #colophon a[href*=instagram] svg {
-    width: 4rem !important;
-    height: 4rem !important;
-    min-width: 4rem !important;
-    min-height: 4rem !important;
-  }
-}
-#colophon a[href*=youtube] svg {
+#colophon a[href*=instagram] svg,
+#colophon a[href*=spotify] svg,
+#colophon a[href*=youtube] svg,
+#colophon a[href*=linkedin] svg {
   width: 3.75rem !important;
   height: 3.75rem !important;
   min-width: 3.75rem !important;
   min-height: 3.75rem !important;
+  display: block !important;
 }
 @media (min-width: 1024px) {
-  #colophon a[href*=youtube] svg {
+  #colophon a[href*=instagram] svg,
+  #colophon a[href*=spotify] svg,
+  #colophon a[href*=youtube] svg,
+  #colophon a[href*=linkedin] svg {
     width: 4.5rem !important;
     height: 4.5rem !important;
     min-width: 4.5rem !important;
     min-height: 4.5rem !important;
-  }
-}
-#colophon a[href*=linkedin] svg {
-  width: 3.25rem !important;
-  height: 3.25rem !important;
-  min-width: 3.25rem !important;
-  min-height: 3.25rem !important;
-}
-@media (min-width: 1024px) {
-  #colophon a[href*=linkedin] svg {
-    width: 3.75rem !important;
-    height: 3.75rem !important;
-    min-width: 3.75rem !important;
-    min-height: 3.75rem !important;
   }
 }
 #colophon .footer-copyright {
@@ -299,6 +205,15 @@ html {
   background-color: #027c6b;
 }
 
+#contact {
+  padding-top: 8rem !important;
+}
+@media (min-width: 1024px) {
+  #contact {
+    padding-top: 10rem !important;
+  }
+}
+
 /**
  * Newsletter Component Styles
  */
@@ -370,5 +285,3 @@ html {
 /**
  * Utility Classes
  */
-
-/*# sourceMappingURL=main.css.map */

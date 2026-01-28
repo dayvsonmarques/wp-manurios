@@ -1,44 +1,19 @@
 #colophon {
-  a[href*="instagram"] svg {
-    width: 3.5rem !important;
-    height: 3.5rem !important;
-    min-width: 3.5rem !important;
-    min-height: 3.5rem !important;
-    display: block !important;
-
-    @include responsive($breakpoint-lg) {
-      width: 4rem !important;
-      height: 4rem !important;
-      min-width: 4rem !important;
-      min-height: 4rem !important;
-    }
-  }
-
-  a[href*="youtube"] svg {
+  a[href*="instagram"] svg,
+  a[href*="spotify"] svg,
+  a[href*="youtube"] svg,
+  a[href*="linkedin"] svg {
     width: 3.75rem !important;
     height: 3.75rem !important;
     min-width: 3.75rem !important;
     min-height: 3.75rem !important;
+    display: block !important;
 
     @include responsive($breakpoint-lg) {
       width: 4.5rem !important;
       height: 4.5rem !important;
       min-width: 4.5rem !important;
       min-height: 4.5rem !important;
-    }
-  }
-
-  a[href*="linkedin"] svg {
-    width: 3.25rem !important;
-    height: 3.25rem !important;
-    min-width: 3.25rem !important;
-    min-height: 3.25rem !important;
-
-    @include responsive($breakpoint-lg) {
-      width: 3.75rem !important;
-      height: 3.75rem !important;
-      min-width: 3.75rem !important;
-      min-height: 3.75rem !important;
     }
   }
 

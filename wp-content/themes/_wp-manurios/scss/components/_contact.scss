@@ -2,3 +2,10 @@
 	background-color: $brand-green;
 }
 
+#contact {
+    padding-top: 8rem !important; // 128px
+    
+    @include responsive($breakpoint-lg) {
+        padding-top: 10rem !important; // 160px
+    }
+}
