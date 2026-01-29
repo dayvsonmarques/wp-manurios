@@ -57,10 +57,13 @@
 	// Swiper Navigation Arrows Override
 	.swiper-button-prev,
 	.swiper-button-next {
-		color: $brand-green !important;
 		
 		&:after {
 			color: $brand-green !important;
+		}
+
+		&:hover {
+			color: $brand-gold !important;
 		}
 	}
 }

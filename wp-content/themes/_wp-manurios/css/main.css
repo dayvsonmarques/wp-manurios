@@ -333,6 +333,14 @@ html {
 #blog article .flex.flex-wrap.gap-2 a:last-child {
   margin-right: 0;
 }
+#blog .swiper-button-prev:after,
+#blog .swiper-button-next:after {
+  color: #027c6b !important;
+}
+#blog .swiper-button-prev:hover,
+#blog .swiper-button-next:hover {
+  color: #f9a234 !important;
+}
 
 /**
  * General Page Layout Styles

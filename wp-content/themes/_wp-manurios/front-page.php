@@ -271,7 +271,7 @@ get_header();
 		</div>
 	</section>
 
-	<section id="features" class="py-10 bg-gray-50">
+	<section id="features" class="py-20 lg:py-32 bg-gray-50">
 		<div class="container mx-auto px-4 lg:px-8">
 			<?php $book_purchase_url = get_theme_mod( 'book_purchase_url', '' ); ?>
 			<div class="text-center mb-16">
