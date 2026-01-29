@@ -37,35 +37,6 @@ get_header();
 
 	<div class="section-transition"></div>
 
-	<section id="palestras" class="py-20 lg:py-32 bg-white">
-		<div class="container mx-auto px-4 lg:px-8">
-			<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-				<div class="video-container relative rounded-2xl overflow-hidden shadow-2xl">
-					<iframe
-						class="absolute inset-0 w-full h-full"
-						src="https://www.youtube.com/embed/o-4QM1vbMes"
-						title="Palestra - Saúde em Primeiro Lugar"
-						frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerpolicy="strict-origin-when-cross-origin"
-						allowfullscreen>
-					</iframe>
-				</div>
-
-				<div class="space-y-6">
-					<h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-2 uppercase">
-						Palestras
-					</h2>
-					<div class="h-1 w-20 bg-brand-green mb-4"></div>
-					<p class="text-lg lg:text-xl text-gray-600 leading-relaxed">
-						Confira mais conversas sobre saúde no seu aspecto mais amplo, desde saúde física e mental, até saúde financeira e profissional, a fim de promover qualidade de vida, bem-estar e longevidade saudável.
-					</p>
-				</div>
-
-			</div>
-		</div>
-	</section>
-
 	<section id="podcast" class="py-20 lg:py-32 bg-green">
 		<div class="container mx-auto px-4 lg:px-8">
 			<?php
@@ -145,7 +116,7 @@ get_header();
 					</div>
 				</div>
 
-				<div class="podcast-episodes-panel rounded-2xl shadow-2xl overflow-hidden">
+				<div class="podcast-episodes-panel rounded-2xl shadow-2xl overflow-hidden !pb-8 lg:!pb-12">
 					<div class="podcast-episodes-header px-6 lg:px-8 py-8 lg:py-10">
 						<div class="podcast-episodes-header-inner flex items-center justify-between gap-6  py-5">
 							<h3 class="text-2xl lg:text-3xl font-bold text-white">Últimos episódios</h3>
@@ -195,9 +166,9 @@ get_header();
 													<?php echo esc_html( $title ); ?>
 												</p>
 												<div class="pt-2">
-													<a href="<?php echo esc_url( $link ); ?>" target="_blank" rel="noopener noreferrer" class="podcast-episode-link inline-flex items-center font-semibold text-sm group">
+													<a href="<?php echo esc_url( $link ); ?>" target="_blank" rel="noopener noreferrer" class="podcast-episode-link inline-flex items-center font-bold text-base group">
 														<span>Ouça agora</span>
-														<svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+														<svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
 														</svg>
 													</a>
@@ -237,9 +208,9 @@ get_header();
 													<?php echo esc_html( $episode_title ); ?>
 												</p>
 												<div class="pt-2">
-													<a href="<?php echo esc_url( $episode_url ); ?>" target="_blank" rel="noopener noreferrer" class="podcast-episode-link inline-flex items-center font-semibold text-sm group">
+													<a href="<?php echo esc_url( $episode_url ); ?>" target="_blank" rel="noopener noreferrer" class="podcast-episode-link inline-flex items-center font-bold text-base group">
 														<span>Ouça agora</span>
-														<svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+														<svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
 														</svg>
 													</a>
@@ -267,6 +238,35 @@ get_header();
 						<?php endif; ?>
 					</div>
 				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="palestras" class="py-20 lg:py-32 bg-white">
+		<div class="container mx-auto px-4 lg:px-8">
+			<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+				<div class="video-container relative rounded-2xl overflow-hidden shadow-2xl">
+					<iframe
+						class="absolute inset-0 w-full h-full"
+						src="https://www.youtube.com/embed/o-4QM1vbMes"
+						title="Palestra - Saúde em Primeiro Lugar"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin"
+						allowfullscreen>
+					</iframe>
+				</div>
+
+				<div class="space-y-6">
+					<h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-2 uppercase">
+						Palestras
+					</h2>
+					<div class="h-1 w-20 bg-brand-green mb-4"></div>
+					<p class="text-lg lg:text-xl text-gray-600 leading-relaxed">
+						Confira mais conversas sobre saúde no seu aspecto mais amplo, desde saúde física e mental, até saúde financeira e profissional, a fim de promover qualidade de vida, bem-estar e longevidade saudável.
+					</p>
+				</div>
+
 			</div>
 		</div>
 	</section>
@@ -365,7 +365,7 @@ get_header();
 			?>
 				<!-- Swiper Container with full width relative to section but protected navigation area -->
 				<div class="relative group/slider px-4 md:px-12"> 
-					<div class="swiper midia-swiper !pb-28" style="--swiper-pagination-color: #027c6b; --swiper-pagination-bullet-inactive-color: #d1d5db; --swiper-pagination-bullet-inactive-opacity: 1;">
+					<div class="swiper midia-swiper !pb-28" style="--swiper-theme-color: #027c6b; --swiper-pagination-color: #027c6b; --swiper-pagination-bullet-inactive-color: #d1d5db; --swiper-pagination-bullet-inactive-opacity: 1;">
 						<div class="swiper-wrapper">
 						<?php while ( $midias_query->have_posts() ) : $midias_query->the_post(); 
 							$source_name = get_post_meta( get_the_ID(), '_midia_source_name', true );
@@ -424,8 +424,8 @@ get_header();
 					</div>
 
 					<!-- Navigation -->
-					<div class="swiper-button-prev !text-white !w-12 !h-12 !bg-brand-green !rounded-full !shadow-lg hover:!bg-brand-gold hover:!scale-110 !transition-all after:!text-xl !top-[60%]"></div>
-					<div class="swiper-button-next !text-white !w-12 !h-12 !bg-brand-green !rounded-full !shadow-lg hover:!bg-brand-gold hover:!scale-110 !transition-all after:!text-xl !top-[60%]"></div>
+					<div class="swiper-button-prev !text-brand-green !w-12 !h-12 !bg-white !rounded-full !shadow-lg hover:!bg-brand-gold hover:!text-white hover:!scale-110 !transition-all after:!text-xl !top-[60%]"></div>
+					<div class="swiper-button-next !text-brand-green !w-12 !h-12 !bg-white !rounded-full !shadow-lg hover:!bg-brand-gold hover:!text-white hover:!scale-110 !transition-all after:!text-xl !top-[60%]"></div>
 				</div>
 
 			<?php else : ?>

@@ -147,12 +147,30 @@ function _wp_manurios_nav_menu_fallback( $args ) {
 	$menu_class_attr = $menu_class !== '' ? ' class="' . esc_attr( $menu_class ) . '"' : '';
 
 	echo '<ul' . $menu_id_attr . $menu_class_attr . '>';
-	wp_list_pages(
-		array(
-			'title_li' => '',
-			'depth'    => 1,
-		)
+	
+	// Custom One Page Menu Items
+	$items = array(
+		'#about'     => 'Sobre',
+		'#podcast'   => 'Podcasts',
+		'#palestras' => 'Palestras',
+		'#features'  => 'Serviços & Produtos',
+		'#blog'      => 'Na Mídia',
+		'#contact'   => 'Contato',
 	);
+
+	foreach ( $items as $link => $label ) {
+		// If not home, prepend home_url
+		$href = is_front_page() ? $link : home_url( '/' ) . $link;
+		$section_id = str_replace( '#', '', $link );
+		$is_home = is_front_page();
+		$initial_text_class = $is_home ? 'text-white' : 'text-gray-900';
+		
+		// Alpine logic for class binding
+		$alpine_class = "activeSection === '$section_id' ? 'text-brand-green font-bold' : ((scrolled || mobileMenuOpen) ? 'text-gray-900' : '$initial_text_class')";
+
+		echo '<li class="menu-item"><a href="' . esc_url( $href ) . '" class="transition-colors duration-300 hover:opacity-75" :class="' . $alpine_class . '">' . esc_html( $label ) . '</a></li>';
+	}
+	
 	echo '</ul>';
 }
 

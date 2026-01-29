@@ -13,36 +13,40 @@ $hover_class = $is_home ? 'hover:text-gray-200' : 'hover:text-blue-600';
 $position_class = $is_home ? 'absolute' : 'fixed';
 ?>
 
-<header id="masthead" class="py-4 <?php echo esc_attr( $position_class ); ?> top-0 left-0 right-0 z-50 transition-all duration-300" x-data="{ mobileMenuOpen: false, scrolled: false }" x-init="
-	<?php if ( $is_home ) : ?>
-		const checkScroll = () => {
+<header id="masthead" class="py-4 <?php echo esc_attr( $position_class ); ?> top-0 left-0 right-0 z-50 transition-all duration-300" x-data="{ 
+	mobileMenuOpen: false, 
+	scrolled: false, 
+	activeSection: '',
+	checkScroll() {
+		<?php if ( $is_home ) : ?>
 			const aboutSection = document.getElementById('about');
 			if (aboutSection) {
 				const rect = aboutSection.getBoundingClientRect();
 				// Quando a seção about está entrando na viewport (topo dela está próximo ou acima do topo da viewport)
-				scrolled = rect.top <= 100;
+				this.scrolled = rect.top <= 100;
 			} else {
-				scrolled = false;
+				this.scrolled = false;
 			}
-		};
-		checkScroll();
-	<?php else : ?>
-		scrolled = true;
-	<?php endif; ?>
-" @scroll.window="
-	<?php if ( $is_home ) : ?>
-		const aboutSection = document.getElementById('about');
-		if (aboutSection) {
-			const rect = aboutSection.getBoundingClientRect();
-			// Quando a seção about está entrando na viewport (topo dela está próximo ou acima do topo da viewport)
-			scrolled = rect.top <= 100;
-		} else {
-			scrolled = false;
-		}
-	<?php else : ?>
-		scrolled = true;
-	<?php endif; ?>
-" :class="[scrolled || mobileMenuOpen ? 'fixed bg-white shadow-lg' : '']" :style="(scrolled || mobileMenuOpen) ? 'background-color: #ffffff; position: fixed;' : '<?php echo $is_home ? 'background-color: transparent; position: absolute;' : 'background-color: #ffffff; position: fixed;'; ?>'">
+			
+			const sections = ['about', 'podcast', 'palestras', 'features', 'blog', 'contact'];
+			let newActive = '';
+			const offset = 150;
+			
+			for (const id of sections) {
+				const el = document.getElementById(id);
+				if (el) {
+					const rect = el.getBoundingClientRect();
+					if (rect.top <= offset && rect.bottom > offset) {
+						newActive = id;
+					}
+				}
+			}
+			this.activeSection = newActive;
+		<?php else : ?>
+			this.scrolled = true;
+		<?php endif; ?>
+	}
+}" x-init="checkScroll()" @scroll.window="checkScroll()" :class="[scrolled || mobileMenuOpen ? 'fixed bg-white shadow-lg' : '']" :style="(scrolled || mobileMenuOpen) ? 'background-color: #ffffff; position: fixed;' : '<?php echo $is_home ? 'background-color: transparent; position: absolute;' : 'background-color: #ffffff; position: fixed;'; ?>'">
 	<div class="container mx-auto px-4 lg:px-8">
 		<div class="flex items-center justify-between py-3 lg:py-4">
 			<div class="flex items-center flex-shrink-0 relative z-[60]">

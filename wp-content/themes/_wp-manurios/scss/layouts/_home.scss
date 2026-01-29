@@ -36,21 +36,31 @@
 			text-transform: uppercase;
 			letter-spacing: 0.5px;
 			border-radius: 9999px;
-			background-color: #f0fdf4; // green-50
-			color: #027c6b; // brand-green
+			background-color: $green-50;
+			color: $brand-green;
 			transition: all 0.2s ease;
 			text-decoration: none;
 			
 			&:hover {
-				background-color: #027c6b; // brand-green
-				color: #ffffff !important; // Garantir cor branca no hover
+				background-color: $brand-green;
+				color: $white !important; // Garantir cor branca no hover
 				transform: translateY(-1px);
-				box-shadow: 0 2px 4px rgba(2, 124, 107, 0.2);
+				box-shadow: 0 2px 4px rgba($brand-green, 0.2);
 			}
 			
 			&:last-child {
 				margin-right: 0; // Remover margem do último badge
 			}
+		}
+	}
+
+	// Swiper Navigation Arrows Override
+	.swiper-button-prev,
+	.swiper-button-next {
+		color: $brand-green !important;
+		
+		&:after {
+			color: $brand-green !important;
 		}
 	}
 }
