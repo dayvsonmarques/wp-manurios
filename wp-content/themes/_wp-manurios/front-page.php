@@ -1,21 +1,15 @@
 
 <?php
-/**
- * The front page template file
- *
- * @package _wp-manurios
- */
 
 get_header();
 
-// ...existing code...
+
 ?>
 
 <main id="main" class="site-main home ">
 
 	<section class="hero-section relative h-[85vh] min-h-[600px] p-0 overflow-hidden">
 	   <?php
-	   // Banner slider dentro da hero-section
 	   if ( function_exists('_wp_manurios_home_banner_slider') ) {
 		   _wp_manurios_home_banner_slider();
 	   }
@@ -25,7 +19,6 @@ get_header();
 			   <div></div>
 		   </div>
 	   </div>
-	   <!-- Scroll to next section arrow -->
 	   <a href="#about" class="hero-scroll-arrow text-white hover:text-gray-200 transition-all duration-300 cursor-pointer z-20 flex items-center justify-center absolute left-1/2 -translate-x-1/2" style="bottom: 6rem;" aria-label="Ir para próxima seção">
 		   <svg class="w-8 h-8 lg:w-10 lg:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 			   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M19 13l-7 7-7-7m14-6l-7 7-7-7"/>
@@ -75,7 +68,7 @@ get_header();
 
 			<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 				<div class="space-y-8">
-					<div class="inline-flex items-center px-4 py-2 rounded-full bg-brand-gold text-gray-900 font-semibold text-sm uppercase tracking-wide">
+					<div class="inline-flex items-center px-6 py-2 rounded-full bg-brand-gold text-gray-900 font-semibold text-sm uppercase tracking-wide">
 						Podcast
 					</div>
 
@@ -105,15 +98,6 @@ get_header();
 						<?php endif; ?>
 					</div>
 
-					<div class="relative rounded-2xl overflow-hidden shadow-2xl">
-						<img
-							src="<?php echo esc_url( get_theme_file_uri( 'assets/img/banner-2.jpg' ) ); ?>"
-							alt="<?php echo esc_attr__( 'Podcast', '_wp-manurios' ); ?>"
-							class="w-full h-auto object-cover"
-							loading="lazy"
-							decoding="async"
-						/>
-					</div>
 				</div>
 
 				<div class="podcast-episodes-panel rounded-2xl shadow-2xl overflow-hidden !pb-8 lg:!pb-12">
@@ -345,14 +329,13 @@ get_header();
 			<?php
 			$midias_query = new WP_Query( array(
 				'post_type'      => 'midias-digitais',
-				'posts_per_page' => -1, // Load all media items for horizontal scroll
+				'posts_per_page' => -1,
 				'post_status'    => 'publish',
 				'orderby'        => 'meta_value',
 				'meta_key'       => '_midia_date_custom',
 				'order'          => 'DESC',
 			) );
 			
-			// Fallback
 			if ( ! $midias_query->have_posts() ) {
 				 $midias_query = new WP_Query( array(
 					'post_type'      => 'midias-digitais',
@@ -363,7 +346,6 @@ get_header();
 
 			if ( $midias_query->have_posts() ) :
 			?>
-				<!-- Swiper Container with full width relative to section but protected navigation area -->
 				<div class="relative group/slider px-4 md:px-12"> 
 					<div class="swiper midia-swiper !pb-28" style="--swiper-theme-color: #027c6b; --swiper-pagination-color: #027c6b; --swiper-pagination-bullet-inactive-color: #d1d5db; --swiper-pagination-bullet-inactive-opacity: 1;">
 						<div class="swiper-wrapper">
@@ -419,11 +401,9 @@ get_header();
 						<?php endwhile; ?>
 						</div>
 						
-						<!-- Pagination -->
 						<div class="swiper-pagination !bottom-0"></div>
 					</div>
 
-					<!-- Navigation -->
 					<div class="swiper-button-prev !text-brand-green !w-12 !h-12 !bg-white !rounded-full !shadow-lg hover:!bg-brand-gold hover:!text-white hover:!scale-110 !transition-all after:!text-xl !top-[60%]"></div>
 					<div class="swiper-button-next !text-brand-green !w-12 !h-12 !bg-white !rounded-full !shadow-lg hover:!bg-brand-gold hover:!text-white hover:!scale-110 !transition-all after:!text-xl !top-[60%]"></div>
 				</div>

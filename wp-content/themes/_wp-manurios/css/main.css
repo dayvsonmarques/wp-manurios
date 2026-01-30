@@ -348,5 +348,24 @@ html {
 /**
  * Utility Classes
  */
+.text-brand-green {
+  color: #027c6b !important;
+}
+
+.text-brand-gold {
+  color: #f9a234 !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+.text-gray-900 {
+  color: #1a202c !important;
+}
+
+.font-bold {
+  font-weight: 700 !important;
+}
 
 /*# sourceMappingURL=main.css.map */

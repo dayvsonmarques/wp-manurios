@@ -2,5 +2,26 @@
  * Utility Classes
  */
 
-// Add utility classes here if needed
+// Colors
+.text-brand-green {
+	color: $brand-green !important;
+}
+
+.text-brand-gold {
+	color: $brand-gold !important;
+}
+
+.text-white {
+	color: $white !important;
+}
+
+.text-gray-900 {
+	color: #1a202c !important;
+}
+
+// Typography
+.font-bold {
+	font-weight: 700 !important;
+}
+
 
