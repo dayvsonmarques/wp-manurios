@@ -68,3 +68,10 @@
 	}
 }
 
+
+// Podcast scrollable list
+.podcast-episodes-list {
+    max-height: 420px; // Slightly more than 3 items to show cut
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}

@@ -54,7 +54,7 @@ get_header();
 
 				$feed = fetch_feed( $podcast_rss_url );
 				if ( ! is_wp_error( $feed ) ) {
-					$maxitems = (int) $feed->get_item_quantity( 5 );
+					$maxitems = (int) $feed->get_item_quantity( 10 );
 					if ( $maxitems > 0 ) {
 						$podcast_items = (array) $feed->get_items( 0, $maxitems );
 					}
@@ -62,7 +62,7 @@ get_header();
 			}
 
 			if ( empty( $podcast_items ) && function_exists( '_wp_manurios_get_spotify_latest_episodes' ) ) {
-				$spotify_episode_items = _wp_manurios_get_spotify_latest_episodes( $spotify_url, 5 );
+				$spotify_episode_items = _wp_manurios_get_spotify_latest_episodes( $spotify_url, 10 );
 			}
 			?>
 
@@ -115,7 +115,7 @@ get_header();
 
 					<div class="px-6 lg:px-8 pb-6 lg:pb-8">
 						<?php if ( ! empty( $podcast_items ) ) : ?>
-							<div class="space-y-4">
+							<div class="space-y-4 podcast-episodes-list custom-scrollbar">
 								<?php foreach ( $podcast_items as $item ) : ?>
 									<?php
 										$title = (string) $item->get_title();
@@ -163,7 +163,7 @@ get_header();
 								<?php endforeach; ?>
 							</div>
 						<?php elseif ( ! empty( $spotify_episode_items ) ) : ?>
-							<div class="space-y-4">
+							<div class="space-y-4 podcast-episodes-list custom-scrollbar">
 								<?php foreach ( $spotify_episode_items as $episode ) : ?>
 									<?php
 										$episode_title = isset( $episode['title'] ) ? (string) $episode['title'] : '';
