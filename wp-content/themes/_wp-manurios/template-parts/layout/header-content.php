@@ -46,7 +46,7 @@ $position_class = $is_home ? 'absolute' : 'fixed';
 			this.scrolled = true;
 		<?php endif; ?>
 	}
-}" x-init="checkScroll()" @scroll.window="checkScroll()" :class="[scrolled || mobileMenuOpen ? 'fixed bg-white shadow-lg' : '']" :style="(scrolled || mobileMenuOpen) ? 'background-color: #ffffff; position: fixed;' : '<?php echo $is_home ? 'background-color: transparent; position: absolute;' : 'background-color: #ffffff; position: fixed;'; ?>'">
+}" x-init="checkScroll(); $watch('mobileMenuOpen', value => document.body.classList.toggle('menu-open', value))" @scroll.window="checkScroll()" :class="[scrolled || mobileMenuOpen ? 'fixed bg-white shadow-lg' : '']" :style="(scrolled || mobileMenuOpen) ? 'background-color: #ffffff; position: fixed;' : '<?php echo $is_home ? 'background-color: transparent; position: absolute;' : 'background-color: #ffffff; position: fixed;'; ?>'">
 	<div class="container mx-auto px-4 lg:px-8">
 		<div class="flex items-center justify-between py-3 lg:py-4">
 			<div class="flex items-center flex-shrink-0 relative z-[60]">
@@ -103,7 +103,7 @@ $position_class = $is_home ? 'absolute' : 'fixed';
 				?>
 			</nav>
 
-			<button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden focus:outline-none ml-auto flex-shrink-0 relative z-[60] transition-colors" :class="(scrolled || mobileMenuOpen) ? 'text-gray-900 hover:text-gray-700' : '<?php echo $is_home ? 'text-white hover:text-gray-200' : 'text-gray-600 hover:text-gray-900'; ?>'" aria-label="<?php esc_attr_e( 'Toggle Menu', '_wp-manurios' ); ?>">
+			<button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden focus:outline-none ml-auto flex-shrink-0 relative z-[80] transition-colors" :class="(scrolled || mobileMenuOpen) ? 'text-gray-900 hover:text-gray-700' : '<?php echo $is_home ? 'text-white hover:text-gray-200' : 'text-gray-600 hover:text-gray-900'; ?>'" aria-label="<?php esc_attr_e( 'Toggle Menu', '_wp-manurios' ); ?>">
 				<svg x-show="!mobileMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
 				</svg>
@@ -113,14 +113,14 @@ $position_class = $is_home ? 'absolute' : 'fixed';
 			</button>
 		</div>
 
-		<div x-show="mobileMenuOpen" x-transition class="mobile-menu-overlay lg:hidden fixed inset-0 top-0 bg-white z-50 flex items-center justify-center" @click.away="mobileMenuOpen = false">
-			<div class="w-full h-full flex items-center justify-center px-4">
+		<div x-show="mobileMenuOpen" x-transition class="mobile-menu-overlay lg:hidden fixed inset-0 top-0 bg-white z-[70] flex items-center justify-center" @click.away="mobileMenuOpen = false">
+			<div class="w-full h-full flex items-center justify-center px-4" @click="if($event.target.closest('a')) mobileMenuOpen = false">
 				<?php
 				wp_nav_menu(
 					array(
 						'theme_location' => 'menu-1',
 						'menu_id'        => 'mobile-menu',
-						'menu_class'     => 'flex flex-col items-center justify-center space-y-8 font-menu text-gray-900',
+						'menu_class'     => 'flex flex-col items-center justify-center space-y-4 font-menu text-gray-900',
 						'container'      => false,
 						'fallback_cb'    => '_wp_manurios_nav_menu_fallback',
 					)

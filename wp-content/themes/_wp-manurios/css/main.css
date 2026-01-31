@@ -101,6 +101,30 @@ body.home #masthead:not(.fixed):not(.bg-white) #primary-menu a:hover,
   height: 0 !important;
 }
 
+.mobile-menu-overlay {
+  z-index: 70 !important;
+}
+.mobile-menu-overlay .menu-item {
+  margin: 0 !important;
+  margin-bottom: 25px !important;
+  padding: 0 !important;
+}
+.mobile-menu-overlay .menu-item > a {
+  padding: 0 !important;
+}
+.mobile-menu-overlay .menu-item + .menu-item {
+  margin-top: 0 !important;
+}
+
+body.menu-open #btn-whatsapp-float {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+#masthead button.lg\:hidden {
+  z-index: 80 !important;
+}
+
 #colophon a[href*=instagram] svg,
 #colophon a[href*=spotify] svg,
 #colophon a[href*=youtube] svg,

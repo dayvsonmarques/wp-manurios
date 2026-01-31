@@ -54,7 +54,7 @@ get_header();
 
 				$feed = fetch_feed( $podcast_rss_url );
 				if ( ! is_wp_error( $feed ) ) {
-					$maxitems = (int) $feed->get_item_quantity( 10 );
+					$maxitems = (int) $feed->get_item_quantity( 5 );
 					if ( $maxitems > 0 ) {
 						$podcast_items = (array) $feed->get_items( 0, $maxitems );
 					}
@@ -62,7 +62,7 @@ get_header();
 			}
 
 			if ( empty( $podcast_items ) && function_exists( '_wp_manurios_get_spotify_latest_episodes' ) ) {
-				$spotify_episode_items = _wp_manurios_get_spotify_latest_episodes( $spotify_url, 10 );
+				$spotify_episode_items = _wp_manurios_get_spotify_latest_episodes( $spotify_url, 5 );
 			}
 			?>
 

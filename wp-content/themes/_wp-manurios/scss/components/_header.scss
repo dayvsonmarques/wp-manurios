@@ -67,3 +67,34 @@ body.home #masthead:not(.fixed):not(.bg-white) #primary-menu a:hover,
 	width: 0 !important;
 	height: 0 !important;
 }
+
+// Mobile Menu Overrides
+.mobile-menu-overlay {
+    z-index: 70 !important; // Override Tailwind z-50
+    
+    // Reset margins and force smaller gap
+    .menu-item {
+        margin: 0 !important;
+        margin-bottom: 25px !important;
+        padding: 0 !important;
+    }
+    
+    .menu-item > a {
+        padding: 0 !important;
+    }
+
+    .menu-item + .menu-item {
+        margin-top: 0 !important;
+    }
+}
+
+// Hide WhatsApp Button when Mobile Menu is Open
+body.menu-open #btn-whatsapp-float {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+// Toggle Button
+#masthead button.lg\:hidden {
+    z-index: 80 !important; // Override Tailwind relative z-[60]
+}
