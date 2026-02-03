@@ -21,7 +21,7 @@
                     Palestras
                 </h2>
                 <div class="h-1 w-20 bg-brand-green mb-4"></div>
-                <p class="text-lg lg:text-xl text-gray-600 leading-relaxed">
+                <p class="text-3xl text-gray-600 leading-relaxed">
                     Confira mais conversas sobre saúde no seu aspecto mais amplo, desde saúde física e mental, até saúde financeira e profissional, a fim de promover qualidade de vida, bem-estar e longevidade saudável.
                 </p>
             </div>

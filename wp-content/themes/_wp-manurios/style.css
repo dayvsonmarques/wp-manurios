@@ -669,9 +669,6 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
   }
-  .py-2 {
-    padding-block: calc(var(--spacing) * 2);
-  }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
   }
@@ -693,8 +690,8 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   .pt-2 {
     padding-top: calc(var(--spacing) * 2);
   }
-  .pt-10 {
-    padding-top: calc(var(--spacing) * 10);
+  .pt-20 {
+    padding-top: calc(var(--spacing) * 20);
   }
   .\!pb-8 {
     padding-bottom: calc(var(--spacing) * 8) !important;
@@ -718,10 +715,6 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   .text-3xl {
     font-size: var(--text-3xl);
     line-height: var(--tw-leading, var(--text-3xl--line-height));
-  }
-  .text-4xl {
-    font-size: var(--text-4xl);
-    line-height: var(--tw-leading, var(--text-4xl--line-height));
   }
   .text-base {
     font-size: var(--text-base);
@@ -758,10 +751,6 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
-  }
-  .tracking-wide {
-    --tw-tracking: var(--tracking-wide);
-    letter-spacing: var(--tracking-wide);
   }
   .text-gray-400 {
     color: var(--color-gray-400);
@@ -1186,9 +1175,9 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
       padding-block: calc(var(--spacing) * 32);
     }
   }
-  .lg\:pt-14 {
+  .lg\:pt-32 {
     @media (width >= 64rem) {
-      padding-top: calc(var(--spacing) * 14);
+      padding-top: calc(var(--spacing) * 32);
     }
   }
   .lg\:\!pb-12 {
@@ -1217,12 +1206,6 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
     @media (width >= 64rem) {
       font-size: var(--text-5xl);
       line-height: var(--tw-leading, var(--text-5xl--line-height));
-    }
-  }
-  .lg\:text-6xl {
-    @media (width >= 64rem) {
-      font-size: var(--text-6xl);
-      line-height: var(--tw-leading, var(--text-6xl--line-height));
     }
   }
   .lg\:text-xl {
@@ -1329,10 +1312,6 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   inherits: false;
 }
 @property --tw-font-weight {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-tracking {
   syntax: "*";
   inherits: false;
 }
@@ -1450,7 +1429,6 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
       --tw-gradient-to-position: 100%;
       --tw-leading: initial;
       --tw-font-weight: initial;
-      --tw-tracking: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;

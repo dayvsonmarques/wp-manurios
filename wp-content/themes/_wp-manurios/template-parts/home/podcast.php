@@ -43,11 +43,11 @@
             <div class="space-y-8">
                 <div class="space-y-4">
                     <p class="text-white opacity-90 text-lg">Conheça o programa</p>
-                    <h2 class="text-4xl lg:text-6xl font-bold text-white">Saúde em 1º Lugar</h2>
-                    <p class="text-white opacity-90 text-lg lg:text-xl leading-relaxed">
+                    <h2 class="text-3xl lg:text-5xl font-bold text-white uppercase">Saúde em 1º Lugar</h2>
+                    <p class="text-white opacity-90 text-3xl leading-relaxed">
                         Conversas e reflexões sobre saúde no sentido mais amplo — física, mental, financeira e profissional — com histórias reais e insights práticos.
                     </p>
-                    <p class="text-white opacity-90 text-lg lg:text-xl leading-relaxed">
+                    <p class="text-white opacity-90 text-3xl leading-relaxed">
                         Ouça nas principais plataformas e acompanhe os episódios.
                     </p>
                 </div>
