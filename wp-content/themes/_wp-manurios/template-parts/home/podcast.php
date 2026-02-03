@@ -42,12 +42,12 @@
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div class="space-y-8">
                 <div class="space-y-4">
-                    <p class="text-white opacity-90 text-base font-semibold tracking-wide uppercase">Conheça o programa</p>
+                    <p class="text-white text-base font-semibold tracking-wide uppercase">Conheça o programa</p>
                     <h2 class="text-3xl lg:text-5xl font-bold text-white uppercase">Saúde em 1º Lugar</h2>
-                    <p class="text-white opacity-90 text-xl leading-relaxed">
+                    <p class="text-2xl text-white leading-relaxed">
                         Conversas e reflexões sobre saúde no sentido mais amplo — física, mental, financeira e profissional — com histórias reais e insights práticos.
                     </p>
-                    <p class="text-white opacity-90 text-xl leading-relaxed">
+                    <p class="text-white text-2xl leading-relaxed">
                         Ouça nas principais plataformas e acompanhe os episódios.
                     </p>
                 </div>
@@ -61,7 +61,10 @@
                     </a>
 
                     <?php if ( ! empty( $spotify_url ) ) : ?>
-                        <a href="<?php echo esc_url( $spotify_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center  px-6 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-brand-green transition-all">
+                        <a href="<?php echo esc_url( $spotify_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-[#18C8BB] transition-all shadow-lg hover:shadow-xl group">
+                            <svg class="w-5 h-5 mr-2 transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.52 17.29a.75.75 0 0 1-1.03.25c-2.82-1.73-6.37-2.12-10.55-1.16a.75.75 0 0 1-.34-1.46c4.57-1.05 8.49-.6 11.58 1.3.35.2.46.67.24 1.07zm1.47-3.27a.94.94 0 0 1-1.3.31c-3.23-1.98-8.15-2.55-11.95-1.4a.94.94 0 1 1-.54-1.8c4.34-1.31 9.72-.67 13.45 1.62.44.27.59.85.34 1.27zm.13-3.4c-3.87-2.3-10.26-2.51-13.96-1.38a1.13 1.13 0 0 1-.66-2.16c4.25-1.29 11.31-1.04 15.8 1.63a1.13 1.13 0 0 1-1.18 1.91z"/>
+                            </svg>
                             <span>Ouça no Spotify</span>
                         </a>
                     <?php endif; ?>
