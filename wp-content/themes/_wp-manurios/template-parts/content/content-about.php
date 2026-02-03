@@ -26,10 +26,10 @@
 				</div>
 
 				<div class="space-y-6">
-					<p class="text-3xl text-gray-600 leading-relaxed py-5">
+					<p class="text-2xl text-gray-600 leading-relaxed py-5">
 						Enfermeira há mais de 20 anos e 1ª enfermeira do Brasil certificada em Medicina do Estilo de Vida pelo IBLM e CBMEV.
 					</p>
-					<p class="text-3xl text-gray-600 leading-relaxed py-5">
+					<p class="text-2xl text-gray-600 leading-relaxed py-5">
 						Venha melhorar seus hábitos de saúde! Palestrante | Especialista em Oncologia | Mentora de Saúde e Bem-Estar | Escritora | Podcast 'Saúde em 1º Lugar'
 					</p>
 				</div>

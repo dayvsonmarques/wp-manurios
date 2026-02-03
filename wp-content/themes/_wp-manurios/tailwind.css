@@ -24,3 +24,13 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
 @source "./**/*.php";
 @source "./**/*.html";
 @source "./**/*.js";
+
+@theme {
+  --color-brand-green: #18C8BB;
+  --color-brand-gold: #f9a234;
+  --color-brand-orange: #ff6b35;
+  --color-brand-green-mid: #3c8e5a;
+  --color-brand-green-light: #749d41;
+  --color-brand-gold-dark: #b4a42a;
+  --color-green-50: #f0fdf4;
+}
