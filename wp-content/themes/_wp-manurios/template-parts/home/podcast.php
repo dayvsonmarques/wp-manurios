@@ -42,12 +42,12 @@
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div class="space-y-8">
                 <div class="space-y-4">
-                    <p class="text-white opacity-90 text-lg">Conheça o programa</p>
+                    <p class="text-white opacity-90 text-base font-semibold tracking-wide uppercase">Conheça o programa</p>
                     <h2 class="text-3xl lg:text-5xl font-bold text-white uppercase">Saúde em 1º Lugar</h2>
-                    <p class="text-white opacity-90 text-3xl leading-relaxed">
+                    <p class="text-white opacity-90 text-xl leading-relaxed">
                         Conversas e reflexões sobre saúde no sentido mais amplo — física, mental, financeira e profissional — com histórias reais e insights práticos.
                     </p>
-                    <p class="text-white opacity-90 text-3xl leading-relaxed">
+                    <p class="text-white opacity-90 text-xl leading-relaxed">
                         Ouça nas principais plataformas e acompanhe os episódios.
                     </p>
                 </div>

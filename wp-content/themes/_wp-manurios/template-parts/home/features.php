@@ -7,7 +7,7 @@
         <div class="text-center mb-16">
             <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-2 uppercase">Serviços & Produtos</h2>
             <div class="h-1 w-20 bg-brand-green mx-auto mb-4"></div>
-            <p class="text-3xl text-gray-600 max-w-2xl mx-auto">Soluções em saúde para promover seu bem-estar integral</p>
+            <p class="text-xl lg:text-2xl text-gray-600 max-w-2xl mx-auto">Soluções em saúde para promover seu bem-estar integral</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -18,7 +18,7 @@
                     </svg>
                 </div>
                 <h3 class="text-2xl font-bold text-gray-900 mb-4">Palestras</h3>
-                <p class="text-gray-600 leading-relaxed">Conteúdos inspiradores sobre saúde física, mental, financeira e profissional para seu evento.</p>
+                <p class="text-lg text-gray-600 leading-relaxed">Conteúdos inspiradores sobre saúde física, mental, financeira e profissional para seu evento.</p>
             </div>
 
             <div class="features-grid__item p-10 md:p-12 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group text-center">
@@ -28,7 +28,7 @@
                     </svg>
                 </div>
                 <h3 class="text-2xl font-bold text-gray-900 mb-4">Livro</h3>
-                <p class="text-gray-600 leading-relaxed">Acesse o link de compra do livro.</p>
+                <p class="text-lg text-gray-600 leading-relaxed">Acesse o link de compra do livro.</p>
                 <?php $book_purchase_url = 'https://pag.ae/7ZywmJvEn';
                     if ( ! empty( $book_purchase_url ) ) : ?>
                     <div class="mt-8">
@@ -49,7 +49,7 @@
                     </svg>
                 </div>
                 <h3 class="text-2xl font-bold text-gray-900 mb-4">Serviço 1</h3>
-                <p class="text-gray-600 leading-relaxed">Descrição do serviço 1.</p>
+                <p class="text-lg text-gray-600 leading-relaxed">Descrição do serviço 1.</p>
             </div>
 
             <div class="features-grid__item p-10 md:p-12 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-brand-green group text-center">
@@ -59,7 +59,7 @@
                     </svg>
                 </div>
                 <h3 class="text-2xl font-bold text-gray-900 mb-4">Produto 2</h3>
-                <p class="text-gray-600 leading-relaxed">Descrição do produto 2.</p>
+                <p class="text-lg text-gray-600 leading-relaxed">Descrição do produto 2.</p>
             </div>
         </div>
     </div>

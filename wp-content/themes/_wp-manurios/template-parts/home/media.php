@@ -6,7 +6,7 @@
         <div class="text-center mb-16">
             <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-2 uppercase">Na mídia</h2>
             <div class="h-1 w-20 bg-brand-green mx-auto mb-4"></div>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Confira matérias, entrevistas e conteúdos em destaque</p>
+            <p class="text-xl lg:text-2xl text-gray-600 max-w-2xl mx-auto">Confira matérias, entrevistas e conteúdos em destaque</p>
         </div>
 
         <?php
@@ -68,7 +68,7 @@
                                         </time>
                                     </div>
                                     
-                                    <p class="text-gray-600 leading-relaxed mb-4 flex-1 line-clamp-3">
+                                    <p class="text-lg text-gray-600 leading-relaxed mb-4 flex-1 line-clamp-3">
                                         <?php echo wp_trim_words( get_the_excerpt(), 20 ); ?>
                                     </p>
                                     
