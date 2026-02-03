@@ -60,7 +60,8 @@ h1, h2, h3, h4, h5, h6 {
 .site-logo img {
   max-height: 60px;
   width: auto;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 body.home #masthead.absolute #primary-menu a,
@@ -303,6 +304,9 @@ html {
   background-color: #ffffff !important;
   color: #1f2937;
 }
+.newsletter-section input[type=email]::-moz-placeholder {
+  color: #9ca3af;
+}
 .newsletter-section input[type=email]::placeholder {
   color: #9ca3af;
 }
@@ -398,6 +402,10 @@ html {
   font-weight: 700 !important;
 }
 
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
@@ -411,10 +419,4 @@ html {
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: rgba(255, 255, 255, 0.5);
-}
-.custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
-}
-
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

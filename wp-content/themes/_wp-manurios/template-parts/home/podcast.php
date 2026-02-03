@@ -41,10 +41,6 @@
 
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div class="space-y-8">
-                <div class="inline-flex items-center px-6 py-2 rounded-full bg-brand-gold text-gray-900 font-semibold text-sm uppercase tracking-wide">
-                    Podcast
-                </div>
-
                 <div class="space-y-4">
                     <p class="text-white opacity-90 text-lg">Conheça o programa</p>
                     <h2 class="text-4xl lg:text-6xl font-bold text-white">Saúde em 1º Lugar</h2>
