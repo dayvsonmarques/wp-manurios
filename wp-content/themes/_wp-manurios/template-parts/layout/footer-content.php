@@ -9,7 +9,8 @@
 
 ?>
 
-<footer id="colophon" class="bg-green my-0 pt-20 lg:pt-32">
+<footer id="colophon" class="bg-green my-0 pt-20 lg:pt-32 relative">
+	<span id="contact" class="absolute top-0 transform -translate-y-24"></span>
 	<div class="container mx-auto px-4 lg:px-8">
 		<div class="text-center">
 			<div class="flex justify-center gap-12 lg:gap-16 mb-10 lg:mb-14">
