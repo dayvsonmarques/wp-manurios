@@ -439,8 +439,8 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   .h-\[85vh\] {
     height: 85vh;
   }
-  .h-\[380px\] {
-    height: 380px;
+  .h-auto {
+    height: auto;
   }
   .h-full {
     height: 100%;
@@ -641,9 +641,6 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   .object-cover {
     object-fit: cover;
   }
-  .object-center {
-    object-position: center;
-  }
   .p-0 {
     padding: calc(var(--spacing) * 0);
   }
@@ -676,6 +673,9 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
+  }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
   }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
@@ -893,17 +893,17 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
       }
     }
   }
+  .group-hover\:\!text-white {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: var(--color-white) !important;
+      }
+    }
+  }
   .group-hover\:text-brand-green {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
         color: var(--color-brand-green);
-      }
-    }
-  }
-  .group-hover\:text-white {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        color: var(--color-white);
       }
     }
   }
@@ -1165,11 +1165,6 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   .lg\:h-16 {
     @media (width >= 64rem) {
       height: calc(var(--spacing) * 16);
-    }
-  }
-  .lg\:h-\[480px\] {
-    @media (width >= 64rem) {
-      height: 480px;
     }
   }
   .lg\:min-h-\[80px\] {

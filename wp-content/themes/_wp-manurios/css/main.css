@@ -63,11 +63,11 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: contain;
 }
 
-body.home #masthead.absolute #primary-menu a,
+body.home #masthead.absolute:not(.fixed) #primary-menu a,
 body.home #masthead:not(.fixed):not(.bg-white) #primary-menu a,
-.home #masthead.absolute #primary-menu a,
+.home #masthead.absolute:not(.fixed) #primary-menu a,
 .home #masthead:not(.fixed):not(.bg-white) #primary-menu a,
-#masthead.absolute[data-is-home=true] #primary-menu a,
+#masthead.absolute[data-is-home=true]:not(.fixed) #primary-menu a,
 .header-nav[data-is-home=true] #primary-menu a {
   color: #ffffff !important;
   opacity: 1 !important;
@@ -75,22 +75,31 @@ body.home #masthead:not(.fixed):not(.bg-white) #primary-menu a,
 }
 
 #masthead.fixed #primary-menu a,
+body.home #masthead.fixed #primary-menu a,
 #masthead.bg-white #primary-menu a,
 body:not(.home) #masthead #primary-menu a,
 body:not(.home) .header-nav #primary-menu a {
-  color: #4b5563 !important;
+  color: #000000 !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
 
-#primary-menu a:hover {
+#primary-menu a:hover,
+#primary-menu a:active,
+#primary-menu li.current_page_item > a,
+#primary-menu li.current-menu-item > a,
+#primary-menu li.current_page_ancestor > a {
   color: #f9a234 !important;
 }
 
 body.home #masthead.absolute #primary-menu a:hover,
+body.home #masthead.absolute #primary-menu li.current_page_item > a,
 body.home #masthead:not(.fixed):not(.bg-white) #primary-menu a:hover,
+body.home #masthead:not(.fixed):not(.bg-white) #primary-menu li.current_page_item > a,
 .home #masthead.absolute #primary-menu a:hover,
-.header-nav[data-is-home=true] #primary-menu a:hover {
+.home #masthead.absolute #primary-menu li.current_page_item > a,
+.header-nav[data-is-home=true] #primary-menu a:hover,
+.header-nav[data-is-home=true] #primary-menu li.current_page_item > a {
   color: #f9a234 !important;
 }
 
