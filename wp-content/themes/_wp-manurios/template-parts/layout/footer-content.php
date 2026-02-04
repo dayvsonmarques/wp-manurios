@@ -9,7 +9,7 @@
 
 ?>
 
-<footer id="colophon" class="bg-green my-0 pt-20 lg:pt-32 relative">
+<footer id="colophon" class="bg-green my-0 pt-20 pb-40 lg:pt-32 lg:pb-60 relative min-h-[50vh]">
 	<span id="contact" class="absolute top-0 transform -translate-y-24"></span>
 	<div class="container mx-auto px-4 lg:px-8">
 		<div class="text-center">
