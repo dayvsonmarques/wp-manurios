@@ -33,7 +33,11 @@ $position_class = $is_home ? 'absolute' : 'fixed';
 			const offset = 150;
 			
 			for (const id of sections) {
-				const el = document.getElementById(id);
+				let targetId = id;
+				// For contact, check the whole footer instead of the thin anchor span
+				if (id === 'contact') targetId = 'colophon';
+				
+				const el = document.getElementById(targetId);
 				if (el) {
 					const rect = el.getBoundingClientRect();
 					if (rect.top <= offset && rect.bottom > offset) {
@@ -41,7 +45,28 @@ $position_class = $is_home ? 'absolute' : 'fixed';
 					}
 				}
 			}
+
+			// Force contact active if at bottom of page
+			if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+				newActive = 'contact';
+			}
+
 			this.activeSection = newActive;
+
+			// Update menu items active state
+			document.querySelectorAll('#primary-menu a').forEach(link => {
+				link.classList.remove('active-section');
+				const href = link.getAttribute('href');
+				if (href) {
+					const hashIndex = href.indexOf('#');
+					if (hashIndex !== -1) {
+						const hash = href.substring(hashIndex + 1);
+						if (hash === newActive || (newActive === 'contact' && hash === 'contato')) {
+							link.classList.add('active-section');
+						}
+					}
+				}
+			});
 		<?php else : ?>
 			this.scrolled = true;
 		<?php endif; ?>
