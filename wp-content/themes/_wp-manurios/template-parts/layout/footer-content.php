@@ -9,12 +9,12 @@
 
 ?>
 
-<footer id="colophon" class="bg-green my-0 pt-20 pb-40 lg:pt-32 lg:pb-60 relative min-h-[50vh] flex flex-col justify-between">
+<footer id="colophon" class="bg-green my-0 py-20 lg:py-32 relative min-h-[50vh] flex flex-col justify-between">
 	<div id="contact" class="absolute top-0 w-full h-1 transform -translate-y-24"></div>
 	<div id="contato" class="absolute top-0 w-full h-1 transform -translate-y-24"></div>
 	<div class="container mx-auto px-4 lg:px-8 flex-grow flex flex-col justify-center">
 		<div class="text-center">
-			<div class="flex justify-center gap-12 lg:gap-16 mb-10 lg:mb-14">
+			<div class="flex justify-center gap-12 lg:gap-16">
 				<?php $spotify_url = get_theme_mod( 'spotify_url', 'https://open.spotify.com/show/6TclgDMrPS66MIj85kTUjX' ); ?>
 
 				<a href="https://instagram.com/manurios_al" target="_blank" rel="noopener noreferrer" class="text-white hover:text-brand-gold transition-colors" aria-label="Instagram">
