@@ -4,8 +4,8 @@
 <section id="blog" class="py-20 lg:py-32 bg-white">
     <div class="w-full px-[30px]">
         <div class="text-center mb-16">
-            <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 uppercase">Na mídia</h2>
-            <div class="h-1 w-20 bg-brand-green mx-auto"></div>
+            <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 uppercase mb-2">Na mídia</h2>
+            <div class="h-1 w-20 bg-brand-green mx-auto mb-4"></div>
             <p class="text-2xl lg:text-2xl text-gray-600 max-w-2xl mx-auto">Confira matérias, entrevistas e conteúdos em destaque</p>
         </div>
 
