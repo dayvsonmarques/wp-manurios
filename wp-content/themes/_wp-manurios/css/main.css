@@ -88,8 +88,16 @@ body:not(.home) .header-nav #primary-menu a {
 #primary-menu a:active,
 #primary-menu li.current_page_item > a,
 #primary-menu li.current-menu-item > a,
-#primary-menu li.current_page_ancestor > a {
+#primary-menu li.current_page_ancestor > a,
+#primary-menu a.active-section {
   color: #f9a234 !important;
+}
+
+#primary-menu li.current_page_item > a,
+#primary-menu li.current-menu-item > a,
+#primary-menu li.current_page_ancestor > a,
+#primary-menu a.active-section {
+  font-weight: 700 !important;
 }
 
 body.home #masthead.absolute #primary-menu a:hover,
@@ -99,8 +107,17 @@ body.home #masthead:not(.fixed):not(.bg-white) #primary-menu li.current_page_ite
 .home #masthead.absolute #primary-menu a:hover,
 .home #masthead.absolute #primary-menu li.current_page_item > a,
 .header-nav[data-is-home=true] #primary-menu a:hover,
-.header-nav[data-is-home=true] #primary-menu li.current_page_item > a {
+.header-nav[data-is-home=true] #primary-menu li.current_page_item > a,
+body.home #masthead.absolute #primary-menu a.active-section {
   color: #f9a234 !important;
+}
+
+body.home #masthead.absolute #primary-menu li.current_page_item > a,
+body.home #masthead:not(.fixed):not(.bg-white) #primary-menu li.current_page_item > a,
+.home #masthead.absolute #primary-menu li.current_page_item > a,
+.header-nav[data-is-home=true] #primary-menu li.current_page_item > a,
+body.home #masthead.absolute #primary-menu a.active-section {
+  font-weight: 700 !important;
 }
 
 #primary-menu a:hover::after {
