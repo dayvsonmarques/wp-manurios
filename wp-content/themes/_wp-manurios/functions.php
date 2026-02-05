@@ -342,7 +342,7 @@ function _wp_manurios_customize_register( $wp_customize ) {
 
 	// Links Section
 	$wp_customize->add_section( 'links_settings', array(
-		'title'    => __( 'Links (Home/Redes)', '_wp-manurios' ),
+		'title'    => __( 'Links Gerais (Home)', '_wp-manurios' ),
 		'priority' => 31,
 	) );
 
@@ -353,8 +353,8 @@ function _wp_manurios_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( 'spotify_url', array(
-		'label'       => __( 'URL do Spotify', '_wp-manurios' ),
-		'description' => __( 'Link do perfil/playlist no Spotify', '_wp-manurios' ),
+		'label'       => __( 'URL do Spotify (Geral)', '_wp-manurios' ),
+		'description' => __( 'Link para o perfil/playlist principal no Spotify', '_wp-manurios' ),
 		'section'     => 'links_settings',
 		'type'        => 'url',
 	) );
@@ -372,6 +372,12 @@ function _wp_manurios_customize_register( $wp_customize ) {
 		'type'        => 'url',
 	) );
 
+	// Podcast Section
+	$wp_customize->add_section( 'podcast_settings', array(
+		'title'    => __( 'Seção: Podcast', '_wp-manurios' ),
+		'priority' => 32,
+	) );
+
 	// Podcast RSS URL
 	$wp_customize->add_setting( 'podcast_rss_url', array(
 		'default'           => '',
@@ -380,8 +386,21 @@ function _wp_manurios_customize_register( $wp_customize ) {
 
 	$wp_customize->add_control( 'podcast_rss_url', array(
 		'label'       => __( 'RSS do Podcast (para listar episódios)', '_wp-manurios' ),
-		'description' => __( 'Opcional. Se você tiver um feed RSS do podcast, cole aqui para exibir os 5 últimos episódios em lista compacta na home. Caso contrário, o site tenta montar a lista a partir do link do Spotify.', '_wp-manurios' ),
-		'section'     => 'links_settings',
+		'description' => __( 'Opcional. Se você tiver um feed RSS do podcast, cole aqui para exibir os 3 últimos episódios em lista compacta na home. Caso contrário, o site tenta montar a lista a partir do link do Spotify geral.', '_wp-manurios' ),
+		'section'     => 'podcast_settings',
+		'type'        => 'url',
+	) );
+
+	// Podcast Highlight Spotify URL
+	$wp_customize->add_setting( 'podcast_highlight_spotify_url', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( 'podcast_highlight_spotify_url', array(
+		'label'       => __( 'Destaque Spotify (Substitui Lista)', '_wp-manurios' ),
+		'description' => __( 'Cole o link de um episódio ou show do Spotify (ex: https://open.spotify.com/episode/...) para exibir o player em destaque no lugar da lista automática.', '_wp-manurios' ),
+		'section'     => 'podcast_settings',
 		'type'        => 'url',
 	) );
 
@@ -969,3 +988,15 @@ require get_template_directory() . '/inc/template-functions.php';
  * Custom Post Type: Mídias Digitais
  */
 require get_template_directory() . '/inc/cpt-midias-digitais.php';
+
+/**
+ * Redirect all non-home requests to the landing page.
+ * Implements "One Page" behavior.
+ */
+function _wp_manurios_force_one_page() {
+	if ( ! is_front_page() && ! is_admin() ) {
+		wp_safe_redirect( home_url( '/' ) );
+		exit;
+	}
+}
+add_action( 'template_redirect', '_wp_manurios_force_one_page' );

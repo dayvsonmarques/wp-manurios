@@ -37,6 +37,18 @@
         if ( empty( $podcast_items ) && function_exists( '_wp_manurios_get_spotify_latest_episodes' ) ) {
             $spotify_episode_items = _wp_manurios_get_spotify_latest_episodes( $spotify_url, 3 );
         }
+        
+        // Check for highlighted Spotify Override
+        $podcast_highlight_url = trim( (string) get_theme_mod( 'podcast_highlight_spotify_url', '' ) );
+        $podcast_highlight_embed = '';
+
+        if ( $podcast_highlight_url !== '' ) {
+            if ( preg_match( '~^https?://open\.spotify\.com/embed/~', $podcast_highlight_url ) ) {
+                $podcast_highlight_embed = $podcast_highlight_url;
+            } elseif ( preg_match( '~^https?://open\.spotify\.com/(show|episode|playlist|album|track)/~', $podcast_highlight_url ) ) {
+                $podcast_highlight_embed = preg_replace( '~^https?://open\.spotify\.com/~', 'https://open.spotify.com/embed/', $podcast_highlight_url, 1 );
+            }
+        }
         ?>
 
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -70,6 +82,18 @@
             </div>
 
             <div class="podcast-episodes-panel rounded-2xl shadow-2xl overflow-hidden">
+                <?php if ( ! empty( $podcast_highlight_embed ) ) : ?>
+                    <iframe
+                        style="border-radius: 0;"
+                        src="<?php echo esc_url( $podcast_highlight_embed ); ?>"
+                        width="100%"
+                        height="450"
+                        frameborder="0"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                        class="w-full h-full min-h-[450px]"
+                    ></iframe>
+                <?php else : ?>
                 <div class="podcast-episodes-header px-6 lg:px-8 py-8 lg:py-6">
                     <div class="podcast-episodes-header-inner flex items-center justify-between gap-6 py-2">
                         <h3 class="text-2xl lg:text-3xl font-bold text-white">Últimos episódios</h3>
@@ -211,6 +235,7 @@
                         </p>
                     <?php endif; ?>
                 </div>
+                <?php endif; // End podcast_video_override check ?>
             </div>
         </div>
     </div>
