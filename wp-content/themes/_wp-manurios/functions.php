@@ -826,7 +826,8 @@ function _wp_manurios_get_spotify_latest_episodes( $spotify_url, $limit = 5 ) {
 	}
 
 	$show_id   = (string) $m[1];
-	$cache_key = '_wp_mnr_sp_show_' . $show_id;
+	// Versioned cache key to force refresh when logic changes
+	$cache_key = '_wp_mnr_sp_show_v2_' . $show_id;
 	$cached    = get_transient( $cache_key );
 	if ( is_array( $cached ) && ! empty( $cached ) ) {
 		return array_slice( $cached, 0, $limit );
@@ -856,6 +857,36 @@ function _wp_manurios_get_spotify_latest_episodes( $spotify_url, $limit = 5 ) {
 	preg_match_all( '~/(?:intl-[a-z]{2}/)?episode/([A-Za-z0-9]+)~', $body, $matches );
 	$episode_ids = isset( $matches[1] ) ? array_values( array_unique( $matches[1] ) ) : array();
 	$episode_ids = array_slice( $episode_ids, 0, $limit );
+
+	// Fetch Show metadata (thumbnail) to use as fallback
+	$show_thumb_url = '';
+	$show_oembed_key = '_wp_mnr_sp_show_oembed_' . $show_id;
+	$show_oembed     = get_transient( $show_oembed_key );
+
+	if ( ! is_array( $show_oembed ) ) {
+		$show_oembed_response = wp_remote_get(
+			'https://open.spotify.com/oembed?url=' . rawurlencode( $spotify_show_url ),
+			array(
+				'timeout'     => 8,
+				'redirection' => 3,
+				'headers'     => array(
+					'User-Agent' => 'Mozilla/5.0 (WordPress; _wp-manurios)',
+				),
+			)
+		);
+
+		if ( ! is_wp_error( $show_oembed_response ) ) {
+			$json = json_decode( (string) wp_remote_retrieve_body( $show_oembed_response ), true );
+			if ( is_array( $json ) ) {
+				$show_oembed = $json;
+				set_transient( $show_oembed_key, $show_oembed, 24 * HOUR_IN_SECONDS );
+			}
+		}
+	}
+
+	if ( is_array( $show_oembed ) && isset( $show_oembed['thumbnail_url'] ) ) {
+		$show_thumb_url = (string) $show_oembed['thumbnail_url'];
+	}
 
 	$episode_urls = array();
 	foreach ( $episode_ids as $episode_id ) {
@@ -896,6 +927,11 @@ function _wp_manurios_get_spotify_latest_episodes( $spotify_url, $limit = 5 ) {
 		if ( is_array( $oembed ) ) {
 			$title     = isset( $oembed['title'] ) ? (string) $oembed['title'] : '';
 			$thumb_url = isset( $oembed['thumbnail_url'] ) ? (string) $oembed['thumbnail_url'] : '';
+			
+			// Fallback to show thumbnail
+			if ( empty( $thumb_url ) ) {
+				$thumb_url = $show_thumb_url;
+			}
 
 			if ( $title !== '' ) {
 				$episodes[] = array(
