@@ -27,7 +27,7 @@
 
             $feed = fetch_feed( $podcast_rss_url );
             if ( ! is_wp_error( $feed ) ) {
-                $maxitems = (int) $feed->get_item_quantity( 5 );
+                $maxitems = (int) $feed->get_item_quantity( 3 );
                 if ( $maxitems > 0 ) {
                     $podcast_items = (array) $feed->get_items( 0, $maxitems );
                 }
@@ -35,7 +35,7 @@
         }
 
         if ( empty( $podcast_items ) && function_exists( '_wp_manurios_get_spotify_latest_episodes' ) ) {
-            $spotify_episode_items = _wp_manurios_get_spotify_latest_episodes( $spotify_url, 5 );
+            $spotify_episode_items = _wp_manurios_get_spotify_latest_episodes( $spotify_url, 3 );
         }
         ?>
 
@@ -106,7 +106,16 @@
                                     }
 
                                     if ( empty( $thumb_url ) && isset( $feed ) && ! is_wp_error( $feed ) ) {
+                                        // Try standard feed image
                                         $thumb_url = $feed->get_image_url();
+                                        
+                                        // Try itunes:image on channel if standard image failed
+                                        if ( empty( $thumb_url ) ) {
+                                            $channel_itunes_image = $feed->get_channel_tags( 'http://www.itunes.com/dtds/podcast-1.0.dtd', 'image' );
+                                            if ( isset( $channel_itunes_image[0]['attribs']['']['href'] ) ) {
+                                                $thumb_url = $channel_itunes_image[0]['attribs']['']['href'];
+                                            }
+                                        }
                                     }
                                 ?>
                                 <div class="podcast-episode-item rounded-xl transition-all">
