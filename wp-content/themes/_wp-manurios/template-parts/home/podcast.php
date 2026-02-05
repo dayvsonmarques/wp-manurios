@@ -69,9 +69,9 @@
 
             </div>
 
-            <div class="podcast-episodes-panel rounded-2xl shadow-2xl overflow-hidden !pb-8 lg:!pb-12">
-                <div class="podcast-episodes-header px-6 lg:px-8 py-8 lg:py-10">
-                    <div class="podcast-episodes-header-inner flex items-center justify-between gap-6  py-5">
+            <div class="podcast-episodes-panel rounded-2xl shadow-2xl overflow-hidden">
+                <div class="podcast-episodes-header px-6 lg:px-8 py-8 lg:py-6">
+                    <div class="podcast-episodes-header-inner flex items-center justify-between gap-6 py-2">
                         <h3 class="text-2xl lg:text-3xl font-bold text-white">Últimos episódios</h3>
                         <div class="flex items-center">
                             <svg class="w-8 h-8 text-white opacity-90" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
