@@ -6,7 +6,8 @@
 <section id="podcast" class="py-20 lg:py-32 bg-green">
     <div class="container mx-auto px-4 lg:px-8">
         <?php
-        $spotify_url = trim( (string) get_theme_mod( 'spotify_url', 'https://open.spotify.com/show/6TclgDMrPS66MIj85kTUjX' ) );
+        $spotify_url = trim( (string) get_theme_mod( 'spotify_url', '' ) );
+        $youtube_url = trim( (string) get_theme_mod( 'youtube_url', '' ) );
         $spotify_embed_url = '';
         $podcast_rss_url = trim( (string) get_theme_mod( 'podcast_rss_url', '' ) );
         $podcast_items = array();
@@ -65,12 +66,14 @@
                 </div>
 
                 <div class="flex flex-wrap gap-4">
-                    <a href="https://www.youtube.com/@saudem1lugar" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-4 bg-white text-brand-green font-semibold rounded-lg hover:bg-brand-gold hover:text-white transition-all shadow-lg hover:shadow-xl">
-                        <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
-                        <span>Veja no YouTube</span>
-                    </a>
+                    <?php if ( ! empty( $youtube_url ) ) : ?>
+                        <a href="<?php echo esc_url( $youtube_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-4 bg-white text-brand-green font-semibold rounded-lg hover:bg-brand-gold hover:text-white transition-all shadow-lg hover:shadow-xl">
+                            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                            <span>Veja no YouTube</span>
+                        </a>
+                    <?php endif; ?>
 
                     <?php if ( ! empty( $spotify_url ) ) : ?>
                         <a href="<?php echo esc_url( $spotify_url ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center  px-6 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-brand-green transition-all">

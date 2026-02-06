@@ -359,6 +359,45 @@ function _wp_manurios_customize_register( $wp_customize ) {
 		'type'        => 'url',
 	) );
 
+	// YouTube URL
+	$wp_customize->add_setting( 'youtube_url', array(
+		'default'           => 'https://www.youtube.com/@saudem1lugar',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( 'youtube_url', array(
+		'label'       => __( 'URL do YouTube', '_wp-manurios' ),
+		'description' => __( 'Link para o canal do YouTube', '_wp-manurios' ),
+		'section'     => 'links_settings',
+		'type'        => 'url',
+	) );
+
+	// Instagram URL
+	$wp_customize->add_setting( 'instagram_url', array(
+		'default'           => 'https://instagram.com/manurios_al',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( 'instagram_url', array(
+		'label'       => __( 'URL do Instagram', '_wp-manurios' ),
+		'description' => __( 'Link para o perfil do Instagram', '_wp-manurios' ),
+		'section'     => 'links_settings',
+		'type'        => 'url',
+	) );
+
+	// LinkedIn URL
+	$wp_customize->add_setting( 'linkedin_url', array(
+		'default'           => 'https://www.linkedin.com/in/manurios/',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( 'linkedin_url', array(
+		'label'       => __( 'URL do LinkedIn', '_wp-manurios' ),
+		'description' => __( 'Link para o perfil do LinkedIn', '_wp-manurios' ),
+		'section'     => 'links_settings',
+		'type'        => 'url',
+	) );
+
 	// Book purchase URL
 	$wp_customize->add_setting( 'book_purchase_url', array(
 		'default'           => '',
@@ -401,6 +440,25 @@ function _wp_manurios_customize_register( $wp_customize ) {
 		'label'       => __( 'Destaque Spotify (Substitui Lista)', '_wp-manurios' ),
 		'description' => __( 'Cole o link de um episódio ou show do Spotify (ex: https://open.spotify.com/episode/...) para exibir o player em destaque no lugar da lista automática.', '_wp-manurios' ),
 		'section'     => 'podcast_settings',
+		'type'        => 'url',
+	) );
+
+	// Palestras Section
+	$wp_customize->add_section( 'palestras_settings', array(
+		'title'    => __( 'Seção: Palestras', '_wp-manurios' ),
+		'priority' => 33,
+	) );
+
+	// Palestras Video URL
+	$wp_customize->add_setting( 'palestras_video_url', array(
+		'default'           => 'https://www.youtube.com/embed/o-4QM1vbMes',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( 'palestras_video_url', array(
+		'label'       => __( 'Vídeo em Destaque (YouTube Embed)', '_wp-manurios' ),
+		'description' => __( 'Link Embed do vídeo (ex: https://www.youtube.com/embed/...)', '_wp-manurios' ),
+		'section'     => 'palestras_settings',
 		'type'        => 'url',
 	) );
 
