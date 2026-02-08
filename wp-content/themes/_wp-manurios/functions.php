@@ -468,43 +468,11 @@ function _wp_manurios_customize_register( $wp_customize ) {
 add_action( 'customize_register', '_wp_manurios_customize_register' );
 
 
+
 /**
- * Register Custom Post Types: Newsletter & Banner
+ * Register Custom Post Types: Banner
  */
 function _wp_manurios_register_custom_post_types() {
-       // Newsletter CPT (mantido)
-       $newsletter_labels = array(
-	       'name'                  => __( 'Newsletter Subscribers', '_wp-manurios' ),
-	       'singular_name'         => __( 'Subscriber', '_wp-manurios' ),
-	       'menu_name'             => __( 'Newsletter', '_wp-manurios' ),
-	       'name_admin_bar'        => __( 'Subscriber', '_wp-manurios' ),
-	       'add_new'               => __( 'Add New', '_wp-manurios' ),
-	       'add_new_item'          => __( 'Add New Subscriber', '_wp-manurios' ),
-	       'new_item'              => __( 'New Subscriber', '_wp-manurios' ),
-	       'edit_item'             => __( 'Edit Subscriber', '_wp-manurios' ),
-	       'view_item'             => __( 'View Subscriber', '_wp-manurios' ),
-	       'all_items'             => __( 'All Subscribers', '_wp-manurios' ),
-	       'search_items'          => __( 'Search Subscribers', '_wp-manurios' ),
-	       'not_found'             => __( 'No subscribers found.', '_wp-manurios' ),
-	       'not_found_in_trash'    => __( 'No subscribers found in Trash.', '_wp-manurios' ),
-       );
-       $newsletter_args = array(
-	       'labels'             => $newsletter_labels,
-	       'public'             => false,
-	       'publicly_queryable' => false,
-	       'show_ui'            => true,
-	       'show_in_menu'       => true,
-	       'menu_icon'          => 'dashicons-email-alt',
-	       'menu_position'      => 25,
-	       'query_var'          => false,
-	       'rewrite'            => false,
-	       'capability_type'    => 'post',
-	       'has_archive'        => false,
-	       'hierarchical'       => false,
-	       'supports'           => array( 'title' ),
-       );
-       register_post_type( 'newsletter', $newsletter_args );
-
        // Banner CPT
        $banner_labels = array(
 	       'name'                  => __( 'Banners', '_wp-manurios' ),
@@ -740,85 +708,8 @@ function _wp_manurios_home_banner_slider() {
 }
 
 
-/**
- * Customize Newsletter columns in admin
- */
-function _wp_manurios_newsletter_columns( $columns ) {
-	$new_columns = array(
-		'cb'         => $columns['cb'],
-		'title'      => __( 'Email', '_wp-manurios' ),
-		'date'       => __( 'Subscribed Date', '_wp-manurios' ),
-	);
-	return $new_columns;
-}
-add_filter( 'manage_newsletter_posts_columns', '_wp_manurios_newsletter_columns' );
-
-/**
- * AJAX handler for newsletter subscription
- */
-function _wp_manurios_newsletter_subscribe() {
-	// Verify nonce
-	if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'newsletter_subscribe' ) ) {
-		wp_send_json_error( array( 'message' => 'Erro de segurança. Por favor, recarregue a página.' ) );
-	}
-
-	// Validate email
-	$email = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : '';
-
-	if ( empty( $email ) || ! is_email( $email ) ) {
-		wp_send_json_error( array( 'message' => 'Por favor, insira um e-mail válido.' ) );
-	}
-
-	// Check if email already exists
-	$existing = get_posts( array(
-		'post_type'      => 'newsletter',
-		'title'          => $email,
-		'posts_per_page' => 1,
-		'post_status'    => 'publish',
-	) );
-
-	if ( ! empty( $existing ) ) {
-		wp_send_json_error( array( 'message' => 'Este e-mail já está cadastrado em nossa newsletter.' ) );
-	}
-
-	// Create new subscriber
-	$post_id = wp_insert_post( array(
-		'post_type'   => 'newsletter',
-		'post_title'  => $email,
-		'post_status' => 'publish',
-	) );
-
-	if ( is_wp_error( $post_id ) ) {
-		wp_send_json_error( array( 'message' => 'Erro ao processar inscrição. Tente novamente.' ) );
-	}
-
-	wp_send_json_success( array( 'message' => 'Inscrição realizada com sucesso! Obrigado por se cadastrar.' ) );
-}
-add_action( 'wp_ajax_newsletter_subscribe', '_wp_manurios_newsletter_subscribe' );
-add_action( 'wp_ajax_nopriv_newsletter_subscribe', '_wp_manurios_newsletter_subscribe' );
-
-/**
- * Modify menu items to link to home sections when on front page
- */
-function _wp_manurios_nav_menu_items( $items, $args ) {
-	// Only modify the primary menu on the front page
-	if ( ! is_front_page() ) {
-		return $items;
-	}
-
-	// Check if this is the primary menu
-	$is_primary_menu = false;
-	if ( is_object( $args ) && isset( $args->theme_location ) && 'menu-1' === $args->theme_location ) {
-		$is_primary_menu = true;
-	} elseif ( is_array( $args ) && isset( $args['theme_location'] ) && 'menu-1' === $args['theme_location'] ) {
-		$is_primary_menu = true;
-	}
-
-	if ( ! $is_primary_menu ) {
-		return $items;
-	}
-
 	// Map menu item titles to section IDs
+	function _wp_manurios_nav_menu_items( $items, $args ) {
 	$section_map = array(
 		'sobre'            => '#about',
 		'about'            => '#about',
@@ -856,18 +747,7 @@ function _wp_manurios_nav_menu_items( $items, $args ) {
 }
 add_filter( 'wp_nav_menu_objects', '_wp_manurios_nav_menu_items', 10, 2 );
 
-/**
- * Enqueue newsletter script
- */
-function _wp_manurios_newsletter_script() {
-	if ( is_front_page() ) {
-		wp_localize_script( '_wp-manurios-script', 'newsletterData', array(
-			'ajax_url' => admin_url( 'admin-ajax.php' ),
-			'nonce'    => wp_create_nonce( 'newsletter_subscribe' ),
-		) );
-	}
-}
-add_action( 'wp_enqueue_scripts', '_wp_manurios_newsletter_script' );
+
 
 /**
  * Disable WordPress Service Workers
@@ -1131,3 +1011,8 @@ function _wp_manurios_seed_services() {
     }
 }
 add_action( 'init', '_wp_manurios_seed_services', 20 );
+
+/**
+ * Include Admin Permissions & Cleanup
+ */
+require_once get_template_directory() . '/inc/admin-permissions.php';

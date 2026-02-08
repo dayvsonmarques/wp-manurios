@@ -47,9 +47,9 @@
 }
 
 #podcast .podcast-episode-link {
-  color: var(--brand-gold, #f9a234);
+  color: $brand-gold;
 }
 
 #podcast .podcast-episode-link:hover {
-  color: rgba(255, 255, 255, 0.92);
+  color: #ffffff;
 }

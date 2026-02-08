@@ -102,3 +102,4 @@ wp-content/advanced-cache.php
 
 # Security files
 .htaccess
+wp-content/backups-dup-lite/

@@ -271,9 +271,6 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   .bottom-4 {
     bottom: calc(var(--spacing) * 4);
   }
-  .bottom-6 {
-    bottom: calc(var(--spacing) * 6);
-  }
   .left-0 {
     left: calc(var(--spacing) * 0);
   }
@@ -448,6 +445,9 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   .min-h-\[50vh\] {
     min-height: 50vh;
   }
+  .min-h-\[450px\] {
+    min-height: 450px;
+  }
   .min-h-\[600px\] {
     min-height: 600px;
   }
@@ -606,6 +606,10 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
     border-style: var(--tw-border-style);
     border-width: 2px;
   }
+  .border-t {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 1px;
+  }
   .border-gray-100 {
     border-color: var(--color-gray-100);
   }
@@ -647,6 +651,9 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   .to-transparent {
     --tw-gradient-to: transparent;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .object-contain {
+    object-fit: contain;
   }
   .object-cover {
     object-fit: cover;
@@ -693,9 +700,6 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
-  .py-5 {
-    padding-block: calc(var(--spacing) * 5);
-  }
   .py-8 {
     padding-block: calc(var(--spacing) * 8);
   }
@@ -708,8 +712,8 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   .pt-2 {
     padding-top: calc(var(--spacing) * 2);
   }
-  .\!pb-8 {
-    padding-bottom: calc(var(--spacing) * 8) !important;
+  .pt-6 {
+    padding-top: calc(var(--spacing) * 6);
   }
   .\!pb-28 {
     padding-bottom: calc(var(--spacing) * 28) !important;
@@ -823,6 +827,9 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
     --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
+  .filter {
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
   .\!transition-all {
     transition-property: all !important;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function)) !important;
@@ -900,17 +907,17 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
       }
     }
   }
-  .group-hover\:\!text-white {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        color: var(--color-white) !important;
-      }
-    }
-  }
   .group-hover\:text-brand-green {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
         color: var(--color-brand-green);
+      }
+    }
+  }
+  .group-hover\:underline {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        text-decoration-line: underline;
       }
     }
   }
@@ -946,6 +953,16 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
       }
     }
   }
+  .hover\:scale-105 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-scale-x: 105%;
+        --tw-scale-y: 105%;
+        --tw-scale-z: 105%;
+        scale: var(--tw-scale-x) var(--tw-scale-y);
+      }
+    }
+  }
   .hover\:scale-110 {
     &:hover {
       @media (hover: hover) {
@@ -974,6 +991,13 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-brand-gold);
+      }
+    }
+  }
+  .hover\:bg-gray-100 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-gray-100);
       }
     }
   }
@@ -1044,13 +1068,6 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
     &:hover {
       @media (hover: hover) {
         opacity: 75%;
-      }
-    }
-  }
-  .hover\:opacity-90 {
-    &:hover {
-      @media (hover: hover) {
-        opacity: 90%;
       }
     }
   }
@@ -1244,19 +1261,14 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
       padding-block: calc(var(--spacing) * 4);
     }
   }
-  .lg\:py-10 {
+  .lg\:py-6 {
     @media (width >= 64rem) {
-      padding-block: calc(var(--spacing) * 10);
+      padding-block: calc(var(--spacing) * 6);
     }
   }
   .lg\:py-32 {
     @media (width >= 64rem) {
       padding-block: calc(var(--spacing) * 32);
-    }
-  }
-  .lg\:\!pb-12 {
-    @media (width >= 64rem) {
-      padding-bottom: calc(var(--spacing) * 12) !important;
     }
   }
   .lg\:pb-8 {
@@ -1458,6 +1470,59 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
   inherits: false;
   initial-value: 0 0 #0000;
 }
+@property --tw-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-drop-shadow-size {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-duration {
   syntax: "*";
   inherits: false;
@@ -1522,6 +1587,19 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-blur: initial;
+      --tw-brightness: initial;
+      --tw-contrast: initial;
+      --tw-grayscale: initial;
+      --tw-hue-rotate: initial;
+      --tw-invert: initial;
+      --tw-opacity: initial;
+      --tw-saturate: initial;
+      --tw-sepia: initial;
+      --tw-drop-shadow: initial;
+      --tw-drop-shadow-color: initial;
+      --tw-drop-shadow-alpha: 100%;
+      --tw-drop-shadow-size: initial;
       --tw-duration: initial;
       --tw-scale-x: 1;
       --tw-scale-y: 1;
