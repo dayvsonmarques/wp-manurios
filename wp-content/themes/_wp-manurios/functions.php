@@ -1058,3 +1058,76 @@ function _wp_manurios_force_one_page() {
 	}
 }
 add_action( 'template_redirect', '_wp_manurios_force_one_page' );
+
+/**
+ * Custom Post Type: Services & Products
+ */
+require get_template_directory() . '/inc/cpt-services.php';
+
+/**
+ * Seed Default Services if none exist.
+
+/**
+ * Seed Default Services if none exist.
+ */
+function _wp_manurios_seed_services() {
+    // Check if post type exists to avoid fatal error if CPT not registered yet
+    if ( ! post_type_exists( 'mp_service' ) ) {
+        return;
+    }
+
+    // Check if we already have services
+    $query = new WP_Query( array(
+        'post_type'      => 'mp_service',
+        'posts_per_page' => 1,
+        'post_status'    => 'any',
+        'fields'         => 'ids',
+    ) );
+
+    if ( $query->have_posts() ) {
+        return;
+    }
+
+    $services = array(
+        array(
+            'title'   => 'Palestras',
+            'content' => 'Conteúdos inspiradores sobre saúde física, mental, financeira e profissional para seu evento.',
+            'url'     => '',
+            'btn'     => 'Saiba mais'
+        ),
+        array(
+            'title'   => 'Livro',
+            'content' => 'Acesse o link de compra do livro.',
+            'url'     => 'https://pag.ae/7ZywmJvEn',
+            'btn'     => 'Comprar'
+        ),
+        array(
+            'title'   => 'Serviço 1',
+            'content' => 'Descrição do serviço 1.',
+            'url'     => '',
+            'btn'     => 'Saiba mais'
+        ),
+        array(
+            'title'   => 'Produto 2',
+            'content' => 'Descrição do produto 2.',
+            'url'     => '',
+            'btn'     => 'Saiba mais'
+        )
+    );
+
+    foreach ( $services as $index => $item ) {
+        $post_id = wp_insert_post( array(
+            'post_title'    => $item['title'],
+            'post_content'  => $item['content'],
+            'post_status'   => 'publish',
+            'post_type'     => 'mp_service',
+            'menu_order'    => $index,
+        ) );
+
+        if ( $post_id && ! is_wp_error( $post_id ) ) {
+            update_post_meta( $post_id, '_service_url', $item['url'] );
+            update_post_meta( $post_id, '_service_btn_label', $item['btn'] );
+        }
+    }
+}
+add_action( 'init', '_wp_manurios_seed_services', 20 );
