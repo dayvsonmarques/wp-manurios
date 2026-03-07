@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>site-sign — Preview</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #1e3a2e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      min-height: 100vh;
+      font-family: monospace;
+    }
+
+    p {
+      color: rgba(255,255,255,0.45);
+      font-size: 13px;
+      letter-spacing: 0.07em;
+    }
+
+    .demo-row {
+      display: flex;
+      gap: 64px;
+      align-items: flex-end;
+    }
+
+    .demo-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .demo-item span {
+      color: rgba(255,255,255,0.35);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── hover animation ── */
+    .site-sign {
+      display: inline-flex;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .site-sign .layer-gold {
+      opacity: 0;
+      transition: opacity 0.45s ease;
+    }
+
+    .site-sign .layer-mono {
+      transition: opacity 0.45s ease;
+    }
+
+    .site-sign:hover .layer-gold { opacity: 1; }
+    .site-sign:hover .layer-mono { opacity: 0; }
+  </style>
+</head>
+<body>
+
+  <p>Passe o mouse sobre o ícone → efeito fade para dourado</p>
+
+  <div class="demo-row">
+
+    <!-- 40 px -->
+    <div class="demo-item">
+      <a href="https://dayvsonmarques.dev.br" class="site-sign" title="Dayvson Marques" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="40" height="40" aria-hidden="true">
+          <defs>
+            <linearGradient id="ss-mono-40" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#E4E4E4"/>
+              <stop offset="100%" stop-color="#0F0F0F"/>
+            </linearGradient>
+            <linearGradient id="ss-gold-40" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#FFE45A"/>
+              <stop offset="100%" stop-color="#7A4E00"/>
+            </linearGradient>
+          </defs>
+          <g class="layer-mono">
+            <polyline points="175,100 80,256 175,412"  fill="none" stroke="url(#ss-mono-40)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="315" y1="95" x2="200" y2="418"  stroke="url(#ss-mono-40)" stroke-width="50" stroke-linecap="round"/>
+            <polyline points="337,100 432,256 337,412" fill="none" stroke="url(#ss-mono-40)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <g class="layer-gold">
+            <polyline points="175,100 80,256 175,412"  fill="none" stroke="url(#ss-gold-40)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="315" y1="95" x2="200" y2="418"  stroke="url(#ss-gold-40)" stroke-width="50" stroke-linecap="round"/>
+            <polyline points="337,100 432,256 337,412" fill="none" stroke="url(#ss-gold-40)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </a>
+      <span>40 px</span>
+    </div>
+
+    <!-- 80 px — tamanho do footer -->
+    <div class="demo-item">
+      <a href="https://dayvsonmarques.dev.br" class="site-sign" title="Dayvson Marques" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="80" height="80" aria-hidden="true">
+          <defs>
+            <linearGradient id="ss-mono-80" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#E4E4E4"/>
+              <stop offset="100%" stop-color="#0F0F0F"/>
+            </linearGradient>
+            <linearGradient id="ss-gold-80" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#FFE45A"/>
+              <stop offset="100%" stop-color="#7A4E00"/>
+            </linearGradient>
+          </defs>
+          <g class="layer-mono">
+            <polyline points="175,100 80,256 175,412"  fill="none" stroke="url(#ss-mono-80)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="315" y1="95" x2="200" y2="418"  stroke="url(#ss-mono-80)" stroke-width="50" stroke-linecap="round"/>
+            <polyline points="337,100 432,256 337,412" fill="none" stroke="url(#ss-mono-80)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <g class="layer-gold">
+            <polyline points="175,100 80,256 175,412"  fill="none" stroke="url(#ss-gold-80)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="315" y1="95" x2="200" y2="418"  stroke="url(#ss-gold-80)" stroke-width="50" stroke-linecap="round"/>
+            <polyline points="337,100 432,256 337,412" fill="none" stroke="url(#ss-gold-80)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </a>
+      <span>80 px — footer</span>
+    </div>
+
+    <!-- 160 px -->
+    <div class="demo-item">
+      <a href="https://dayvsonmarques.dev.br" class="site-sign" title="Dayvson Marques" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="160" height="160" aria-hidden="true">
+          <defs>
+            <linearGradient id="ss-mono-160" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#E4E4E4"/>
+              <stop offset="100%" stop-color="#0F0F0F"/>
+            </linearGradient>
+            <linearGradient id="ss-gold-160" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#FFE45A"/>
+              <stop offset="100%" stop-color="#7A4E00"/>
+            </linearGradient>
+          </defs>
+          <g class="layer-mono">
+            <polyline points="175,100 80,256 175,412"  fill="none" stroke="url(#ss-mono-160)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="315" y1="95" x2="200" y2="418"  stroke="url(#ss-mono-160)" stroke-width="50" stroke-linecap="round"/>
+            <polyline points="337,100 432,256 337,412" fill="none" stroke="url(#ss-mono-160)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <g class="layer-gold">
+            <polyline points="175,100 80,256 175,412"  fill="none" stroke="url(#ss-gold-160)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="315" y1="95" x2="200" y2="418"  stroke="url(#ss-gold-160)" stroke-width="50" stroke-linecap="round"/>
+            <polyline points="337,100 432,256 337,412" fill="none" stroke="url(#ss-gold-160)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </a>
+      <span>160 px</span>
+    </div>
+
+  </div>
+
+</body>
+</html>

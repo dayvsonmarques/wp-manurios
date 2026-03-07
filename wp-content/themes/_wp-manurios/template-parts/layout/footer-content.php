@@ -12,7 +12,9 @@
 <footer id="colophon" class="bg-green my-0 py-20 lg:py-32 relative min-h-[50vh] flex flex-col justify-between">
 	<div id="contact" class="absolute top-0 w-full h-1 transform -translate-y-24"></div>
 	<div id="contato" class="absolute top-0 w-full h-1 transform -translate-y-24"></div>
+
 	<div class="container mx-auto px-4 lg:px-8 flex-grow flex flex-col justify-center">
+
 		<div class="text-center">
 			<div class="flex justify-center gap-12 lg:gap-16">
 				<?php 
@@ -54,12 +56,22 @@
 				</a>
 				<?php endif; ?>
 
-			<p class="footer-copyright text-white text-lg py-4 absolute bottom-4 left-0 w-full text-center">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-white hover:text-brand-gold transition-colors font-semibold">
-					<?php bloginfo( 'name' ); ?>
-				</a>
-				&copy; <?php echo esc_html( date( 'Y' ) ); ?>
-			</p>
+
+			</div>
 		</div>
+
 	</div>
+
+	<p class="footer-copyright text-white text-sm pb-3 absolute bottom-0 left-1/2 transform -translate-x-1/2 text-center whitespace-nowrap z-10">
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-white hover:text-brand-gold transition-colors font-semibold mr-1">
+			<?php bloginfo( 'name' ); ?>
+		</a>
+		&copy; <?php echo esc_html( date( 'Y' ) ); ?>
+	</p>
+
+	<a href="https://dayvsonmarques.dev.br" target="_blank" rel="noopener noreferrer" class="site-sign">
+		<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/code.png" alt="" aria-hidden="true">
+		<span class="sr-only">Desenvolvido por Dayvson Marques</span>
+	</a>
+
 </footer>

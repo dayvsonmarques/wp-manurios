@@ -174,12 +174,18 @@ body.menu-open #btn-whatsapp-float {
   }
 }
 #colophon .footer-copyright {
-  margin-top: 6rem !important;
+  padding-bottom: 30px;
+  position: absolute;
+  bottom: 0;
+  font-size: 1em;
 }
-@media (min-width: 1024px) {
-  #colophon .footer-copyright {
-    margin-top: 8rem !important;
-  }
+
+.site-sign {
+  position: absolute;
+  right: 0;
+  padding: 30px 60px;
+  bottom: 0;
+  font-size: 2em;
 }
 
 .hero-section {
